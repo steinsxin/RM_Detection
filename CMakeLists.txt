@@ -25,3 +25,4 @@ include_directories(${PROJECT_SOURCE_DIR}/include)                    #公共头
 add_executable(RM_Detection main.cpp include/robot_status.cpp Package/MD_Camera/src/MD_Camera.cpp)
 target_link_libraries(RM_Detection ${ALL_Package})   #链接功能包动态库
 target_link_libraries(RM_Detection ${OpenCV_LIBS} ${CAMERA_LIB}) #链接相机驱动和OpenCV
+#awd
