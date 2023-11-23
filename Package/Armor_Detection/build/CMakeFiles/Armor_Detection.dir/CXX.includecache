@@ -18,7 +18,7 @@ Eigen/Dense
 robot_status.h
 ../../../include/robot_status.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Armor_detection.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Armor_detection.h
 iostream
 -
 Eigen/Dense
@@ -30,27 +30,27 @@ opencv2/highgui/highgui.hpp
 opencv2/imgproc.hpp
 -
 robot_status.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/robot_status.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/robot_status.h
 robot_struct.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/robot_struct.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/robot_struct.h
 Number_DNN.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Number_DNN.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Number_DNN.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Number_DNN.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Number_DNN.h
 opencv2/opencv.hpp
 -
 iostream
 -
 robot_status.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/robot_status.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/robot_status.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/src/Armor_detection.cpp
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/src/Armor_detection.cpp
 ../include/Armor_detection.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Armor_detection.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Armor_detection.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/src/Number_DNN.cpp
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/src/Number_DNN.cpp
 ../include/Number_DNN.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Number_DNN.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Number_DNN.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

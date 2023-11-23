@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/Serial_Device_test.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/Serial_Device_test.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -22,7 +22,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/DependInfo.cmake"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

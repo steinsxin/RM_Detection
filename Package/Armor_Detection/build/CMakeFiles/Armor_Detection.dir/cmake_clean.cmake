@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Detection.pdb"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Detection.so"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Detection.pdb"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Detection.so"
   "CMakeFiles/Armor_Detection.dir/src/Armor_detection.cpp.o"
   "CMakeFiles/Armor_Detection.dir/src/Number_DNN.cpp.o"
 )

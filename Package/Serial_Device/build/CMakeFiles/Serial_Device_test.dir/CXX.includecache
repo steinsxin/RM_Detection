@@ -54,31 +54,31 @@ Eigen/Dense
 robot_status.h
 ../../../include/robot_status.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/Serial_Device_test.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/Serial_Device_test.cpp
 iostream
 -
 opencv2/opencv.hpp
 -
 serial_main.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/serial_main.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/serial_main.h
 robot_status.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/robot_status.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/robot_status.h
 robot_struct.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/robot_struct.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/robot_struct.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp
 crc.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp
 serial_device.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.h
 iostream
 -
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp
 serial_main.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

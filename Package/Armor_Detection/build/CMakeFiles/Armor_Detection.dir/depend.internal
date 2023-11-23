@@ -4,9 +4,9 @@
 CMakeFiles/Armor_Detection.dir/src/Armor_detection.cpp.o
  ../../../include/robot_status.h
  ../../../include/robot_struct.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Armor_detection.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Number_DNN.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/src/Armor_detection.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Armor_detection.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Number_DNN.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Detection/src/Armor_detection.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -320,8 +320,8 @@ CMakeFiles/Armor_Detection.dir/src/Armor_detection.cpp.o
  /usr/local/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/Armor_Detection.dir/src/Number_DNN.cpp.o
  ../../../include/robot_status.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/include/Number_DNN.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/src/Number_DNN.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Detection/include/Number_DNN.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Detection/src/Number_DNN.cpp
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp

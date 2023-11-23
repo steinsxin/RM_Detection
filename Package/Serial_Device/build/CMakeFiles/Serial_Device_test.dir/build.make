@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device
+CMAKE_SOURCE_DIR = /home/hj/2024/RM_Detection_recode/Package/Serial_Device
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build
+CMAKE_BINARY_DIR = /home/hj/2024/RM_Detection_recode/Package/Serial_Device/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Serial_Device_test.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/Serial_Device_test.dir/flags.make
 
 CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o: CMakeFiles/Serial_Device_test.dir/flags.make
 CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o: ../Serial_Device_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o -c /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/Serial_Device_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o -c /home/hj/2024/RM_Detection_recode/Package/Serial_Device/Serial_Device_test.cpp
 
 CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/Serial_Device_test.cpp > CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/2024/RM_Detection_recode/Package/Serial_Device/Serial_Device_test.cpp > CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.i
 
 CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/Serial_Device_test.cpp -o CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/2024/RM_Detection_recode/Package/Serial_Device/Serial_Device_test.cpp -o CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.s
 
 CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o: CMakeFiles/Serial_Device_test.dir/flags.make
 CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o: ../src/crc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o -c /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o -c /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp
 
 CMakeFiles/Serial_Device_test.dir/src/crc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Serial_Device_test.dir/src/crc.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp > CMakeFiles/Serial_Device_test.dir/src/crc.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp > CMakeFiles/Serial_Device_test.dir/src/crc.cpp.i
 
 CMakeFiles/Serial_Device_test.dir/src/crc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Serial_Device_test.dir/src/crc.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp -o CMakeFiles/Serial_Device_test.dir/src/crc.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp -o CMakeFiles/Serial_Device_test.dir/src/crc.cpp.s
 
 CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o: CMakeFiles/Serial_Device_test.dir/flags.make
 CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o: ../src/serial_device.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o -c /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o -c /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp
 
 CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp > CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp > CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.i
 
 CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp -o CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp -o CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.s
 
 CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o: CMakeFiles/Serial_Device_test.dir/flags.make
 CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o: ../src/serial_main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o -c /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o -c /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp
 
 CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp > CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp > CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.i
 
 CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp -o CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp -o CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.s
 
 # Object files for target Serial_Device_test
 Serial_Device_test_OBJECTS = \
@@ -124,63 +124,65 @@ Serial_Device_test: CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o
 Serial_Device_test: CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o
 Serial_Device_test: CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o
 Serial_Device_test: CMakeFiles/Serial_Device_test.dir/build.make
-Serial_Device_test: /home/steins_xin/CLionProjects/RM_Detection_install/MVS_Drive/libMvCameraControl.so
-Serial_Device_test: /usr/local/lib/libopencv_gapi.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_stitching.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_aruco.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_barcode.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_bgsegm.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_bioinspired.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_ccalib.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_dnn_objdetect.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_dnn_superres.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_dpm.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_face.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_freetype.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_fuzzy.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_hfs.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_img_hash.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_intensity_transform.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_line_descriptor.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_mcc.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_quality.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_rapid.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_reg.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_rgbd.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_saliency.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_stereo.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_structured_light.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_superres.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_surface_matching.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_tracking.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_videostab.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_wechat_qrcode.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_xfeatures2d.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_xobjdetect.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_xphoto.so.4.5.5
-Serial_Device_test: /home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libSerial_Device.so
-Serial_Device_test: /usr/local/lib/libopencv_shape.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_highgui.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_datasets.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_plot.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_text.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_ml.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_phase_unwrapping.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_optflow.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_ximgproc.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_video.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_videoio.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_imgcodecs.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_objdetect.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_calib3d.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_dnn.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_features2d.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_flann.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_photo.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_imgproc.so.4.5.5
-Serial_Device_test: /usr/local/lib/libopencv_core.so.4.5.5
+Serial_Device_test: /home/hj/2024/RM_Detection_recode/MVS_Drive/libMvCameraControl.so
+Serial_Device_test: /usr/local/lib/libopencv_stitching.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_alphamat.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_aruco.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_barcode.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_bgsegm.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_bioinspired.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_ccalib.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_dnn_objdetect.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_dnn_superres.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_dpm.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_face.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_freetype.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_fuzzy.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_hdf.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_hfs.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_img_hash.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_intensity_transform.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_line_descriptor.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_mcc.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_quality.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_rapid.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_reg.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_rgbd.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_saliency.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_stereo.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_structured_light.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_superres.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_surface_matching.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_tracking.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_videostab.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_viz.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_wechat_qrcode.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_xfeatures2d.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_xobjdetect.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_xphoto.so.4.5.4
+Serial_Device_test: /home/hj/2024/RM_Detection_recode/Dynamic_library/libSerial_Device.so
+Serial_Device_test: /usr/local/lib/libopencv_shape.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_highgui.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_datasets.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_plot.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_text.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_ml.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_phase_unwrapping.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_optflow.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_ximgproc.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_video.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_videoio.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_imgcodecs.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_objdetect.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_calib3d.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_dnn.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_features2d.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_flann.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_photo.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_imgproc.so.4.5.4
+Serial_Device_test: /usr/local/lib/libopencv_core.so.4.5.4
 Serial_Device_test: CMakeFiles/Serial_Device_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Serial_Device_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Serial_Device_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Serial_Device_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -193,6 +195,6 @@ CMakeFiles/Serial_Device_test.dir/clean:
 .PHONY : CMakeFiles/Serial_Device_test.dir/clean
 
 CMakeFiles/Serial_Device_test.dir/depend:
-	cd /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hj/2024/RM_Detection_recode/Package/Serial_Device/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/2024/RM_Detection_recode/Package/Serial_Device /home/hj/2024/RM_Detection_recode/Package/Serial_Device /home/hj/2024/RM_Detection_recode/Package/Serial_Device/build /home/hj/2024/RM_Detection_recode/Package/Serial_Device/build /home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Serial_Device_test.dir/depend
 

@@ -8,7 +8,7 @@ CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o
  ../../../include/protocol.h
  ../../../include/robot_status.h
  ../../../include/robot_struct.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/Serial_Device_test.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Serial_Device/Serial_Device_test.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -321,13 +321,13 @@ CMakeFiles/Serial_Device_test.dir/Serial_Device_test.cpp.o
  /usr/local/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/Serial_Device_test.dir/src/crc.cpp.o
  ../../../Dynamic_library/include/crc.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp
 CMakeFiles/Serial_Device_test.dir/src/serial_device.cpp.o
  ../../../Dynamic_library/include/serial_device.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp
 CMakeFiles/Serial_Device_test.dir/src/serial_main.cpp.o
  ../../../Dynamic_library/include/crc.h
  ../../../Dynamic_library/include/serial_device.h
  ../../../Dynamic_library/include/serial_main.h
  ../../../include/protocol.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp

@@ -4,8 +4,8 @@
 CMakeFiles/AngleSolve.dir/src/AngleSolve.cpp.o
  ../../../include/robot_status.h
  ../../../include/robot_struct.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/AngleSolve/include/AngleSolve.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/AngleSolve/src/AngleSolve.cpp
+ /home/hj/2024/RM_Detection_recode/Package/AngleSolve/include/AngleSolve.h
+ /home/hj/2024/RM_Detection_recode/Package/AngleSolve/src/AngleSolve.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

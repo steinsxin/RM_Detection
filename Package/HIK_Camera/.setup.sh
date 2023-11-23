@@ -29,7 +29,7 @@ if [ ! -d Dynamic_library/Video ];then
 fi
 Video_path=$Route/Dynamic_library/Video/HIK_Camera.avi
 rows=`cat SetParam_File/HIKCamera_Param.yaml | grep -n "Video_path" | awk -F ":" '{print $1}'`
-sed -i ''$rows'c Video_path: "'$Video_path'"' SetParam_File/HIKCamera_Param.yaml
+sed -i ''$rows'c Video_path: '$Video_path'' SetParam_File/HIKCamera_Param.yaml
 
 
 # 安装部分

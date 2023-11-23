@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libMD_Camera.pdb"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libMD_Camera.so"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libMD_Camera.pdb"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libMD_Camera.so"
   "CMakeFiles/MD_Camera.dir/src/MD_Camera.cpp.o"
 )
 

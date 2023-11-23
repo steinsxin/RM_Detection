@@ -20,6 +20,7 @@ ArmorObserve::ArmorObserve() {
     // 初始化
     CKF.Initial();
     Fit_OK = false;
+    CKF.Set_init = true;
 }
 
 
@@ -45,12 +46,12 @@ bool Smooth::update(Eigen::Vector3d position,Eigen::Vector3d &Smooth) {
         for (int i = 0; i < max_size; ++i) {
             x += Data_info[i][0];
             y += Data_info[i][1];
-//            z += Data_info[i][2];
+           z += Data_info[i][2];
         }
         x /=  max_size;
         y /=  max_size;
-//        z /=  max_size;
-        z = position[2];
+       z /=  max_size;
+        // z = position[2];
         Smooth[0] = x;
         Smooth[1] = y;
         Smooth[2] = z;
@@ -60,82 +61,96 @@ bool Smooth::update(Eigen::Vector3d position,Eigen::Vector3d &Smooth) {
 
 /**
  *  函数名: Center_fitting
- *  传入: Armor &armor   double r  double z                   (装甲板,当前装甲板对应长短轴,圆心所在世界坐标高度)
+ *  传入: Armor &armor   double r                     (装甲板,当前装甲板对应长短轴)
  *  传出: 无
  *  功能: 通过计算得到的yaw值,车的半径,拟合车的圆心
  */
 void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
+    // center_position = armor.world_position;                                 // 圆心坐标
+
     center_position = armor.camera_position;                                 // 圆心坐标
-    center_position = {center_position[0],center_position[2],-center_position[1]};
+    center_position = {center_position[0],center_position[2],-center_position[1]};      //世界坐标系
+    
     Armor_distance = AS.World_projection(armor,0);                // 获取装甲板4点距离差
+    // axes_length = 0.25; // 先固定
 #define A
 #ifdef A
     yaw = armor.R[1];
 #else
     yaw = AS.Armor_Angle(armor);                                            // 获取装甲板yaw角度
-    yaw = yaw*CV_PI/180.0f;                                                     // 转换为弧度
+    yaw = yaw*CV_PI/180.0f;                                                 // 转换为弧度
 #endif //A
 
 
 #ifdef CENTER_FIT
     cv::putText(_src,"yaw:"+ std::to_string(yaw*180.0f/CV_PI),cv::Point(0,40),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    cv::putText(_src,"Armor_Distance:"+ std::to_string(Armor_distance),cv::Point(0,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    // cv::putText(_src,"Distance:"+ std::to_string(armor.world_position[1]),cv::Point(0,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(_src,"Armor_Distance:"+ std::to_string(Armor_distance),cv::Point(0,120),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 #endif //CENTER_FIT
 
-    /** 计算圆心坐标 */
+    /** 计算圆心坐标 */  // TODO: 需要将在相机坐标系下操作再转换到世界坐标系
     center_position[0] += sin(yaw)*axes_length;                                   // 三角函数解圆心
     center_position[1] += cos(abs(yaw))*axes_length;                           // 三角函数解圆心
-    center_position = {center_position[0],-center_position[2],center_position[1]}; // 相机坐标系
-    center_position = AS.cam2imu(center_position);                           // 转换到世界坐标系
-    Smooth_Filter.update(center_position,Smooth_position);                // 更新数据,进行平滑
-#define SMOOTH
-#ifdef SMOOTH
-    //! 平滑
-    Smooth_position[2] = z;
-    cir = AS.imu2pixel(Smooth_position);                                          // 转换像素坐标
-#else
-    //! 未平滑
+    center_position = {center_position[0],-center_position[2],center_position[1]};      //相机坐标系
     center_position = AS.cam2imu(center_position);
-    center_position[2] = z;
-    cir = AS.imu2pixel(center_position);                                          // 转换像素坐标
-#endif //SMOOTH
+    Smooth_Filter.update(center_position,Smooth_position);                // 更新数据,进行平滑
+
+    // 平滑
+    // Smooth_position = {Smooth_position[0],-Smooth_position[2],Smooth_position[1]};      //相机坐标系
+    // Smooth_position = AS.cam2imu(Smooth_position);
+    Smooth_position[2] = z;
+    cir = AS.imu2pixel(Smooth_position);                                           // 转换像素坐标
+
+    // 非平滑
+    // center_position = {center_position[0],-center_position[2],center_position[1]};      //相机坐标系
+    // center_position = AS.cam2imu(center_position);
+    // center_position[2] = z;
+    // cir = AS.imu2pixel(center_position);                                           // 转换像素坐标
 
     // 数据平滑
     if(Smooth_Filter.fit){
         /** 车圆心卡尔曼预测 */
-        if(!CKF.Set_init) {
-            CKF.setPosAndSpeed(Smooth_position, Eigen::Vector2d(0, 0));
+        if(CKF.Set_init) {
+            CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
             CKF.predict();
         }
+        
         //============更新步============
         CKF.update(Eigen::Vector2d(Smooth_position[0],Smooth_position[1]));
+
+        CKF.setF(0.05);                                                    // 设置时间间隔(计算出实际速度)
         //============预测步============
-        CKF.setF(0.05);                                                    // 设置时间间隔
         pre = CKF.predict();
 
-        Eigen::Vector3d pre_pos;                            // 预测点
+        // std::cout << pre.transpose() << std::endl;
+    
         cv::Point2f pre_cir;                                    // 圆心像素坐标
         pre_pos = {pre[0],pre[1],z};
         // TODO: 需要调整倍率,达到实际圆心点
         pre_pos[0] = pre_pos[0] + 0.5*pre[2];
         pre_pos[1] = pre_pos[1] + pre[3];
+
         pre_cir = AS.imu2pixel(pre_pos);
 
         // 预测距离差值
-//        double x = pow(pre[0]-center_position[0],2);
-//        double y = pow(pre[1]-center_position[1],2);
-//        double dis = std::sqrt(x+y);
+        // double x = pow(pre[0]-center_position[0],2);
+        // double y = pow(pre[1]-center_position[1],2);
+        // double dis = std::sqrt(x+y);
 //        if(dis > 0.30 && CKF.Track_OK) Smooth_Filter.fit = false;
 
         cv::putText(_src,"Smooth_position_x:"+ std::to_string(Smooth_position[0]),cv::Point(0,280),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"Smooth_position_y:"+ std::to_string(Smooth_position[1]),cv::Point(0,320),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"Smooth_position_z:"+ std::to_string(Smooth_position[2]),cv::Point(0,360),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
+
         // 更新拟合状态
-//        Fit_OK = Smooth_Filter.fit && CKF.Track_OK;
+        // Fit_OK = Smooth_Filter.fit && CKF.Track_OK;
         Fit_OK = Smooth_Filter.fit;
+        // Fit_OK = true;
         circle(_src,cir,5,cv::Scalar(0,0,255),-1);
         circle(_src,pre_cir,5,cv::Scalar(0,255,0),-1);
+        // std::cout << pre_cir << std::endl;
+
         cv::imshow("Observe_src",_src);
 
     }

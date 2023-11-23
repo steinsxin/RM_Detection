@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread -fPIC   -std=gnu++11
 
 CXX_DEFINES = -DArmor_Track_EXPORTS
 
-CXX_INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/eigen3 -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/../../Dynamic_library/include -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/../../include -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/include 
+CXX_INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/eigen3 -I/home/hj/2024/RM_Detection_recode/Package/Armor_Track/../../Dynamic_library/include -I/home/hj/2024/RM_Detection_recode/Package/Armor_Track/../../include -I/home/hj/2024/RM_Detection_recode/Package/Armor_Track/include 
 

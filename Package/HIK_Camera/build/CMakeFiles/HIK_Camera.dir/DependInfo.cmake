@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/src/HIK_Camera.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/build/CMakeFiles/HIK_Camera.dir/src/HIK_Camera.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/src/HIK_Camera.cpp" "/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/build/CMakeFiles/HIK_Camera.dir/src/HIK_Camera.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -8,9 +8,9 @@ CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o
  ../../../Dynamic_library/include/SpinTracker.h
  ../../../include/robot_status.h
  ../../../include/robot_struct.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Armor_Observe.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Circle_Kalman.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Armor_Observe.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Armor_Observe.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Circle_Kalman.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Armor_Observe.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -415,7 +415,7 @@ CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o
  /usr/local/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o
  ../../../Dynamic_library/include/Circle_Kalman.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Circle_Kalman.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Circle_Kalman.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
