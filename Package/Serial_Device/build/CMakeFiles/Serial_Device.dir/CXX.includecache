@@ -42,17 +42,17 @@ crc.h
 stdint.h
 ../../../include/stdint.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp
 crc.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp
 serial_device.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.h
 iostream
 -
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp
 serial_main.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.h
+/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.h
 

@@ -1,8 +1,8 @@
 #include "../include/Armor_detection.h"
 
-//#define BINARY_SHOW                 // 展示二值化图片
+// #define BINARY_SHOW                 // 展示二值化图片
 //#define DRAW_LIGHTS_CONTOURS        // 绘制灯条轮廓
-//#define DRAW_LIGHTS_RRT             // 绘制灯条
+// #define DRAW_LIGHTS_RRT             // 绘制灯条
 //#define SHOW_NUMROI                 // 展示数字图像处理图片
 //#define DRAW_ARMORS_RRT             // 绘制装甲板
 #define DRAW_FINAL_ARMOR_S_CLASS    //展示最终装甲板
@@ -180,7 +180,7 @@ void ArmorDetector::findLights()
                     }
                     //circle(showSrc,light.center,5,Scalar(0,0,0),-1);
 //                    namedWindow("showSrc",WINDOW_NORMAL);
-                    imshow("showSrc", showSrc);
+                    imshow("showLignt", showSrc);
 #endif //DRAW_LIGHTS_RRT
                 }
             }

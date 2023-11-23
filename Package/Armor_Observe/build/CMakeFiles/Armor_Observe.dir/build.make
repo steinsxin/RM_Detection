@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe
+CMAKE_SOURCE_DIR = /home/hj/2024/RM_Detection_recode/Package/Armor_Observe
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build
+CMAKE_BINARY_DIR = /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Armor_Observe.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/Armor_Observe.dir/flags.make
 
 CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o: CMakeFiles/Armor_Observe.dir/flags.make
 CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o: ../src/Armor_Observe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o -c /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Armor_Observe.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o -c /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Armor_Observe.cpp
 
 CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Armor_Observe.cpp > CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Armor_Observe.cpp > CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.i
 
 CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Armor_Observe.cpp -o CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Armor_Observe.cpp -o CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.s
 
 CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o: CMakeFiles/Armor_Observe.dir/flags.make
 CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o: ../src/Circle_Kalman.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o -c /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Circle_Kalman.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o -c /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Circle_Kalman.cpp
 
 CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Circle_Kalman.cpp > CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Circle_Kalman.cpp > CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.i
 
 CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Circle_Kalman.cpp -o CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Circle_Kalman.cpp -o CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.s
 
 # Object files for target Armor_Observe
 Armor_Observe_OBJECTS = \
@@ -91,15 +91,15 @@ Armor_Observe_OBJECTS = \
 # External object files for target Armor_Observe
 Armor_Observe_EXTERNAL_OBJECTS =
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o
-/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o
-/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/build.make
-/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library /home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Observe.so"
+/home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o
+/home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o
+/home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/build.make
+/home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Observe.so: CMakeFiles/Armor_Observe.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library /home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Observe.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Armor_Observe.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/Armor_Observe.dir/build: /home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libArmor_Observe.so
+CMakeFiles/Armor_Observe.dir/build: /home/hj/2024/RM_Detection_recode/Dynamic_library/libArmor_Observe.so
 
 .PHONY : CMakeFiles/Armor_Observe.dir/build
 
@@ -108,6 +108,6 @@ CMakeFiles/Armor_Observe.dir/clean:
 .PHONY : CMakeFiles/Armor_Observe.dir/clean
 
 CMakeFiles/Armor_Observe.dir/depend:
-	cd /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/build/CMakeFiles/Armor_Observe.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/2024/RM_Detection_recode/Package/Armor_Observe /home/hj/2024/RM_Detection_recode/Package/Armor_Observe /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build /home/hj/2024/RM_Detection_recode/Package/Armor_Observe/build/CMakeFiles/Armor_Observe.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Armor_Observe.dir/depend
 

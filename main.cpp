@@ -28,22 +28,12 @@ cv::Mat ALL_src;
 SerialMain serial;  // usb
 form _send_data;
 
-bool Record_OK = false;
-
+bool Record = false;
 void* MD_Sample(void* Void){
     cv::Mat get_src;
     int first_get/* = true*/;   // usb
     chrono_time time_temp;
     auto MD = new MD_Camera;
-    cv::VideoWriter outputVideo;   // MD_Camera保存视频使用
-    if (Record_OK){
-        // opencv保存视频
-        int codec = cv::VideoWriter::fourcc('X', 'V', 'I', 'D'); //选择编码格式
-        int fps = 60;  //设置帧率
-        std::string outputVideoPath = "MD_Camera.avi";   //保存视频的文件名
-        outputVideo.open(outputVideoPath, codec, fps, cv::Size(1280,1024), true);//创建保存视频文件的视频流
-    }
-
     // 初始化(MD_ON: 开启相机名字模式 MD_OFF: 关闭相机名字模式)
     if (MD->init(Robot::MD_OFF,"steins_xin")) {
         printf("camera_open-\n");
@@ -52,7 +42,6 @@ void* MD_Sample(void* Void){
             MD->read_frame_rgb();       // 读取图片
             get_src = MD->src.clone();  // 复制图片
             get_src.copyTo(ALL_src);     // 复制图片
-            if (Record_OK) outputVideo.write(get_src); //将video的图像数据一帧图像写入
             pthread_mutex_lock(&Mutex);
             {
                 time_temp = std::chrono::high_resolution_clock::now();
@@ -89,9 +78,9 @@ void* HIK_Sample(void* Void){
 
     //相机初始化
     if(HIK.HIKCamera_Init()){
-        HIK.HIKCamera_SetParam(1);         //设置相机参数(自动白平衡)
-        HIK.HIKCamera_startGrabbing();              //相机开始取流
-        if (Record_OK) HIK.HIKCamera_StartRecord();
+        HIK.HIKCamera_SetParam(1);        //设置相机参数(自动白平衡)
+        HIK.HIKCamera_startGrabbing();   //相机开始取流
+        if (Record)HIK.HIKCamera_StartRecord();    // 相机开始录像
         while (HIK.Camera_OK){
             HIK.HIKCamera_read();        //读取相机图像
             ALL_src = HIK.src.clone();       //复制图像
@@ -116,7 +105,7 @@ void* HIK_Sample(void* Void){
             pthread_mutex_unlock(&Mutex);
             HIK.Bayer.release();         //释放资源
         }
-        if (Record_OK) HIK.HIKCamera_StopRecord();
+        if (Record)HIK.HIKCamera_StopRecord();
         HIK.HIKCamera_close();           //关闭相机
     }
 }
@@ -137,32 +126,53 @@ void* Image(void* Void){
         }
         start = false;
         src = ALL_src.clone();
+        AO._src = src.clone();
         // ========================读取结构体部分========================
+        // Tracker.AS.Robot_msg.updateData(_send_data.data, _send_data.quat);////每次都要重设
         Tracker.AS.Init(_send_data.data, _send_data.quat);
-	AO.AS.Init(_send_data.data, _send_data.quat);
+        AO.AS.Init(_send_data.data, _send_data.quat);
         int mode_temp = _send_data.mode;
         pthread_mutex_unlock(&Mutex);          // 释放互斥锁
         // ============================END============================
 
         // ========================在此区域进行图像处理========================
+        
 
         if(mode_temp == 0x21){
             Targets = Detector.Detection(src);
             //获取最终装甲板
             Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
             Tracker.show();
-            //! 整车观测部分
-//            AO._src = src.clone();
-//            bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
-//            // 开始拟合圆心
-//            if(AO_OK) {
-//                if(Tracker.OB_Track[Tracker.tracking_id].axesState == LONG)
-//                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes);
-//                else if(Tracker.OB_Track[Tracker.tracking_id].axesState == SHORT)
-//                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Short_axes);
-//
-//                if(AO.Fit_OK) AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);
-//            }
+            //! 整车观测
+            // bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
+            // // // 开始拟合圆心
+            // if(AO_OK) {
+                
+            //     if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::LONG){
+            //         AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z);
+            //         // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
+            //         Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
+
+            //         Tracker.Solve_pitch = rpy[1];
+            //         Tracker.Solve_yaw = rpy[2];
+
+            //     }
+            //     else if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::SHORT)
+            //     {
+            //         AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Short_axes,Tracker.OB[Tracker.tracking_id].center_Z);
+            //         // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
+            //         Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
+            //         Tracker.Solve_pitch = rpy[1];
+            //         Tracker.Solve_yaw = rpy[2];
+
+            //     }
+
+            //     // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
+            // }
+            // AS.Init(_send_data.data, _send_data.quat);
+            // AS._src = src.clone();
+            // AS.AngleSolve_show(Tracker.enemy_armor);
+        
             //! ===END===
             if(Tracker.tracker_state == TRACKING){
                 // TODO: 弹速设置为25,未改
@@ -181,10 +191,11 @@ void* Image(void* Void){
     }
 }
 
-// #define HIK
-#define MD
+#define HIK
+// #define MD
 int main(){
-    Record_OK = true;
+
+// Record = true;
 #ifdef HIK
     pthread_create(&thread_1, NULL, HIK_Sample, NULL);
     pthread_create(&thread_2, NULL, Image, NULL);

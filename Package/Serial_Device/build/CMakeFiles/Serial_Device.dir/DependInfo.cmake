@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/crc.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/src/crc.cpp.o"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_device.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/src/serial_device.cpp.o"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/src/serial_main.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/src/serial_main.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/crc.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/src/crc.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_device.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/src/serial_device.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/src/serial_main.cpp" "/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir/src/serial_main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

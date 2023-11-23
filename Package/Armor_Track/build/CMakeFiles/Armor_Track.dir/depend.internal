@@ -5,10 +5,10 @@ CMakeFiles/Armor_Track.dir/src/Armor_Track.cpp.o
  ../../../Dynamic_library/include/AngleSolve.h
  ../../../include/robot_status.h
  ../../../include/robot_struct.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/include/Armor_Track.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/include/Kalman.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/include/SpinTracker.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/src/Armor_Track.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Track/include/Armor_Track.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Track/include/Kalman.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Track/include/SpinTracker.h
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Track/src/Armor_Track.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -414,7 +414,7 @@ CMakeFiles/Armor_Track.dir/src/Armor_Track.cpp.o
 CMakeFiles/Armor_Track.dir/src/Kalman.cpp.o
  ../../../Dynamic_library/include/Kalman.h
  ../../../include/robot_status.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/src/Kalman.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Track/src/Kalman.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -821,7 +821,7 @@ CMakeFiles/Armor_Track.dir/src/SpinTracker.cpp.o
  ../../../Dynamic_library/include/SpinTracker.h
  ../../../include/robot_status.h
  ../../../include/robot_struct.h
- /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/src/SpinTracker.cpp
+ /home/hj/2024/RM_Detection_recode/Package/Armor_Track/src/SpinTracker.cpp
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

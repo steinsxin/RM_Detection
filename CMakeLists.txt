@@ -22,6 +22,6 @@ FILE(GLOB ALL_Package "${PROJECT_SOURCE_DIR}/Dynamic_library/*.so")
 include_directories(${PROJECT_SOURCE_DIR}/Dynamic_library/include)    #功能包头文件
 include_directories(${PROJECT_SOURCE_DIR}/include)                    #公共头文件
 
-add_executable(RM_Detection main.cpp include/robot_status.cpp Package/MD_Camera/src/MD_Camera.cpp)
+add_executable(RM_Detection main.cpp)
 target_link_libraries(RM_Detection ${ALL_Package})   #链接功能包动态库
 target_link_libraries(RM_Detection ${OpenCV_LIBS} ${CAMERA_LIB}) #链接相机驱动和OpenCV

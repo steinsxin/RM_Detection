@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libAngleSolve.pdb"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libAngleSolve.so"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libAngleSolve.pdb"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libAngleSolve.so"
   "CMakeFiles/AngleSolve.dir/src/AngleSolve.cpp.o"
 )
 

@@ -28,7 +28,7 @@ void Circle_Kalman::Initial() {
 
     // 初始化卡尔曼迭代次数
     Track_num = 0;
-    Set_init = false;
+    Set_init = true;
     Track_OK = false;
 }
 

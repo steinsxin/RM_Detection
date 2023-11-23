@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread -fPIC   -std=gnu++11
 
 CXX_DEFINES = -DSerial_Device_EXPORTS
 
-CXX_INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/eigen3 -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/../../Dynamic_library/include -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/../../include -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/Serial_Device/include 
+CXX_INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/eigen3 -I/home/hj/2024/RM_Detection_recode/Package/Serial_Device/../../Dynamic_library/include -I/home/hj/2024/RM_Detection_recode/Package/Serial_Device/../../include -I/home/hj/2024/RM_Detection_recode/Package/Serial_Device/include 
 

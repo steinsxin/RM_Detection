@@ -44,11 +44,11 @@ CameraStatus.h
 
 ../include/MD_Camera_H/CameraStatus.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/MD_Camera/src/MD_Camera.cpp
+/home/hj/2024/RM_Detection_recode/Package/MD_Camera/src/MD_Camera.cpp
 iostream
 -
 MD_Camera.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/MD_Camera/src/MD_Camera.h
+/home/hj/2024/RM_Detection_recode/Package/MD_Camera/src/MD_Camera.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

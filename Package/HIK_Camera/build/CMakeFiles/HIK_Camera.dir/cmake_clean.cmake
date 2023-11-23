@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libHIK_Camera.pdb"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libHIK_Camera.so"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libHIK_Camera.pdb"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libHIK_Camera.so"
   "CMakeFiles/HIK_Camera.dir/src/HIK_Camera.cpp.o"
 )
 

@@ -233,7 +233,7 @@ Eigen::Vector3d AngleSolve::imu2cam(Eigen::Vector3d imu_pos) {
     tmp_pos = RotationMatrix_imu.inverse() * imu_pos;   //逆矩阵（3x3）逆矩阵的定义是，逆矩阵乘以原矩阵等于单位矩阵
 
     Eigen::Vector3d cam_pos;
-    cam_pos = {tmp_pos[0],-tmp_pos[2],tmp_pos[1]};//将坐标系换回相机坐标系
+    cam_pos = {tmp_pos[0],-tmp_pos[2],tmp_pos[1]};      //将坐标系换回相机坐标系
     cam_pos -= center_offset_position;                  //将原点偏差补偿回去
 
     return cam_pos;
@@ -387,14 +387,15 @@ float AngleSolve::airResistanceSolve(Eigen::Vector3d Pos) {
     float y_temp, y_actual, dy;
     float Solve_pitch;
     y_temp = y;
-    bullet_speed=25;
+    bullet_speed = 25;
     // 迭代法 | 使用弹道模型对落点高度进行计算,直到落点高度达到要求,得到抬升角度
     for (int i = 0; i < 20; i++)
     {
         Solve_pitch = (float)atan2(y_temp, x);                        // 计算当前枪管抬升角度
-        y_actual = BulletModel(x, bullet_speed, Solve_pitch);   // 得到落点高度
+        y_actual = BulletModel(x, bullet_speed, Solve_pitch);           // 得到落点高度
         dy = y - y_actual;                                               // 计算落点高度和目标高度的误差
         y_temp = y_temp + dy;                                            // 误差补偿
+
         //! 误差精度达到一定要求
         if (fabsf(dy) < 0.00001) {
             break;
@@ -442,31 +443,34 @@ double AngleSolve::World_projection(Armor &armor, double Angle) {
     double cos15 = 0.965925826289;
     double Yaw = Angle*CV_PI/180.0f;                        // Yaw值(弧度)
     double Armor_H_sin15 = sin15*(small_h/2);               // 装甲板在倾斜15度时投影宽度
+
     double Armor_H_cos15 = cos15*(small_h/2);               // 装甲板在倾斜15度时投影高度
+
     double cos_Armor_H_sin15 = Armor_H_sin15*cos(Yaw);   // 计算x轴方向投影
     double sin_Armor_H_sin15 = Armor_H_sin15*sin(Yaw);   // 计算y轴方向投影
     double Armor_cos_r = cos(Yaw)*(small_w/2);           // 装甲板宽在x轴投影
     double Armor_sin_r = sin(Yaw)*(small_w/2);           // 装甲板宽在y轴投影
-    // TODO:这部分还有问题,待测试(左右有时候不能区分,待查找问题)
-    Eigen::Vector3d cam_pos = armor.camera_position;
+    // TODO: 在相机坐标系下进行操作
+    Eigen::Vector3d cam_pos;
+    cam_pos =  armor.camera_position;
     // 旋转成世界坐标系方向
-    cam_pos = {cam_pos[0],cam_pos[2],-cam_pos[1]};
+    cam_pos = {cam_pos[0],cam_pos[2],-cam_pos[1]};      //世界坐标系
 
     imuPoint_ld = {cam_pos[0]-Armor_cos_r,cam_pos[1]+Armor_sin_r,cam_pos[2]-Armor_H_cos15};
     imuPoint_ld = {imuPoint_ld[0]-sin_Armor_H_sin15,imuPoint_ld[1]-cos_Armor_H_sin15,imuPoint_ld[2]};
-    imuPoint_ld = {imuPoint_ld[0],-imuPoint_ld[2],imuPoint_ld[1]};
+    imuPoint_ld = {imuPoint_ld[0],-imuPoint_ld[2],imuPoint_ld[1]};       // 切换相机坐标系
     ld = cam2pixel(imuPoint_ld);         // 左下
     imuPoint_rd = {cam_pos[0]+Armor_cos_r,cam_pos[1]-Armor_sin_r,cam_pos[2]-Armor_H_cos15};
     imuPoint_rd = {imuPoint_rd[0]-sin_Armor_H_sin15,imuPoint_rd[1]-cos_Armor_H_sin15,imuPoint_rd[2]};
-    imuPoint_rd = {imuPoint_rd[0],-imuPoint_rd[2],imuPoint_rd[1]};
+    imuPoint_rd = {imuPoint_rd[0],-imuPoint_rd[2],imuPoint_rd[1]};       // 切换回相机坐标系
     rd = cam2pixel(imuPoint_rd);         // 右下
     imuPoint_lu = {cam_pos[0]-Armor_cos_r,cam_pos[1]+Armor_sin_r,cam_pos[2]+Armor_H_cos15};
     imuPoint_lu = {imuPoint_lu[0]+sin_Armor_H_sin15,imuPoint_lu[1]+cos_Armor_H_sin15,imuPoint_lu[2]};
-    imuPoint_lu = {imuPoint_lu[0],-imuPoint_lu[2],imuPoint_lu[1]};
+    imuPoint_lu = {imuPoint_lu[0],-imuPoint_lu[2],imuPoint_lu[1]};       // 切换回相机坐标系
     lu = cam2pixel(imuPoint_lu);         // 左上
     imuPoint_ru = {cam_pos[0]+Armor_cos_r,cam_pos[1]-Armor_sin_r,cam_pos[2]+Armor_H_cos15};
     imuPoint_ru = {imuPoint_ru[0]+sin_Armor_H_sin15,imuPoint_ru[1]+cos_Armor_H_sin15,imuPoint_ru[2]};
-    imuPoint_ru = {imuPoint_ru[0],-imuPoint_ru[2],imuPoint_ru[1]};
+    imuPoint_ru = {imuPoint_ru[0],-imuPoint_ru[2],imuPoint_ru[1]};       // 切换回相机坐标系
     ru = cam2pixel(imuPoint_ru);         // 右上
 
 
@@ -489,7 +493,7 @@ double AngleSolve::World_projection(Armor &armor, double Angle) {
 double AngleSolve::Armor_Angle(Armor &armor) {
 
     double yaw;
-    double l = -90,r = 90;              // 角度范围
+    double l = -60,r =60;              // 角度范围
     double eps = 1e-8;                  // 精度
 
     while (r-l >= eps) {
@@ -504,7 +508,7 @@ double AngleSolve::Armor_Angle(Armor &armor) {
         else                    r = rsec;
     }
     // 处理异常情况
-    if(World_projection(armor,l) > World_projection(armor,-l)) l = -l;
+    // if(World_projection(armor,l) > World_projection(armor,-l)) l = -l;
     yaw = l;
     return yaw;
 }
@@ -554,17 +558,19 @@ Eigen::Matrix3d AngleSolve::EulerAngle2RotationMatrix(double pitch, double roll,
  *  功能: 在传入装甲板上绘制坐标系(调试)
  */
 void AngleSolve::AngleSolve_show(Armor &armor) {
-    // 装甲板中心世界坐标(相机坐标系下)
+    // 装甲板中心世界坐标
+    // Eigen::Vector3d Center_World = pixel2imu(armor);
+    
     Eigen::Vector3d Center_World = pixel2cam(armor);
-    Center_World = {Center_World[0],Center_World[2],-Center_World[1]};  //手动转成世界坐标系
+    Center_World = {Center_World[0],Center_World[2],-Center_World[1]};
     // xyz三轴坐标,用于旋转
     Eigen::Vector3d X_World = {small_h,0.,0.};
     Eigen::Vector3d Y_World = {0.,0.,-small_h};
     Eigen::Vector3d Z_World = {0.,-small_h,0.};
 
     // 绘制朝向角(两种)
-    double yaw = Armor_Angle(armor);
-//    double yaw = armor.R[1]*180.0/CV_PI;
+    // double yaw = Armor_Angle(armor);
+    double yaw = armor.R[1]*180.0/CV_PI;
     // 旋转矩阵
     Eigen::Matrix3d R = EulerAngle2RotationMatrix(-15,0,-yaw);
     X_World = R*X_World;
@@ -574,21 +580,41 @@ void AngleSolve::AngleSolve_show(Armor &armor) {
     X_World = {Center_World[0]+X_World[0],Center_World[1]+X_World[1],Center_World[2]+X_World[2]};
     Y_World = {Center_World[0]+Y_World[0],Center_World[1]+Y_World[1],Center_World[2]+Y_World[2]};
     Z_World = {Center_World[0]+Z_World[0],Center_World[1]+Z_World[1],Center_World[2]+Z_World[2]};
-    // 转换回相机坐标系
+    // 坐标转换
+    cv::Point2f x,y,z;
+
     X_World = {X_World[0],-X_World[2],X_World[1]};
     Y_World = {Y_World[0],-Y_World[2],Y_World[1]};
     Z_World = {Z_World[0],-Z_World[2],Z_World[1]};
-    // 坐标转换
-    cv::Point2f x,y,z;
+    
     x = cam2pixel(X_World);
     y = cam2pixel(Y_World);
     z = cam2pixel(Z_World);
-    // 绘制坐标系
+    // 绘制坐标系 TODO: 坐标轴的绘制有问题
     line(_src,armor.center,x,cv::Scalar(0,255,0),4);
     line(_src,armor.center,y,cv::Scalar(255,0,0),4);
     line(_src,armor.center,z,cv::Scalar(0,0,255),4);
+
+    Eigen::Vector3d test;                    // 圆心世界坐标
+    double axes = 0.25;
+    test = armor.camera_position;                                 // 圆心坐标
+    // 在相机坐标系下偏置再转到世界坐标系(不能直接加,在相机坐标系水平时才有效果)
+    test[0] += sin(yaw*(CV_PI/180.0))*axes;                                   // 三角函数解圆心
+    test[2] += cos(abs(yaw*(CV_PI/180.0)))*axes;                           // 三角函数解圆心
+
+    test = cam2imu(test);                                   // 换到世界坐标系下
+    cv::Point2f C;
+    C = imu2pixel(test);                                     // 转换像素坐标
+    circle(_src,C,5,cv::Scalar(0,0,255),-1);
+    
+    line(_src,lu,ld,cv::Scalar(255,0,255),2);
+    line(_src,ld,rd,cv::Scalar(255,0,255),2);
+    line(_src,rd,ru,cv::Scalar(255,0,255),2);
+    line(_src,ru,lu,cv::Scalar(255,0,255),2);
     // 输出结果
     cv::putText(_src,"yaw:"+ std::to_string(yaw),cv::Point(0,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(_src,"Armor_yaw:"+ std::to_string(Armor_Angle(armor)),cv::Point(0,120),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+
     cv::imshow("AngleSolve",_src);
 }
 

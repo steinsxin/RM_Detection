@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread -fPIC   -std=gnu++11
 
 CXX_DEFINES = -DHIK_Camera_EXPORTS
 
-CXX_INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/eigen3 -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/../../include -I/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include 
+CXX_INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/eigen3 -I/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/../../include -I/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include 
 

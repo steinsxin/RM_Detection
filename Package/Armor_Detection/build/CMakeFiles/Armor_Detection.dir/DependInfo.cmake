@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/src/Armor_detection.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/build/CMakeFiles/Armor_Detection.dir/src/Armor_detection.cpp.o"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/src/Number_DNN.cpp" "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Detection/build/CMakeFiles/Armor_Detection.dir/src/Number_DNN.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/src/Armor_detection.cpp" "/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/build/CMakeFiles/Armor_Detection.dir/src/Armor_detection.cpp.o"
+  "/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/src/Number_DNN.cpp" "/home/hj/2024/RM_Detection_recode/Package/Armor_Detection/build/CMakeFiles/Armor_Detection.dir/src/Number_DNN.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

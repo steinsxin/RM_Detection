@@ -204,45 +204,38 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
         /** 同时出现两个装甲板 */
         if(Armor_number == 2){
             double Track_Armor_diff = abs(abs(Track_Armor[0].camera_position[1])-abs(Track_Armor[1].camera_position[1]));
-            // 两装甲板Y轴距离小于阈值
-            if(Track_Armor_diff < 0.1) {
+            if (Track_Armor_diff < 0.1) {
+                // std::cout << "A" << std::endl;
                 Long_Short_OK = true;
             }
+            // 两装甲板Y轴距离小于阈值(test)
+            
             // 进入采集模式
             Data_capture_OK = true;
         }
 
         if(Data_capture_OK){
+            // TODO: 直接在世界坐标系下操作会导致yaw值在绝对值大于90度之后出现问题
+            // TODO: 解决方法是在相机坐标系系操作,再转换到世界坐标系
             Eigen::Vector3d Track_1 = Track_Armor[0].camera_position;
             Eigen::Vector3d Track_2 = Track_Armor[1].camera_position;
             Track_1 = {Track_1[0],Track_1[2],-Track_1[1]};
             Track_2 = {Track_2[0],Track_2[2],-Track_2[1]};
-#define ONE // TODO: 两个计算方法,待测试
-#ifdef ONE
+
             /** 通过装甲板朝向角和中心世界坐标系建立Y-X下的一次函数 */      //TODO: 找找更加稳定求半径的方法
             double angle = 180.0f/CV_PI;
             // 左装甲板一次函数
+            double as_angel_1 = AS.Armor_Angle(Track_Armor[0]);
             double angle_1 = (90.0-Track_Armor[0].R[1]*angle)*(CV_PI/180.0f);
             double K_1 = tan(angle_1);
             double B_1 = Track_1[1]-K_1*Track_1[0];
+
             // 右装甲板一次函数
+            double as_angel_2 = AS.Armor_Angle(Track_Armor[1]);
             double angle_2 = -(90.0-abs(Track_Armor[1].R[1])*angle)*(CV_PI/180.0f);
             double K_2 = tan(angle_2);
             double B_2 = Track_2[1]-K_2*Track_2[0];
-#else
-            /** 通过装甲板朝向角和中心世界坐标系建立Y-X下的一次函数 */      //TODO: 找找更加稳定求半径的方法
-            double angle = 180.0f/CV_PI;
-            // 左装甲板一次函数
-//            double angle_1 = (90.0-Track_Armor[0].R[1]*angle)*(CV_PI/180.0f);
-            double angle_1 = (90.0-abs(AS.Armor_Angle(Track_Armor[0])))*(CV_PI/180.0f);
-            double K_1 = tan(angle_1);
-            double B_1 = Track_1[1]-K_1*Track_1[0];
-            // 右装甲板一次函数
-//            double angle_2 = -(90.0-abs(Track_Armor[1].R[1])*angle)*(CV_PI/180.0f);
-            double angle_2 = -(90.0-abs(AS.Armor_Angle(Track_Armor[1])))*(CV_PI/180.0f);
-            double K_2 = tan(angle_2);
-            double B_2 = Track_2[1]-K_2*Track_2[0];
-#endif //ONE
+
             /** 使用矩阵计算联立方程求解交点 */
             /** 矩阵计算
              *  [ 1  -K1     [ Y     =    [ B1
@@ -259,11 +252,84 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             X = K.inverse()*Y;
 
             // 计算
-            double R_1 = sqrt(pow(X[1]-Track_Armor[0].world_position[0],2)+pow(X[0]-Track_Armor[0].world_position[1],2));
-            double R_2 = sqrt(pow(X[1]-Track_Armor[1].world_position[0],2)+pow(X[0]-Track_Armor[1].world_position[1],2));
+            double R_1 = sqrt(pow(X[1]-Track_1[0],2)+pow(X[0]-Track_1[1],2));
+            double R_2 = sqrt(pow(X[1]-Track_2[0],2)+pow(X[0]-Track_2[1],2));
 
             // 只有达到采集要求才会更新
-            if(Long_Short_OK) OB[tracking_id].update(R_1,R_2);
+            // if(Long_Short_OK) OB[tracking_id].update(R_1,R_2);
+            // std::cout << "R_1: " << R_1 << " R_2:" << R_2 << std::endl;
+            // std::cout << "1: " << Track_Armor[0].world_position.transpose() << std::endl;
+            // std::cout << "2: " << Track_Armor[1].world_position.transpose() << std::endl;
+            
+            // TODO:逼近的方法求半径(测试)
+            // 画出中心
+            double x = (Track_1[0]+Track_2[0])/2;
+            double y = (Track_1[1]+Track_2[1])/2;
+            double z = (Track_1[2]+Track_2[2])/2;
+            Eigen::Vector3d temp_pos = {x,-z,y};        //相机坐标系
+            temp_cir = AS.cam2pixel(temp_pos);
+            
+            // 三分法逼近x所在位置 TODO: 经过测试,比原方法更加精确和稳定,待优化封装
+            // R_1
+            double R_1_yaw = Track_Armor[0].R[1]*angle;
+            double R_2_yaw = Track_Armor[1].R[1]*angle;
+            // 尝试补偿看看
+            
+            while ((abs(R_1_yaw) + abs(R_2_yaw)) <= 90){
+                R_1_yaw += 0.1;
+                R_2_yaw -= 0.1;
+            }
+            R_1_yaw = R_1_yaw*(CV_PI/180.0f);
+            R_2_yaw = R_2_yaw*(CV_PI/180.0f);
+
+            // double R_1_yaw = 40*(CV_PI/180.0);
+            double l_1 = 0.1,r_1 =0.6;              // 半径范围
+            double eps = 1e-8;                  // 精度
+            double temp_R_1;
+            while (r_1-l_1 >= eps) {
+                double thridPart = (r_1-l_1)/3;
+
+                double lsec = l_1 + thridPart;
+                double rsec = r_1 - thridPart;
+                // 计算当前半径距离目标的差值
+                double ls = Track_1[0]+sin(R_1_yaw)*lsec;                                   // 三角函数解圆心
+                double rs = Track_1[0]+sin(R_1_yaw)*rsec;                                   // 三角函数解圆心
+
+                double ls_dis = abs(abs(x)-abs(ls));
+                double rs_dis = abs(abs(x)-abs(rs));
+                if(ls_dis > rs_dis)     l_1 = lsec;
+                else                    r_1 = rsec;
+                // std::cout << R_1_yaw*angle << std::endl;
+                // std::cout << ls << " " << rs << std::endl;
+                // std::cout << ls_dis << " " << rs_dis << std::endl;
+                // std::cout << l_1 << " " << r_1 << std::endl;
+                // std::cout << "x:" << x  << " Track:" << Track_1[0] << std::endl;
+            }
+            temp_R_1 = l_1;
+            // R_2
+            // double R_2_yaw = -40*(CV_PI/180.0);
+            double l_2 = 0.1,r_2 =0.6;              // 半径范围
+            double temp_R_2;
+            
+            while (r_2-l_2 >= eps) {
+                double thridPart = (r_2-l_2)/3;
+
+                double lsec = l_2 + thridPart;
+                double rsec = r_2 - thridPart;
+                // 计算当前半径距离目标的差值
+                double ls = Track_2[0]+sin(R_2_yaw)*lsec;                                   // 三角函数解圆心
+                double rs = Track_2[0]+sin(R_2_yaw)*rsec;                                   // 三角函数解圆心
+
+                double ls_dis = abs(abs(x)-abs(ls));
+                double rs_dis = abs(abs(x)-abs(rs));
+                if(ls_dis > rs_dis)     l_2 = lsec;
+                else                    r_2 = rsec;
+            }
+            temp_R_2 = l_2;
+            // std::cout << "temp_R_1: " << temp_R_1 << " temp_R_2:" << temp_R_2 << std::endl;
+            // std::cout << "temp_R_1_angle: " << R_1_yaw*angle << " temp_R_2_angle:" << R_2_yaw*angle << std::endl;
+            // std::cout << "x1: " << Track_1[0] << " x2:" << Track_2[0] << std::endl;
+            if(Long_Short_OK) OB[tracking_id].update(temp_R_1,temp_R_2);
 
 //#define FUNCTION_INFO
 #ifdef FUNCTION_INFO    // 输出两个一次函数方程
@@ -273,7 +339,7 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             printf("f(x)_2: Y = %fx + %f\n",K_2,B_2);
 #endif // FUNCTION_INFO
 
-            // 对左侧装甲板进行分析,判断是高长轴还是矮长轴
+            // 对左侧装甲板进行分析,判断是高长轴还是矮长轴 TODO; 可能要改
             if(Track_Armor[0].world_position[2] > Track_Armor[1].world_position[2]){
                 if(R_1 > R_2) OB[tracking_id].Data_record[HIGH*LONG]++;      // 高长轴
                 else OB[tracking_id].Data_record[HIGH*SHORT]++;              // 高短轴
@@ -282,7 +348,7 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
                 else OB[tracking_id].Data_record[LOW*SHORT]++;               // 矮短轴
             }
             OB[tracking_id].High_LOW_difference = abs(Track_Armor[0].world_position[2]-Track_Armor[1].world_position[2]);
-            OB[tracking_id].Center_Z = (Track_Armor[0].world_position[2]+Track_Armor[1].world_position[2])/2;
+            OB[tracking_id].center_Z = (Track_Armor[0].world_position[2]+Track_Armor[1].world_position[2])/2;
 
             /** 判断长短轴 */
             if(OB[tracking_id].Observe_OK && tracker_state == TRACKING){
@@ -307,7 +373,8 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
     State_solve(match);
     /** 识别到两个装甲板且处于跟踪状态 */
     if(OB_Track[tracking_id].is_initialized && tracker_state == TRACKING){
-        // TODO:x轴上的距离差 (解决了跳变问题)
+        // x轴上的距离差 (解决了跳变问题)
+//        double diff = (OB_Track[tracking_id].last_armor.world_position - enemy_armor.world_position).norm();
         double diff = abs(OB_Track[tracking_id].last_armor.world_position[0] - enemy_armor.world_position[0]);
 
         if(diff > new_old_threshold && matched_armor.id == tracking_id ){
@@ -316,27 +383,29 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
                 OB_Track[tracking_id].HeightState = LOW;
             else if(OB_Track[tracking_id].last_armor.world_position[2]<enemy_armor.world_position[2])
                 OB_Track[tracking_id].HeightState = HIGH;
-        } else{
+        }else{
             // 计算角速度 TODO: 需要在跟踪器更新前
             double old_angle,new_angle,diff_angle;
-            old_angle = OB_Track[tracking_id].last_armor.R[1];  // 旧角度
-            new_angle = enemy_armor.R[1];                       // 新角度
+            old_angle = OB_Track[tracking_id].last_armor.R[1];
+            new_angle = enemy_armor.R[1];
             diff_angle = abs(abs(old_angle)-abs(new_angle));
-            double angle_speed,time;
+            double time;
             time = 0.05;                        // 时间
             angle_speed = diff_angle/time;      // 角速度(rad/s)
+            // std::cout << "angle_speed: " << angle_speed << std::endl;
+            // std::cout << "diff_angle: " << diff_angle << std::endl;
         }
 
-//#define ARMOR_DISPLAY
+// #define ARMOR_DISPLAY
 #ifdef ARMOR_DISPLAY
         // 绘制上一帧锁定装甲板
         for (int i = 0; i < 4; i++)
             line(_src, OB_Track[tracking_id].last_armor.armor_pt4[i], OB_Track[tracking_id].last_armor.armor_pt4[(i + 1) % 4], CV_RGB(255, 0, 0), 2);
 
         // 输出参数,待封装
-        cv::putText(_src,"dif: "+ std::to_string(diff),cv::Point(0,240),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-        cv::putText(_src,"high_old: "+ std::to_string(OB_Track[tracking_id].last_armor.world_position[2]),cv::Point(0,280),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-        cv::putText(_src,"high_new: "+ std::to_string(enemy_armor.world_position[2]),cv::Point(0,320),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"dif: "+ std::to_string(diff),cv::Point(0,500),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"high_old: "+ std::to_string(OB_Track[tracking_id].last_armor.world_position[2]),cv::Point(0,540),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"high_new: "+ std::to_string(enemy_armor.world_position[2]),cv::Point(0,580),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 #endif //ARMOR_DISPLAY
 
         OB_Track[tracking_id].update_tracker(enemy_armor, t);               // 更新长短轴跟踪器
@@ -358,7 +427,7 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
         else if(OB_Track[tracking_id].axesState == SHORT) axesState = "SHORT";
         if(OB_Track[tracking_id].HeightState == HIGH) HightState = "HIGH";
         else if(OB_Track[tracking_id].HeightState == LOW) HightState = "LOW";
-        cv::putText(_src,"axesState: "+HightState+" "+axesState,cv::Point(0,200),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"axesState: "+HightState+" "+axesState,cv::Point(0,400),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 #endif //ARMOR_DISPLAY
 
 
@@ -632,6 +701,7 @@ bool ArmorTrack::Track(const cv::Mat &src, std::vector<Armor> &Armors, const chr
         Eigen::Vector3d rpy = AS.Barrel_Solve(enemy_armor.world_position);
         Solve_pitch = rpy[1];
         Solve_yaw = rpy[2];
+//        pitch = round(pitch * 100)/100;   (转换成整数角度? why)
 
         /** 进入跟踪状态,进行陀螺检测 */
         if(tracker_state == TRACKING){
@@ -674,6 +744,8 @@ void ArmorTrack::show() {
         line(src, enemy_armor.armor_pt4[i], enemy_armor.armor_pt4[(i + 1) % 4], CV_RGB(0, 255, 255), 2);
         circle(src,enemy_armor.center,4,CV_RGB(0, 255, 255),-1);
     }
+    circle(src,temp_cir,4,CV_RGB(100, 255, 255),-1);
+    
     //!             putText部分
     // 跟踪状态
     std::string Tracker_State[4] = {"MISSING","DETECTING","LOSING","TRACKING"};
@@ -690,14 +762,18 @@ void ArmorTrack::show() {
     cv::putText(src,"Solve_yaw:"+ std::to_string(Solve_yaw),cv::Point(0,320),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
     // 跟踪装甲板世界坐标和相机坐标
-    cv::putText(src,"World_x:"+ std::to_string(enemy_armor.world_position[0]),cv::Point(1000,40),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    cv::putText(src,"World_y:"+ std::to_string(enemy_armor.world_position[1]),cv::Point(1000,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    cv::putText(src,"World_z:"+ std::to_string(enemy_armor.world_position[2]),cv::Point(1000,120),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"World_x:"+ std::to_string(enemy_armor.world_position[0]),cv::Point(850,40),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"World_y:"+ std::to_string(enemy_armor.world_position[1]),cv::Point(850,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"World_z:"+ std::to_string(enemy_armor.world_position[2]),cv::Point(850,120),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
-    cv::putText(src,"Camera_x:"+ std::to_string(enemy_armor.camera_position[0]),cv::Point(1000,180),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    cv::putText(src,"Camera_y:"+ std::to_string(enemy_armor.camera_position[1]),cv::Point(1000,220),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    cv::putText(src,"Camera_z:"+ std::to_string(enemy_armor.camera_position[2]),cv::Point(1000,240),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"Camera_x:"+ std::to_string(enemy_armor.camera_position[0]),cv::Point(850,180),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"Camera_y:"+ std::to_string(enemy_armor.camera_position[1]),cv::Point(850,220),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"Camera_z:"+ std::to_string(enemy_armor.camera_position[2]),cv::Point(850,260),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
+    double Distance = sqrt(enemy_armor.world_position[0]*enemy_armor.world_position[0] + enemy_armor.world_position[1]*enemy_armor.world_position[1]);
+    cv::putText(src,"Distance:"+ std::to_string(Distance),cv::Point(850,320),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"Long_axes:"+ std::to_string(OB[tracking_id].Long_axes),cv::Point(850,360),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(src,"Short_axes:"+ std::to_string(OB[tracking_id].Short_axes),cv::Point(850,400),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
     cv::imshow("Track_show",src);
     cv::waitKey(1);
 }

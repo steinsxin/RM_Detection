@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libSerial_Device.pdb"
-  "/home/steins_xin/CLionProjects/RM_Detection_install/Dynamic_library/libSerial_Device.so"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libSerial_Device.pdb"
+  "/home/hj/2024/RM_Detection_recode/Dynamic_library/libSerial_Device.so"
   "CMakeFiles/Serial_Device.dir/src/crc.cpp.o"
   "CMakeFiles/Serial_Device.dir/src/serial_device.cpp.o"
   "CMakeFiles/Serial_Device.dir/src/serial_main.cpp.o"

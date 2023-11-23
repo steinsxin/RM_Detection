@@ -1,4 +1,4 @@
-# Install script for directory: /home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track
+# Install script for directory: /home/hj/2024/RM_Detection_recode/Package/Armor_Track
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Track/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/hj/2024/RM_Detection_recode/Package/Armor_Track/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

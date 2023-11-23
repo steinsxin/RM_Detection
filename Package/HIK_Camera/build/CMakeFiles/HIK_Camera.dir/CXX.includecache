@@ -10,33 +10,33 @@
 opencv2/opencv.hpp
 -
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera.h
 opencv2/opencv.hpp
 -
 HIK_Camera_H/MvCameraControl.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/MvCameraControl.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/MvCameraControl.h
 robot_status.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/robot_status.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/robot_status.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/CameraParams.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/CameraParams.h
 PixelType.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/PixelType.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/PixelType.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/MvCameraControl.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/MvCameraControl.h
 MvErrorDefine.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/MvErrorDefine.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/MvErrorDefine.h
 CameraParams.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/CameraParams.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/CameraParams.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/MvErrorDefine.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/MvErrorDefine.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera_H/PixelType.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera_H/PixelType.h
 stdint.h
 -
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/src/HIK_Camera.cpp
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/src/HIK_Camera.cpp
 ../include/HIK_Camera.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/HIK_Camera/include/HIK_Camera.h
+/home/hj/2024/RM_Detection_recode/Package/HIK_Camera/include/HIK_Camera.h
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp

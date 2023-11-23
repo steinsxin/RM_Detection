@@ -11,16 +11,14 @@ int main(){
     //相机初始化
     if(HIK.HIKCamera_Init()){
         HIK.HIKCamera_SetParam(Robot::HIK_ON);        // 设置相机参数(自动白平衡) | ON:自动白平衡  OFF:手动白平衡
-        HIK.HIKCamera_startGrabbing();                          // 相机开始取流
-        HIK.HIKCamera_outParam();                               // 相机输出参数
-        HIK.HIKCamera_FPS();                                    // 相机实际帧率
-        HIK.HIKCamera_StartRecord();
+        HIK.HIKCamera_startGrabbing();              // 相机开始取流
+        HIK.HIKCamera_outParam();                   // 相机输出参数
+        HIK.HIKCamera_FPS();                        // 相机实际帧率
         while (HIK.Camera_OK){
-            HIK.HIKCamera_read(false);  //读取相机图像
+            HIK.HIKCamera_read();           //读取相机图像
             cv::imshow("src", HIK.src);
             HIK.Bayer.release();            //释放资源
         }
-        HIK.HIKCamera_StopRecord();
         HIK.HIKCamera_close();           //关闭相机
     }
 }

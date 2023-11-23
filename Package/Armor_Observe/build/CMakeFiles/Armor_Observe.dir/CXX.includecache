@@ -68,33 +68,33 @@ Eigen/Dense
 robot_status.h
 ../../../include/robot_status.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Armor_Observe.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Armor_Observe.h
 opencv2/opencv.hpp
 -
 Circle_Kalman.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Circle_Kalman.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Circle_Kalman.h
 robot_status.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/robot_status.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/robot_status.h
 robot_struct.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/robot_struct.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/robot_struct.h
 AngleSolve.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/AngleSolve.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/AngleSolve.h
 Armor_Track.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Armor_Track.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Armor_Track.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Circle_Kalman.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Circle_Kalman.h
 Eigen/Dense
 -
 opencv2/opencv.hpp
 -
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Armor_Observe.cpp
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Armor_Observe.cpp
 ../include/Armor_Observe.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/include/Armor_Observe.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/include/Armor_Observe.h
 
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Circle_Kalman.cpp
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Circle_Kalman.cpp
 Circle_Kalman.h
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/Armor_Observe/src/Circle_Kalman.h
+/home/hj/2024/RM_Detection_recode/Package/Armor_Observe/src/Circle_Kalman.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core
