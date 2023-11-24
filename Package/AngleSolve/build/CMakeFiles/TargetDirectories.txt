@@ -1,3 +1,0 @@
-/home/hj/2024/RM_Detection_recode/Package/AngleSolve/build/CMakeFiles/rebuild_cache.dir
-/home/hj/2024/RM_Detection_recode/Package/AngleSolve/build/CMakeFiles/edit_cache.dir
-/home/hj/2024/RM_Detection_recode/Package/AngleSolve/build/CMakeFiles/AngleSolve.dir
