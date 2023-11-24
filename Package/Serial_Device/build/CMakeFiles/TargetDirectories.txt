@@ -1,4 +1,0 @@
-/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/rebuild_cache.dir
-/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/edit_cache.dir
-/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device_test.dir
-/home/hj/2024/RM_Detection_recode/Package/Serial_Device/build/CMakeFiles/Serial_Device.dir
