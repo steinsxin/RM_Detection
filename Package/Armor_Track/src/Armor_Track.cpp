@@ -392,6 +392,7 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             double time;
             time = 0.05;                        // 时间
             angle_speed = diff_angle/time;      // 角速度(rad/s)
+            // 绝对值问题待处理
             // std::cout << "angle_speed: " << angle_speed << std::endl;
             // std::cout << "diff_angle: " << diff_angle << std::endl;
         }
