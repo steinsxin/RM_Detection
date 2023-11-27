@@ -9,4 +9,4 @@ BalanceRatio_G: 1024   # G通道
 BalanceRatio_B: 2800   # B通道
 # 录像参数
 Video_FPS: 60
-Video_path: /home/hj/2024/RM_Detection_recode/Dynamic_library/Video/HIK_Camera.avi
+Video_path: /home/hj/RM_Detection/Dynamic_library/Video/HIK_Camera.avi

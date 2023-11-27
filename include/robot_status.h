@@ -13,7 +13,7 @@
 #define COLOR(str) std::strcmp(str.c_str(),"RED") == 0? RED : BLUE // 判断颜色
 
 //! 参数文件路径
-#define PATH "/home/hj/2024/RM_Detection_recode/SetParam_File/"
+#define PATH "/home/hj/RM_Detection/SetParam_File/"
 
 /**
  * 重命名模块名
