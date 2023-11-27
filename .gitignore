@@ -1,0 +1,10 @@
+/Dynamic_library/
+/cmake-build-debug/
+/build/
+/Package/AngleSolve/build/
+/Package/Armor_Detection/build/
+/Package/Armor_Observe/build/
+/Package/Armor_Track/build/
+/Package/HIK_Camera/build/
+/Package/MD_Camera/build/
+/Package/Serial_Device/build/
