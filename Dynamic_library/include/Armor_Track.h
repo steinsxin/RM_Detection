@@ -22,7 +22,7 @@ enum TrackerState {
     TRACKING,           // 处于跟踪状态
 };
 
-/** 整车观测 */         // TODO:结构待优化封装
+/** 整车观测 */
 struct Observe{
 public:
     double Long_axes;                                               // 长轴长度
@@ -58,8 +58,11 @@ public:
     AngleSolve AS;                                  // 坐标系转换
     float Solve_pitch;                              // 解算出的pitch
     float Solve_yaw;                                // 解算出的yaw
+    double Angle_Speed;                             // 角速度
+    bool Angle_Speed_OK = false;                             // 角速度
+    std::deque<double> Angle_Speed_smooth;                          // 角速度平滑
 
-    cv::Point2f temp_cir;                                    // 圆心像素坐标
+    cv::Point2f temp_cir;                           // 圆心像素坐标
 double angle_speed;
     /** 整车观测 */
     std::map<int,Observe> OB;                       // 整车观测结构体
@@ -92,6 +95,7 @@ private:
 
     /** 其他参数 */
     chrono_time t;                                  // 当前时间戳
+    std::vector<double> Angle_Speed_recore;                // 角速度计算
 
     /** 卡尔曼参数 */
     KalmanFilter KF;                                // 卡尔曼
@@ -108,6 +112,7 @@ private:
     void Spin_detect();
 
     /** 选择击打函数 */
+    double Solve_Radius(Armor &armor,double yaw,double x);          // 三分法求解半径法
     void Angle_selection(Armor &armor,double angle);                // 选择击打装甲板角度
 };
 

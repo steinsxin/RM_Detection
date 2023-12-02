@@ -37,6 +37,7 @@ public:
     
     cv::Point2f cam2pixel(Eigen::Vector3d cam_pos);             // 相机坐标系转换为像素坐标系
     Eigen::Vector3d cam2imu(Eigen::Vector3d cam_pos);           // 相机坐标系转换为世界坐标系
+    Eigen::Vector3d imu2cam(Eigen::Vector3d imu_pos);           // 世界坐标系转换为相机坐标系
 
 private:
     //========================参数部分========================
@@ -83,7 +84,6 @@ private:
     Eigen::Vector3d pnpSolve_buff(cv::Point2f *p, int type);    // 测距函数(buff)
 
     /** 世界坐标系转换为像素坐标系(调用接口) */
-    Eigen::Vector3d imu2cam(Eigen::Vector3d imu_pos);           // 世界坐标系转换为相机坐标系
 
     /** 像素坐标系转换为世界坐标系(调用接口) */
     Eigen::Vector3d pixel2cam(Armor &armor);                    // 像素坐标系转换为相机坐标系

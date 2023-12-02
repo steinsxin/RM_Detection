@@ -21,7 +21,7 @@ public:
     //========================API接口=======================
     bool update(Eigen::Vector3d position,Eigen::Vector3d &Smooth);  // 更新数据
 private:
-    int max_size = 3;                                               // 队列最大长度(隔帧拟合)
+    int max_size = 1;                                               // 队列最大长度(隔帧拟合)
     std::deque<Eigen::Vector3d> Data_info;                          // 数据队列
 };
 
@@ -38,8 +38,11 @@ public:
     /** 通过重投影绘制整车观测 */
     void ArmorObserve_show(Eigen::Matrix<double, 3, 1> center,Observe OB,SpinTracker OB_Track);
     AngleSolve AS;
-    Eigen::Vector3d pre_pos;
-
+    Eigen::Vector3d pre_pos;          // 预测圆心坐标
+    Eigen::Vector3d pre_Armor;        // 预测装甲板坐标
+    double Angle_Speed;                             // 角速度
+    Eigen::Vector3d spin_Aromor;                    // 陀螺装甲板
+    double spin_angle;
 private:
     //========================参数部分=======================
     /** 装甲板实际参数 */

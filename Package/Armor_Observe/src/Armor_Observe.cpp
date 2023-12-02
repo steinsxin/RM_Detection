@@ -84,8 +84,7 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
 
 #ifdef CENTER_FIT
     cv::putText(_src,"yaw:"+ std::to_string(yaw*180.0f/CV_PI),cv::Point(0,40),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    // cv::putText(_src,"Distance:"+ std::to_string(armor.world_position[1]),cv::Point(0,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    cv::putText(_src,"Armor_Distance:"+ std::to_string(Armor_distance),cv::Point(0,120),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+    cv::putText(_src,"Armor_Distance:"+ std::to_string(Armor_distance),cv::Point(0,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 #endif //CENTER_FIT
 
     /** 计算圆心坐标 */  // TODO: 需要将在相机坐标系下操作再转换到世界坐标系
@@ -114,21 +113,27 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
             CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
             CKF.predict();
         }
-        
+        // CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
         //============更新步============
         CKF.update(Eigen::Vector2d(Smooth_position[0],Smooth_position[1]));
-
-        CKF.setF(0.05);                                                    // 设置时间间隔(计算出实际速度)
         //============预测步============
+        CKF.setF(0.1);                                                    // 设置时间间隔(计算出实际速度)
         pre = CKF.predict();
-
         // std::cout << pre.transpose() << std::endl;
-    
+
         cv::Point2f pre_cir;                                    // 圆心像素坐标
         pre_pos = {pre[0],pre[1],z};
+                     
         // TODO: 需要调整倍率,达到实际圆心点
-        pre_pos[0] = pre_pos[0] + 0.5*pre[2];
-        pre_pos[1] = pre_pos[1] + pre[3];
+        // pre_pos[0] = pre_pos[0] + 0.75*pre[2];
+        // pre_pos[1] = pre_pos[1] + pre[3];
+
+        // 预测装甲板 
+        pre_Armor = AS.imu2cam(pre_pos);
+        pre_Armor = {pre_Armor[0],pre_Armor[2],-pre_Armor[1]};  // 世界坐标系
+
+        pre_Armor[0] -= sin(yaw)*axes_length;                                
+        pre_Armor[1] -= cos(abs(yaw))*axes_length;   
 
         pre_cir = AS.imu2pixel(pre_pos);
 
@@ -138,21 +143,56 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
         // double dis = std::sqrt(x+y);
 //        if(dis > 0.30 && CKF.Track_OK) Smooth_Filter.fit = false;
 
+
         cv::putText(_src,"Smooth_position_x:"+ std::to_string(Smooth_position[0]),cv::Point(0,280),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"Smooth_position_y:"+ std::to_string(Smooth_position[1]),cv::Point(0,320),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"Smooth_position_z:"+ std::to_string(Smooth_position[2]),cv::Point(0,360),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"spend:"+ std::to_string(pre[2]),cv::Point(0,400),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"anglespend:"+ std::to_string(Angle_Speed),cv::Point(0,440),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
+        // TODO：注意顺逆时针 这里都是逆时针
+        // 通过角度计算预测装甲板
+        // TODO:测试可行 倍率待测试
+        // TODO:需要计算出所有预测装甲板的击打位置,再选择最佳的击打装甲板(待测试)
+
+        Eigen::Vector3d center_temp;                    // 圆心世界坐标(temp)
+        cv::Point2f spin_Aromor_cir;                    // 陀螺装甲板
+        int FPS_size = 5;                               // 倍率
+        // 计算预测角度
+        spin_angle = yaw*(180.0f/CV_PI) - FPS_size*Angle_Speed;          // 陀螺装甲板所在角度
+        spin_angle *= (CV_PI/180.0f);
+        std::cout << spin_angle*(180.0f/CV_PI) << std::endl;
+        center_temp = AS.imu2cam(Smooth_position);
+        center_temp = {center_temp[0],center_temp[2],-center_temp[1]}; // 世界坐标系
+        spin_Aromor[0] = center_temp[0] - sin(spin_angle)*axes_length;
+        spin_Aromor[1] = center_temp[1] - cos(spin_angle)*axes_length;
+        spin_Aromor[2] = center_temp[2];
+
+        spin_Aromor = {spin_Aromor[0],-spin_Aromor[2],spin_Aromor[1]};      //相机坐标系
+        spin_Aromor = AS.cam2imu(spin_Aromor);
+        spin_Aromor_cir = AS.imu2pixel(spin_Aromor);
 
         // 更新拟合状态
         // Fit_OK = Smooth_Filter.fit && CKF.Track_OK;
         Fit_OK = Smooth_Filter.fit;
         // Fit_OK = true;
+
+        cv::Point2f Armor_cir;                                    
+        cv::Point2f pre_Armor_cir;                                    
+        Armor_cir = AS.imu2pixel(armor.world_position);
+        pre_Armor = {pre_Armor[0],-pre_Armor[2],pre_Armor[1]};      //相机坐标系
+        pre_Armor = AS.cam2imu(pre_Armor);
+        pre_Armor_cir = AS.imu2pixel(pre_Armor);
+
         circle(_src,cir,5,cv::Scalar(0,0,255),-1);
-        circle(_src,pre_cir,5,cv::Scalar(0,255,0),-1);
+        circle(_src,Armor_cir,5,cv::Scalar(0,255,255),-1);
+        circle(_src,spin_Aromor_cir,5,cv::Scalar(255,0,255),-1);
+        
+        // circle(_src,pre_Armor_cir,5,cv::Scalar(255,0,255),-1);
+        // circle(_src,pre_cir,5,cv::Scalar(0,255,0),-1);
         // std::cout << pre_cir << std::endl;
 
         cv::imshow("Observe_src",_src);
-
     }
 }
 

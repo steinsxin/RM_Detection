@@ -89,7 +89,7 @@ void* HIK_Sample(void* Void){
                 time_temp = std::chrono::high_resolution_clock::now();
                 first_get = serial.ReceiverMain();                                          // usb
                 // usb  //TODO: 这个值需要变化，用来模式切换 serial.vision_msg_.mode
-                _send_data = {0x21,first_get, //! 0x21应该换成serial.vision_msg_.mode赋值，方便调试默认给的0x21
+                _send_data = {serial.vision_msg_.mode,first_get, //! 0x21应该换成serial.vision_msg_.mode赋值，方便调试默认给的0x21
                               {serial.vision_msg_.pitch,
                                serial.vision_msg_.yaw,
                                serial.vision_msg_.shoot},
@@ -117,7 +117,7 @@ void* Image(void* Void){
     ArmorTrack Tracker;
     ArmorObserve AO;
     std::vector<Armor> Targets;
-    std::vector<double> vdata(3);
+    std::vector<double> vdata(4);
 
     while (true){
         pthread_mutex_lock(&Mutex);
@@ -138,51 +138,80 @@ void* Image(void* Void){
         // ========================在此区域进行图像处理========================
         
 
-        if(mode_temp == 0x21){
+        // if(mode_temp == 0x21){
             Targets = Detector.Detection(src);
             //获取最终装甲板
             Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
             Tracker.show();
             //! 整车观测
-            // bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
-            // // // 开始拟合圆心
-            // if(AO_OK) {
-                
-            //     if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::LONG){
-            //         AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z);
-            //         // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
-            //         Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
+            bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
+            // // 开始拟合圆心
+            if(AO_OK) {
+                double OK = false;
+                // double angle =  Tracker.enemy_armor.R[1]*(180.0f/CV_PI);
+                double angle =  AO.spin_angle*(180.0f/CV_PI);
+                if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::LONG){
+                    AO.Angle_Speed = Tracker.Angle_Speed; 
+                    
+                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z);
+                    // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
+                    // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
+//                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_Armor);
+                    //
+                    if(angle < -15 && angle > -20){
+                        // Eigen::Vector3d rpy = AS.Barrel_Solve(Tracker.enemy_armor.world_position);
+                        Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+                        OK = true;
+                        Tracker.Solve_pitch = rpy[1];
+                        Tracker.Solve_yaw = rpy[2];
+                    } else{
+                        Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                        Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                    }
 
-            //         Tracker.Solve_pitch = rpy[1];
-            //         Tracker.Solve_yaw = rpy[2];
+                }
+                else if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::SHORT)
+                {
 
-            //     }
-            //     else if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::SHORT)
-            //     {
-            //         AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Short_axes,Tracker.OB[Tracker.tracking_id].center_Z);
-            //         // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
-            //         Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
-            //         Tracker.Solve_pitch = rpy[1];
-            //         Tracker.Solve_yaw = rpy[2];
+                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Short_axes,Tracker.OB[Tracker.tracking_id].center_Z);
+                    // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
+                    // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
+//                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_Armor);
+                    if(angle < -15 && angle > -20){
+                        // Eigen::Vector3d rpy = AS.Barrel_Solve(Tracker.enemy_armor.world_position);
+                        Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+                        OK = true;
+                        Tracker.Solve_pitch = rpy[1];
+                        Tracker.Solve_yaw = rpy[2];
+                    } else{
+                        Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                        Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                    }
+                }
+                cv::putText(src,"OK: "+ std::to_string(OK),cv::Point(0,100),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
-            //     }
-
-            //     // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
-            // }
-            // AS.Init(_send_data.data, _send_data.quat);
-            // AS._src = src.clone();
-            // AS.AngleSolve_show(Tracker.enemy_armor);
+                // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
+            }
         
             //! ===END===
-            if(Tracker.tracker_state == TRACKING){
+            // 如果需要选择打击角度就需要增加一个变量判断
+            // 这里需要根据顺逆时针来调整击打角度范围
+            if(Tracker.tracker_state == TRACKING && mode_temp == 0x21){
+                // 0: 不开火 1:单发开火
+                // double angle =  Tracker.enemy_armor.R[1]*(180.0f/CV_PI);
+                double angle =  AO.spin_angle*(180.0f/CV_PI);
+                double fire;
+                if(angle < -15 && angle > -20) fire = 1;
+                else fire = 0;
                 // TODO: 弹速设置为25,未改
-                vdata = { Tracker.Solve_pitch, Tracker.Solve_yaw, 0x31 };
+                vdata = { Tracker.Solve_pitch, Tracker.Solve_yaw, fire,0x31 };
             } else{
+                double fire = 0;
                 //    原数据，无自瞄
-                vdata = { Tracker.AS.Robot_msg.Controller_pitch,Tracker.AS.Robot_msg.Controller_yaw, 0x32 };
+                vdata = { Tracker.AS.Robot_msg.Controller_pitch,Tracker.AS.Robot_msg.Controller_yaw, fire,0x32 };
             }
             serial.SenderMain(vdata);   // 启动跟踪自瞄
-        }
+        // }
 
         // ================================================================
         cv::imshow("src",src);
@@ -190,7 +219,7 @@ void* Image(void* Void){
 
     }
 }
-
+//#define VIDEO
 #define HIK
 // #define MD
 int main(){
@@ -207,6 +236,27 @@ int main(){
     // 销毁互斥锁
     pthread_mutex_destroy(&Mutex);
 #endif //HIK
+
+#ifdef VIDEO
+    cv::Mat src;
+    chrono_time time_temp;
+    ArmorDetector Detector;
+    AngleSolve AS;
+    ArmorTrack Tracker;
+    ArmorObserve AO;
+    std::vector<Armor> Targets;
+    cv::VideoCapture video("/home/hj/2024/RM_Detection/images/Video_1.avi");
+    while (1) {
+        video >> src;
+
+        Targets = Detector.Detection(src);
+        //获取最终装甲板
+        Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
+        Tracker.show();
+        cv::imshow("src",src);
+        cv::waitKey(0);
+    }
+#endif //VIDEO
 
 #ifdef MD
     pthread_create(&thread_1, NULL, MD_Sample, NULL);

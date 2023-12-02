@@ -12,7 +12,8 @@ void SerialMain::SenderMain(const std::vector<double> &vdata)
 {
 	robot_ctrl.pitch = vdata[0];
 	robot_ctrl.yaw = vdata[1];
-	robot_ctrl.target_lock = vdata[2];
+	robot_ctrl.fire_command = vdata[2];
+	robot_ctrl.target_lock = vdata[3];
 	uint16_t send_length = SenderPackSolve((uint8_t *)&robot_ctrl, sizeof(robot_ctrl_info_t),
 										   CHASSIS_CTRL_CMD_ID, send_buff_.get());
 	device_ptr_->Write(send_buff_.get(), send_length);

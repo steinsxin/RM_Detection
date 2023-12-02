@@ -1,5 +1,0 @@
-Scanning dependencies of target Armor_Observe
-[ 33%] Building CXX object CMakeFiles/Armor_Observe.dir/src/Armor_Observe.cpp.o
-[ 66%] Building CXX object CMakeFiles/Armor_Observe.dir/src/Circle_Kalman.cpp.o
-[100%] Linking CXX shared library /home/hj/RM_Detection/Dynamic_library/libArmor_Observe.so
-[100%] Built target Armor_Observe

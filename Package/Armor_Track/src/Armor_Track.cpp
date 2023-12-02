@@ -215,15 +215,15 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
         }
 
         if(Data_capture_OK){
-            // TODO: 直接在世界坐标系下操作会导致yaw值在绝对值大于90度之后出现问题
-            // TODO: 解决方法是在相机坐标系系操作,再转换到世界坐标系
+            // 相机坐标系手动转换世界坐标
             Eigen::Vector3d Track_1 = Track_Armor[0].camera_position;
             Eigen::Vector3d Track_2 = Track_Armor[1].camera_position;
             Track_1 = {Track_1[0],Track_1[2],-Track_1[1]};
             Track_2 = {Track_2[0],Track_2[2],-Track_2[1]};
-
-            /** 通过装甲板朝向角和中心世界坐标系建立Y-X下的一次函数 */      //TODO: 找找更加稳定求半径的方法
             double angle = 180.0f/CV_PI;
+//#define RADIUS
+#ifdef RADIUS
+            /** 通过装甲板朝向角和中心世界坐标系建立Y-X下的一次函数 */
             // 左装甲板一次函数
             double as_angel_1 = AS.Armor_Angle(Track_Armor[0]);
             double angle_1 = (90.0-Track_Armor[0].R[1]*angle)*(CV_PI/180.0f);
@@ -234,7 +234,7 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             double as_angel_2 = AS.Armor_Angle(Track_Armor[1]);
             double angle_2 = -(90.0-abs(Track_Armor[1].R[1])*angle)*(CV_PI/180.0f);
             double K_2 = tan(angle_2);
-            double B_2 = Track_2[1]-K_2*Track_2[0];
+            double B_2 = Track_2[1]-K_2*Track_Track_Armor2[0];
 
             /** 使用矩阵计算联立方程求解交点 */
             /** 矩阵计算
@@ -246,9 +246,9 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             Eigen::Matrix<double,2,1> X;
             Eigen::Matrix<double,2,1> Y;
             K << 1,-K_1,
-                 1,-K_2;
+                    1,-K_2;
             Y << B_1,
-                 B_2;
+                    B_2;
             X = K.inverse()*Y;
 
             // 计算
@@ -256,25 +256,23 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             double R_2 = sqrt(pow(X[1]-Track_2[0],2)+pow(X[0]-Track_2[1],2));
 
             // 只有达到采集要求才会更新
-            // if(Long_Short_OK) OB[tracking_id].update(R_1,R_2);
-            // std::cout << "R_1: " << R_1 << " R_2:" << R_2 << std::endl;
-            // std::cout << "1: " << Track_Armor[0].world_position.transpose() << std::endl;
-            // std::cout << "2: " << Track_Armor[1].world_position.transpose() << std::endl;
-            
-            // TODO:逼近的方法求半径(测试)
+             if(Long_Short_OK) OB[tracking_id].update(R_1,R_2);
+            std::cout << "R_1: " << R_1 << " R_2:" << R_2 << std::endl;
+#else
+            /** 三分法逼近求解半径(经过测试比延长法稳定) */
             // 画出中心
             double x = (Track_1[0]+Track_2[0])/2;
             double y = (Track_1[1]+Track_2[1])/2;
             double z = (Track_1[2]+Track_2[2])/2;
             Eigen::Vector3d temp_pos = {x,-z,y};        //相机坐标系
             temp_cir = AS.cam2pixel(temp_pos);
-            
-            // 三分法逼近x所在位置 TODO: 经过测试,比原方法更加精确和稳定,待优化封装
+
+            // 三分法逼近x所在位置
             // R_1
             double R_1_yaw = Track_Armor[0].R[1]*angle;
             double R_2_yaw = Track_Armor[1].R[1]*angle;
-            // 尝试补偿看看
-            
+
+            // 补偿角度
             while ((abs(R_1_yaw) + abs(R_2_yaw)) <= 90){
                 R_1_yaw += 0.1;
                 R_2_yaw -= 0.1;
@@ -282,10 +280,9 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
             R_1_yaw = R_1_yaw*(CV_PI/180.0f);
             R_2_yaw = R_2_yaw*(CV_PI/180.0f);
 
-            // double R_1_yaw = 40*(CV_PI/180.0);
             double l_1 = 0.1,r_1 =0.6;              // 半径范围
-            double eps = 1e-8;                  // 精度
-            double temp_R_1;
+            double eps = 1e-8;                      // 精度
+            double R_1;
             while (r_1-l_1 >= eps) {
                 double thridPart = (r_1-l_1)/3;
 
@@ -305,12 +302,11 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
                 // std::cout << l_1 << " " << r_1 << std::endl;
                 // std::cout << "x:" << x  << " Track:" << Track_1[0] << std::endl;
             }
-            temp_R_1 = l_1;
+            R_1 = l_1;
             // R_2
-            // double R_2_yaw = -40*(CV_PI/180.0);
             double l_2 = 0.1,r_2 =0.6;              // 半径范围
-            double temp_R_2;
-            
+            double R_2;
+
             while (r_2-l_2 >= eps) {
                 double thridPart = (r_2-l_2)/3;
 
@@ -325,13 +321,19 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
                 if(ls_dis > rs_dis)     l_2 = lsec;
                 else                    r_2 = rsec;
             }
-            temp_R_2 = l_2;
-            // std::cout << "temp_R_1: " << temp_R_1 << " temp_R_2:" << temp_R_2 << std::endl;
-            // std::cout << "temp_R_1_angle: " << R_1_yaw*angle << " temp_R_2_angle:" << R_2_yaw*angle << std::endl;
-            // std::cout << "x1: " << Track_1[0] << " x2:" << Track_2[0] << std::endl;
-            if(Long_Short_OK) OB[tracking_id].update(temp_R_1,temp_R_2);
+            R_2 = l_2;
 
-//#define FUNCTION_INFO
+            // 待测试
+            double Trisection_R_1 = Solve_Radius(Track_Armor[0],R_1_yaw,x);
+            double Trisection_R_2 = Solve_Radius(Track_Armor[1],R_2_yaw,x);
+
+            // std::cout << "temp_R_1: " << R_1 << " temp_R_2:" << R_2 << std::endl;
+            // std::cout << "Trisection_R_1: " << Trisection_R_1 << " Trisection_R_2:" << Trisection_R_2 << std::endl;
+            if(Long_Short_OK) OB[tracking_id].update(R_1,R_2);
+#endif //RADIUS
+
+
+//#define FUNCTION_INFO  // 可能不需要了
 #ifdef FUNCTION_INFO    // 输出两个一次函数方程
             std::cout << "1: " << Track_Armor[0].world_position.transpose() << std::endl;
             printf("f(x)_1: Y = %fx + %f\n",K_1,B_1);
@@ -383,18 +385,39 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
                 OB_Track[tracking_id].HeightState = LOW;
             else if(OB_Track[tracking_id].last_armor.world_position[2]<enemy_armor.world_position[2])
                 OB_Track[tracking_id].HeightState = HIGH;
+            double All_angle = 0.0;
+            for (int i = 0; i < Angle_Speed_recore.size(); ++i) {
+                All_angle += Angle_Speed_recore[i];
+            }
+
+            // 记录角度数据
+            int max_size = 3;
+            if(Angle_Speed_smooth.size() < max_size){
+                Angle_Speed_smooth.push_back(All_angle/Angle_Speed_recore.size());
+            } else{
+                Angle_Speed_smooth.pop_front();
+                Angle_Speed_smooth.push_back(All_angle/Angle_Speed_recore.size());
+            }
+            if(Angle_Speed_smooth.size() == max_size) {
+                Angle_Speed_OK = true;
+                double temp = 0.0;
+                for (int i = 0; i < max_size; ++i) {
+                    temp += Angle_Speed_smooth[i];
+                }
+                temp /=  max_size;
+                Angle_Speed = temp;
+            }
+            // 清空记录
+            Angle_Speed_recore.clear();
         }else{
-            // 计算角速度 TODO: 需要在跟踪器更新前
+            // 计算角速度
             double old_angle,new_angle,diff_angle;
-            old_angle = OB_Track[tracking_id].last_armor.R[1];
-            new_angle = enemy_armor.R[1];
-            diff_angle = abs(abs(old_angle)-abs(new_angle));
-            double time;
-            time = 0.05;                        // 时间
-            angle_speed = diff_angle/time;      // 角速度(rad/s)
-            // 绝对值问题待处理(YES)
-            // std::cout << "angle_speed: " << angle_speed << std::endl;
-            // std::cout << "diff_angle: " << diff_angle << std::endl;
+            double angle = 180.0f/CV_PI;
+            old_angle = OB_Track[tracking_id].last_armor.R[1]*angle;
+            new_angle = enemy_armor.R[1]*angle;
+            diff_angle = abs(new_angle-old_angle);
+            // 记录结果
+            Angle_Speed_recore.emplace_back(diff_angle);   // 记录所有角度
         }
 
 // #define ARMOR_DISPLAY
@@ -711,6 +734,42 @@ bool ArmorTrack::Track(const cv::Mat &src, std::vector<Armor> &Armors, const chr
 
     }
     return true;
+}
+
+/**
+ *  函数名: Solve_Radius
+ *  传入: Armor &armor  double yaw  double x       (装甲板,弧度,逼近x值)
+ *  传出: double R                                 (半径)
+ *  功能: 通过传入的装甲板,绘制出在击打范围内的装甲板
+ */
+double ArmorTrack::Solve_Radius(Armor &armor,double yaw,double x) {
+    double R;
+    double l = 0.1,r =0.6;                  // 半径范围
+    double eps = 1e-8;                      // 精度
+    // 转化世界坐标
+    Eigen::Vector3d Track = armor.camera_position;
+    Track = {Track[0],Track[2],-Track[1]};
+    while (r-l >= eps) {
+        double thridPart = (r-l)/3;
+
+        double lsec = l + thridPart;
+        double rsec = r - thridPart;
+        // 计算当前半径距离目标的差值
+        double ls = Track[0]+sin(yaw)*lsec;                                   // 三角函数解圆心
+        double rs = Track[0]+sin(yaw)*rsec;                                   // 三角函数解圆心
+
+        double ls_dis = abs(abs(x)-abs(ls));
+        double rs_dis = abs(abs(x)-abs(rs));
+        if(ls_dis > rs_dis)     l = lsec;
+        else                    r = rsec;
+//         std::cout << yaw*angle << std::endl;
+//         std::cout << ls << " " << rs << std::endl;
+//         std::cout << ls_dis << " " << rs_dis << std::endl;
+//         std::cout << l << " " << r << std::endl;
+//         std::cout << "x:" << x  << " Track:" << Track[0] << std::endl;
+    }
+    R = l;
+    return R;
 }
 
 /**
