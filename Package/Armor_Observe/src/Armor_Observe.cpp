@@ -65,14 +65,14 @@ bool Smooth::update(Eigen::Vector3d position,Eigen::Vector3d &Smooth) {
  *  传出: 无
  *  功能: 通过计算得到的yaw值,车的半径,拟合车的圆心
  */
-void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
+void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Observe OB,SpinTracker OB_Track) {
     // center_position = armor.world_position;                                 // 圆心坐标
 
     center_position = armor.camera_position;                                 // 圆心坐标
     center_position = {center_position[0],center_position[2],-center_position[1]};      //世界坐标系
     
     Armor_distance = AS.World_projection(armor,0);                // 获取装甲板4点距离差
-    // axes_length = 0.25; // 先固定
+
 #define A
 #ifdef A
     yaw = armor.R[1];
@@ -87,6 +87,35 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
     cv::putText(_src,"Armor_Distance:"+ std::to_string(Armor_distance),cv::Point(0,80),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 #endif //CENTER_FIT
 
+    /** 高低装甲板和长短轴参数 */
+    double OF_length;                                               // 前后装甲板高度
+    double RL_length;                                               // 左右装甲板高度
+    double OF_height;                                               // 前后装甲板高度
+    double RL_height;                                               // 左右装甲板高度
+
+    // 判断当前装甲板是什么轴
+    if(OB_Track.axesState == LONG) {                                // 长轴
+        OF_length = OB.Long_axes;
+        RL_length = OB.Short_axes;
+    }
+    else if(OB_Track.axesState == SHORT) {                          // 短轴
+        OF_length = OB.Short_axes;
+        RL_length = OB.Long_axes;
+    }
+    if(OB_Track.HeightState == HIGH){                               // 高轴
+        RL_height = -OB.High_LOW_difference;
+    }
+    else if(OB_Track.HeightState == LOW) {                          // 矮轴
+        RL_height = OB.High_LOW_difference;
+    }
+
+    /** 计算装甲板中心点坐标参数 */
+    double OF_cos_r = cos(abs(spin_angle))*OF_length;                           // 半径在x轴方向投影
+    double RL_cos_r = cos(abs(spin_angle))*RL_length;                           // 半径在x轴方向投影
+    double OF_sin_r = sin(abs(spin_angle))*OF_length;                           // 半径在y轴方向投影
+    double RL_sin_r = sin(abs(spin_angle))*RL_length;                           // 半径在y轴方向投影
+
+
     /** 计算圆心坐标 */  // TODO: 需要将在相机坐标系下操作再转换到世界坐标系
     center_position[0] += sin(yaw)*axes_length;                                   // 三角函数解圆心
     center_position[1] += cos(abs(yaw))*axes_length;                           // 三角函数解圆心
@@ -97,7 +126,8 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
     // 平滑
     // Smooth_position = {Smooth_position[0],-Smooth_position[2],Smooth_position[1]};      //相机坐标系
     // Smooth_position = AS.cam2imu(Smooth_position);
-    Smooth_position[2] = z;
+//    Smooth_position[2] = z;
+    Smooth_position[2] = OB.center_Z;
     cir = AS.imu2pixel(Smooth_position);                                           // 转换像素坐标
 
     // 非平滑
@@ -108,40 +138,35 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
 
     // 数据平滑
     if(Smooth_Filter.fit){
-        /** 车圆心卡尔曼预测 */
-        if(CKF.Set_init) {
-            CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
-            CKF.predict();
-        }
-        // CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
-        //============更新步============
-        CKF.update(Eigen::Vector2d(Smooth_position[0],Smooth_position[1]));
-        //============预测步============
-        CKF.setF(0.1);                                                    // 设置时间间隔(计算出实际速度)
-        pre = CKF.predict();
-        // std::cout << pre.transpose() << std::endl;
+        /** 车圆心卡尔曼预测 */ //TODO: 后面研究
+//        if(CKF.Set_init) {
+//            CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
+//            CKF.predict();
+//        }
+//        // CKF.setPosAndSpeed(Smooth_position,Eigen::Vector2d(0,0));
+//        //============更新步============
+//        CKF.update(Eigen::Vector2d(Smooth_position[0],Smooth_position[1]));
+//        //============预测步============
+//        CKF.setF(0.1);                                                    // 设置时间间隔(计算出实际速度)
+//        pre = CKF.predict();
+//        // std::cout << pre.transpose() << std::endl;
+//
+//        cv::Point2f pre_cir;                                    // 圆心像素坐标
+//        pre_pos = {pre[0],pre[1],z};
+//
+//        // TODO: 需要调整倍率,达到实际圆心点
+//        // pre_pos[0] = pre_pos[0] + 0.75*pre[2];
+//        // pre_pos[1] = pre_pos[1] + pre[3];
+//
+//        // 预测装甲板
+//        pre_Armor = AS.imu2cam(pre_pos);
+//        pre_Armor = {pre_Armor[0],pre_Armor[2],-pre_Armor[1]};  // 世界坐标系
+//
+//        pre_Armor[0] -= sin(yaw)*axes_length;
+//        pre_Armor[1] -= cos(abs(yaw))*axes_length;
+//
+//        pre_cir = AS.imu2pixel(pre_pos);
 
-        cv::Point2f pre_cir;                                    // 圆心像素坐标
-        pre_pos = {pre[0],pre[1],z};
-                     
-        // TODO: 需要调整倍率,达到实际圆心点
-        // pre_pos[0] = pre_pos[0] + 0.75*pre[2];
-        // pre_pos[1] = pre_pos[1] + pre[3];
-
-        // 预测装甲板 
-        pre_Armor = AS.imu2cam(pre_pos);
-        pre_Armor = {pre_Armor[0],pre_Armor[2],-pre_Armor[1]};  // 世界坐标系
-
-        pre_Armor[0] -= sin(yaw)*axes_length;                                
-        pre_Armor[1] -= cos(abs(yaw))*axes_length;   
-
-        pre_cir = AS.imu2pixel(pre_pos);
-
-        // 预测距离差值
-        // double x = pow(pre[0]-center_position[0],2);
-        // double y = pow(pre[1]-center_position[1],2);
-        // double dis = std::sqrt(x+y);
-//        if(dis > 0.30 && CKF.Track_OK) Smooth_Filter.fit = false;
 
 
         cv::putText(_src,"Smooth_position_x:"+ std::to_string(Smooth_position[0]),cv::Point(0,280),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
@@ -149,28 +174,98 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
         cv::putText(_src,"Smooth_position_z:"+ std::to_string(Smooth_position[2]),cv::Point(0,360),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"spend:"+ std::to_string(pre[2]),cv::Point(0,400),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"anglespend:"+ std::to_string(Angle_Speed),cv::Point(0,440),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"OF_length:"+ std::to_string(OF_length),cv::Point(0,480),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"RL_length:"+ std::to_string(RL_length),cv::Point(0,520),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        cv::putText(_src,"RL_height:"+ std::to_string(RL_height),cv::Point(0,560),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
         // TODO：注意顺逆时针 这里都是逆时针
-        // 通过角度计算预测装甲板
-        // TODO:测试可行 倍率待测试
-        // TODO:需要计算出所有预测装甲板的击打位置,再选择最佳的击打装甲板(待测试)
-
         Eigen::Vector3d center_temp;                    // 圆心世界坐标(temp)
         cv::Point2f spin_Aromor_cir;                    // 陀螺装甲板
-        int FPS_size = 5;                               // 倍率
+        int FPS_size = 8;                               // 倍率(待调整) TODO:不能调过大,会导致跳过角度检测,试试计算(距离/运动时间*角速度)进行补偿
+        double compensate;                              // 弹道时间角度补偿
+        double time;                                    // 距离使用车中心试试？还是使用装甲板的距离？ 现使用车中心看看
+        double Diff = sqrt(pow(Smooth_position[0],2)+pow(Smooth_position[1],2));
+        double bullet_speed = 25;
+        double compensate_size = 2;                     // 倍率 TODO:测试可行,有上升空间(待测试)
+        time = Diff/bullet_speed;
+        compensate = compensate_size*time*Angle_Speed;                  // 计算补偿角度 (代测试看效果)
+
+        cv::putText(_src,"compensate:"+ std::to_string(compensate),cv::Point(0,600),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+
         // 计算预测角度
-        spin_angle = yaw*(180.0f/CV_PI) - FPS_size*Angle_Speed;          // 陀螺装甲板所在角度
+        spin_angle = yaw*(180.0f/CV_PI) - FPS_size*Angle_Speed - compensate;          // 陀螺装甲板所在角度
         spin_angle *= (CV_PI/180.0f);
-        std::cout << spin_angle*(180.0f/CV_PI) << std::endl;
         center_temp = AS.imu2cam(Smooth_position);
         center_temp = {center_temp[0],center_temp[2],-center_temp[1]}; // 世界坐标系
-        spin_Aromor[0] = center_temp[0] - sin(spin_angle)*axes_length;
-        spin_Aromor[1] = center_temp[1] - cos(spin_angle)*axes_length;
-        spin_Aromor[2] = center_temp[2];
+
+        spin_Aromor[0] = center_temp[0] - sin(spin_angle)*OF_length;
+        spin_Aromor[1] = center_temp[1] - cos(spin_angle)*OF_length;
+        spin_Aromor[2] = center_temp[2]-(RL_height/2);
 
         spin_Aromor = {spin_Aromor[0],-spin_Aromor[2],spin_Aromor[1]};      //相机坐标系
         spin_Aromor = AS.cam2imu(spin_Aromor);
         spin_Aromor_cir = AS.imu2pixel(spin_Aromor);
+        // 计算其他点位
+        Left_Armor_angle = spin_angle*(180.0f/CV_PI) + 90.0;
+        Right_Armor_angle = spin_angle*(180.0f/CV_PI) - 90.0;
+        // std::cout << spin_angle*(180.0f/CV_PI) << std::endl;
+        // std::cout << Left_Armor_angle << std::endl;
+
+        // TODO:长短轴和高低装甲板问题(Test中)
+
+        // L_center_imu = {center[0]-RL_cos_r,center[1]+RL_sin_r,center[2]+RL_height};
+        // L_center_imu = {center[0]-RL_cos_r,center[1]-RL_sin_r,center[2]+RL_height};
+        // R_center_imu = {center[0]+RL_cos_r,center[1]-RL_sin_r,center[2]+RL_height};
+        // R_center_imu = {center[0]+RL_cos_r,center[1]+RL_sin_r,center[2]+RL_height};
+        // O_center_imu = {center[0]+OF_sin_r,center[1]+OF_cos_r,center[2]};
+        // O_center_imu = {center[0]-OF_sin_r,center[1]+OF_cos_r,center[2]};
+        // F_center_imu = {center[0]-OF_sin_r,center[1]-OF_cos_r,center[2]};
+        // F_center_imu = {center[0]+OF_sin_r,center[1]-OF_cos_r,center[2]};
+        if(yaw > 0){
+
+            Left_Armor = {center_temp[0] - RL_cos_r,center_temp[1] + RL_sin_r,center_temp[2]+(RL_height/2)};
+            Right_Armor = {center_temp[0] + RL_cos_r,center_temp[1] - RL_sin_r,center_temp[2]+(RL_height/2)};
+            O_Armor = {center_temp[0] + OF_sin_r,center_temp[1] + OF_cos_r,center_temp[2]-(RL_height/2)};
+
+        }else{
+            // Left_Armor = {center_temp[0] - RL_cos_r,center_temp[1] - RL_sin_r,center_temp[2]+(RL_height/2)}; 
+            Left_Armor = {center_temp[0] - RL_cos_r,center_temp[1] - RL_sin_r,center_temp[2]+(RL_height/2)};//test
+            Right_Armor = {center_temp[0] + RL_cos_r,center_temp[1] + RL_sin_r,center_temp[2]+(RL_height/2)};
+            O_Armor = {center_temp[0] - OF_sin_r,center_temp[1] + OF_cos_r,center_temp[2]-(RL_height/2)};
+        }
+        // 转换部分,待优化
+        Left_Armor = {Left_Armor[0],-Left_Armor[2],Left_Armor[1]};      //相机坐标系
+        Left_Armor = AS.cam2imu(Left_Armor);
+        Left_Armor_cir = AS.imu2pixel(Left_Armor);
+        // 转换部分,待优化
+        Right_Armor = {Right_Armor[0],-Right_Armor[2],Right_Armor[1]};      //相机坐标系
+        Right_Armor = AS.cam2imu(Right_Armor);
+        Right_Armor_cir = AS.imu2pixel(Right_Armor);
+          // 转换部分,待优化
+        O_Armor = {O_Armor[0],-O_Armor[2],O_Armor[1]};      //相机坐标系
+        O_Armor = AS.cam2imu(O_Armor);
+        O_Armor_cir = AS.imu2pixel(O_Armor);
+
+
+        // 计算左右30度(暂定,可调) TODO:长短轴高低装甲板代计算处理
+
+        cv::Point2f left_target_Armor;                    // 左侧装甲板点位
+        cv::Point2f right_target_Armor;                   // 右侧装甲板点位
+        left_target[0] = center_temp[0] - sin(30*(CV_PI/180.0f))*RL_length;
+        left_target[1] = center_temp[1] - cos(30*(CV_PI/180.0f))*RL_length;
+        left_target[2] = center_temp[2]+(RL_height/2);
+        right_target[0] = center_temp[0] + sin(30*(CV_PI/180.0f))*RL_length;
+        right_target[1] = center_temp[1] - cos(30*(CV_PI/180.0f))*RL_length;
+        right_target[2] = center_temp[2]+(RL_height/2);
+        // 转换部分,待优化
+        left_target = {left_target[0],-left_target[2],left_target[1]};      //相机坐标系
+        left_target = AS.cam2imu(left_target);
+        left_target_Armor = AS.imu2pixel(left_target);
+        // 转换部分,待优化
+        right_target = {right_target[0],-right_target[2],right_target[1]};      //相机坐标系
+        right_target = AS.cam2imu(right_target);
+        right_target_Armor = AS.imu2pixel(right_target);
+        
 
         // 更新拟合状态
         // Fit_OK = Smooth_Filter.fit && CKF.Track_OK;
@@ -185,9 +280,18 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z) {
         pre_Armor_cir = AS.imu2pixel(pre_Armor);
 
         circle(_src,cir,5,cv::Scalar(0,0,255),-1);
-        circle(_src,Armor_cir,5,cv::Scalar(0,255,255),-1);
+        // circle(_src,Armor_cir,5,cv::Scalar(0,255,255),-1);
         circle(_src,spin_Aromor_cir,5,cv::Scalar(255,0,255),-1);
-        
+
+        // 左右预测点位
+        circle(_src,Left_Armor_cir,5,cv::Scalar(255,0,255),-1);
+        // circle(_src,Right_Armor_cir,5,cv::Scalar(255,0,255),-1);
+        // circle(_src,O_Armor_cir,5,cv::Scalar(255,0,255),-1);
+
+        // 移动点位
+        // circle(_src,left_target_Armor,5,cv::Scalar(0,255,0),-1);
+        // circle(_src,right_target_Armor,5,cv::Scalar(0,255,0),-1);
+
         // circle(_src,pre_Armor_cir,5,cv::Scalar(255,0,255),-1);
         // circle(_src,pre_cir,5,cv::Scalar(0,255,0),-1);
         // std::cout << pre_cir << std::endl;

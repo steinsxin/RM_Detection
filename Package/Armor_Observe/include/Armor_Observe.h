@@ -21,7 +21,7 @@ public:
     //========================API接口=======================
     bool update(Eigen::Vector3d position,Eigen::Vector3d &Smooth);  // 更新数据
 private:
-    int max_size = 1;                                               // 队列最大长度(隔帧拟合)
+    int max_size = 5;                                               // 队列最大长度(隔帧拟合)
     std::deque<Eigen::Vector3d> Data_info;                          // 数据队列
 };
 
@@ -33,7 +33,7 @@ public:
     bool Fit_OK;                                                                // 圆心是否拟合成功标志
     Eigen::Vector3d Smooth_position;                                            // 平滑之后的圆心世界坐标
     //========================API接口=======================
-    void Center_fitting(Armor &armor,double axes_length,double z);                       // 拟合圆心位置
+    void Center_fitting(Armor &armor,double axes_length,double z,Observe OB,SpinTracker OB_Track);                       // 拟合圆心位置
     void World_projection_show();                                               // 绘制重投影装甲板
     /** 通过重投影绘制整车观测 */
     void ArmorObserve_show(Eigen::Matrix<double, 3, 1> center,Observe OB,SpinTracker OB_Track);
@@ -43,6 +43,12 @@ public:
     double Angle_Speed;                             // 角速度
     Eigen::Vector3d spin_Aromor;                    // 陀螺装甲板
     double spin_angle;
+    double Left_Armor_angle;
+    double Right_Armor_angle;
+    cv::Point2f Left_Armor_cir,Right_Armor_cir,O_Armor_cir,F_Armor_cir;
+    Eigen::Vector3d Left_Armor,Right_Armor,O_Armor,F_Armor;
+    Eigen::Vector3d left_target;
+    Eigen::Vector3d right_target;
 private:
     //========================参数部分=======================
     /** 装甲板实际参数 */

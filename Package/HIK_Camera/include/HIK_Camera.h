@@ -15,6 +15,7 @@ public:
     cv::Mat Bayer;                              // 原始图片(Bayer格式)
     cv::Mat src;                                // 处理后图片(RGB格式)
     bool Camera_OK = true;                      // 相机运行状态
+    int PixelType;                              // 相机图片格式
 
     //========================= 相机使用函数 =========================
     HIK_Camera();                               // 相机构造函数(读取相机参数)

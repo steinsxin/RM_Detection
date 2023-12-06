@@ -40,6 +40,7 @@ namespace Robot{    // 设置命名空间
     enum Axes_State{ UNAWARE, LONG, SHORT, HIGH, LOW};                // 轴状态 (未知,长轴,短轴,高轴,矮轴)
     enum Balance{HIK_ON = 1,HIK_OFF = 2};                      // ON:自动白平衡     OFF:手动白平衡
     enum MDCamera{MD_ON = 1,MD_OFF = 2};                      //MD_ON: 开启相机名字模式 MD_OFF：关闭相机名字模式
+    enum HIKCamera_model{BayerGB8 = 1,BayerRG8 = 2};            // 录像图片格式,根据相机的图片格式进行修改
 }
 using namespace Robot;
 

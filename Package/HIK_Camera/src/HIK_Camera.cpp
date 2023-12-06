@@ -124,8 +124,8 @@ bool HIK_Camera::HIKCamera_StartRecord() {
     MV_CC_GetIntValue(handle, "WidthMax", &WidthMax);
     MV_CC_GetIntValue(handle, "HeightMax", &HeightMax);
     //========================== 录像参数 ==========================
-    Record.enPixelType = PixelType_Gvsp_BayerGB8;   //! 需要根据不同的型号进行更改 (CU013)
-//    Record.enPixelType = PixelType_Gvsp_BayerRG8;   //! 需要根据不同的型号进行更改 (CA016)
+    if(PixelType == Robot::BayerGB8)Record.enPixelType = PixelType_Gvsp_BayerGB8;   //! 需要根据不同的型号进行更改 (CU013)
+    if(PixelType == Robot::BayerRG8)Record.enPixelType = PixelType_Gvsp_BayerRG8;   //! 需要根据不同的型号进行更改 (CA016)
     Record.nWidth = WidthMax.nCurValue;             // 设置图像宽度
     Record.nHeight = HeightMax.nCurValue;           // 设置图像宽度
     Record.enRecordFmtType = MV_FormatType_AVI;     // 设置保存格式

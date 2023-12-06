@@ -80,6 +80,8 @@ void* HIK_Sample(void* Void){
     if(HIK.HIKCamera_Init()){
         HIK.HIKCamera_SetParam(1);        //设置相机参数(自动白平衡)
         HIK.HIKCamera_startGrabbing();   //相机开始取流
+        // HIK.PixelType = Robot::BayerGB8;    // 根据相机图片格式进行修改
+        HIK.PixelType = Robot::BayerRG8;    // 根据相机图片格式进行修改
         if (Record)HIK.HIKCamera_StartRecord();    // 相机开始录像
         while (HIK.Camera_OK){
             HIK.HIKCamera_read();        //读取相机图像
@@ -146,47 +148,105 @@ void* Image(void* Void){
             //! 整车观测
             bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
             // // 开始拟合圆心
+            double OK = false;
             if(AO_OK) {
-                double OK = false;
-                // double angle =  Tracker.enemy_armor.R[1]*(180.0f/CV_PI);
                 double angle =  AO.spin_angle*(180.0f/CV_PI);
+                // 左右角度
+                double select_angle_left = -30;
+                double select_angle_right = -40;
                 if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::LONG){
                     AO.Angle_Speed = Tracker.Angle_Speed; 
                     
-                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z);
+                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);
                     // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
                     // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
 //                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_Armor);
-                    //
-                    if(angle < -15 && angle > -20){
-                        // Eigen::Vector3d rpy = AS.Barrel_Solve(Tracker.enemy_armor.world_position);
-                        Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+
+
+                    // 根据旋转方向两确定跟踪两个点 逆时针旋转
+                    // if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
+                    //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+                    //     OK = true;
+                    //     Tracker.Solve_pitch = rpy[1];
+                    //     Tracker.Solve_yaw = rpy[2];
+                    // } 
+                    // // 固定点位需要修改
+                    // else {
+                    //     Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                    //     Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                    // }
+
+
+                    // 快速陀螺测试
+                    if(AO.Left_Armor_angle < select_angle_left && AO.Left_Armor_angle > select_angle_right){
+                        Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
                         OK = true;
                         Tracker.Solve_pitch = rpy[1];
                         Tracker.Solve_yaw = rpy[2];
-                    } else{
+                    } 
+                    // 固定点位需要修改
+                    else {
                         Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
                         Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
                     }
+
+                    // else if(AO.Left_Armor_angle < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > -select_angle_right){
+                    //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
+                    //     OK = true;
+                    //     Tracker.Solve_pitch = rpy[1];
+                    //     Tracker.Solve_yaw = rpy[2];
+                    // } 
+                    
+                    // else{
+                    //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.left_target);
+                    //     Tracker.Solve_pitch = rpy[1];
+                    //     Tracker.Solve_yaw = rpy[2];
+                    // }
 
                 }
                 else if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::SHORT)
                 {
 
-                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Short_axes,Tracker.OB[Tracker.tracking_id].center_Z);
+                    AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);
+
                     // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
                     // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
 //                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_Armor);
-                    if(angle < -15 && angle > -20){
-                        // Eigen::Vector3d rpy = AS.Barrel_Solve(Tracker.enemy_armor.world_position);
-                        Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+
+                    // 根据旋转方向两确定跟踪两个点 逆时针旋转
+                    // if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
+                    //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+                    //     OK = true;
+                    //     Tracker.Solve_pitch = rpy[1];
+                    //     Tracker.Solve_yaw = rpy[2];
+                    // } 
+                    // else {
+                    //     Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                    //     Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                    // }
+
+                    if(AO.Left_Armor_angle < select_angle_left && AO.Left_Armor_angle > select_angle_right){
+                        Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
                         OK = true;
                         Tracker.Solve_pitch = rpy[1];
                         Tracker.Solve_yaw = rpy[2];
-                    } else{
+                    } 
+                    // 固定点位需要修改
+                    else {
                         Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
                         Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
                     }
+                    // else if(AO.Left_Armor_angle < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > -select_angle_right){
+                    //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
+                    //     OK = true;
+                    //     Tracker.Solve_pitch = rpy[1];
+                    //     Tracker.Solve_yaw = rpy[2];
+                    // } 
+                    // else{
+                    //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.left_target);
+                    //     Tracker.Solve_pitch = rpy[1];
+                    //     Tracker.Solve_yaw = rpy[2];
+                    // }
                 }
                 cv::putText(src,"OK: "+ std::to_string(OK),cv::Point(0,100),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
@@ -197,11 +257,11 @@ void* Image(void* Void){
             // 如果需要选择打击角度就需要增加一个变量判断
             // 这里需要根据顺逆时针来调整击打角度范围
             if(Tracker.tracker_state == TRACKING && mode_temp == 0x21){
+
                 // 0: 不开火 1:单发开火
-                // double angle =  Tracker.enemy_armor.R[1]*(180.0f/CV_PI);
-                double angle =  AO.spin_angle*(180.0f/CV_PI);
+                double angle = AO.spin_angle*(180.0f/CV_PI);
                 double fire;
-                if(angle < -15 && angle > -20) fire = 1;
+                if(OK) fire = 1;
                 else fire = 0;
                 // TODO: 弹速设置为25,未改
                 vdata = { Tracker.Solve_pitch, Tracker.Solve_yaw, fire,0x31 };
@@ -227,11 +287,11 @@ int main(){
 // Record = true;
 #ifdef HIK
     pthread_create(&thread_1, NULL, HIK_Sample, NULL);
-    pthread_create(&thread_2, NULL, Image, NULL);
+   pthread_create(&thread_2, NULL, Image, NULL);
 
     // 等待线程1和线程2完成
     pthread_join(thread_1, NULL);
-    pthread_join(thread_2, NULL);
+   pthread_join(thread_2, NULL);
 
     // 销毁互斥锁
     pthread_mutex_destroy(&Mutex);
