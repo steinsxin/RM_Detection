@@ -1,3 +1,0 @@
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/AngleSolve/build/CMakeFiles/rebuild_cache.dir
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/AngleSolve/build/CMakeFiles/edit_cache.dir
-/home/steins_xin/CLionProjects/RM_Detection_install/Package/AngleSolve/build/CMakeFiles/AngleSolve.dir
