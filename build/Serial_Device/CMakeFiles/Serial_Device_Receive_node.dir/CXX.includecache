@@ -66,20 +66,6 @@ protocol.h
 crc.h
 /home/steins_xin/RM_Detection_ROS/src/Serial_Device/include/crc.h
 
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/crc.cpp
-crc.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/crc.h
-
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/serial_device.cpp
-serial_device.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/serial_device.h
-iostream
--
-
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/serial_main.cpp
-serial_main.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/serial_main.h
-
 /home/steins_xin/RM_Detection_ROS/src/public_include/protocol.h
 stdint.h
 /home/steins_xin/RM_Detection_ROS/src/public_include/stdint.h

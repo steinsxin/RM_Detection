@@ -11,6 +11,11 @@
         "/home/steins_xin/RM_Detection_ROS/src/public_include/**",
         "/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/**",
         "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/include/**",
+        "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/include/**",
+        "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/AngleSolve/include/**",
+        "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/include/**",
+        "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/include/**",
+        "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/include/**",
         "/home/steins_xin/catkin_ws/src/cv_bridge/include/**",
         "/usr/include/**"
 

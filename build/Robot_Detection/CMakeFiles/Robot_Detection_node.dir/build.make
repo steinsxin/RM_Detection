@@ -70,14 +70,134 @@ Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.s"
 	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/Robot_Detection.cpp -o CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.s
 
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/AngleSolve/src/AngleSolve.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/AngleSolve/src/AngleSolve.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/AngleSolve/src/AngleSolve.cpp > CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/AngleSolve/src/AngleSolve.cpp -o CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Armor_detection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Armor_detection.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Armor_detection.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Armor_detection.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Number_DNN.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Number_DNN.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Number_DNN.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/src/Number_DNN.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Armor_Observe.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Armor_Observe.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Armor_Observe.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Armor_Observe.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Circle_Kalman.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Circle_Kalman.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Circle_Kalman.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/src/Circle_Kalman.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Armor_Track.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Armor_Track.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Armor_Track.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Armor_Track.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Kalman.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Kalman.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Kalman.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/Kalman.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.s
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/flags.make
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/SpinTracker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o -c /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/SpinTracker.cpp
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.i"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/SpinTracker.cpp > CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.i
+
+Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.s"
+	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/src/SpinTracker.cpp -o CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.s
+
 # Object files for target Robot_Detection_node
 Robot_Detection_node_OBJECTS = \
-"CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.o"
+"CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o" \
+"CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o"
 
 # External object files for target Robot_Detection_node
 Robot_Detection_node_EXTERNAL_OBJECTS =
 
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o
+/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: /home/steins_xin/catkin_ws/devel/lib/libcv_bridge.so
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: /usr/local/lib/libopencv_core.so.4.5.5
@@ -164,7 +284,7 @@ Robot_Detection_node_EXTERNAL_OBJECTS =
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: /usr/local/lib/libopencv_imgproc.so.4.5.5
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: /usr/local/lib/libopencv_core.so.4.5.5
 /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steins_xin/RM_Detection_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable /home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node"
 	cd /home/steins_xin/RM_Detection_ROS/build/Robot_Detection && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Robot_Detection_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

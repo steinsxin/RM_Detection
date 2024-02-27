@@ -209,6 +209,222 @@ Robot_Detection.cpp.s:
 	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.s
 .PHONY : Robot_Detection.cpp.s
 
+src/AngleSolve/src/AngleSolve.o: src/AngleSolve/src/AngleSolve.cpp.o
+
+.PHONY : src/AngleSolve/src/AngleSolve.o
+
+# target to build an object file
+src/AngleSolve/src/AngleSolve.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o
+.PHONY : src/AngleSolve/src/AngleSolve.cpp.o
+
+src/AngleSolve/src/AngleSolve.i: src/AngleSolve/src/AngleSolve.cpp.i
+
+.PHONY : src/AngleSolve/src/AngleSolve.i
+
+# target to preprocess a source file
+src/AngleSolve/src/AngleSolve.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.i
+.PHONY : src/AngleSolve/src/AngleSolve.cpp.i
+
+src/AngleSolve/src/AngleSolve.s: src/AngleSolve/src/AngleSolve.cpp.s
+
+.PHONY : src/AngleSolve/src/AngleSolve.s
+
+# target to generate assembly for a file
+src/AngleSolve/src/AngleSolve.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.s
+.PHONY : src/AngleSolve/src/AngleSolve.cpp.s
+
+src/Armor_Detection/src/Armor_detection.o: src/Armor_Detection/src/Armor_detection.cpp.o
+
+.PHONY : src/Armor_Detection/src/Armor_detection.o
+
+# target to build an object file
+src/Armor_Detection/src/Armor_detection.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o
+.PHONY : src/Armor_Detection/src/Armor_detection.cpp.o
+
+src/Armor_Detection/src/Armor_detection.i: src/Armor_Detection/src/Armor_detection.cpp.i
+
+.PHONY : src/Armor_Detection/src/Armor_detection.i
+
+# target to preprocess a source file
+src/Armor_Detection/src/Armor_detection.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.i
+.PHONY : src/Armor_Detection/src/Armor_detection.cpp.i
+
+src/Armor_Detection/src/Armor_detection.s: src/Armor_Detection/src/Armor_detection.cpp.s
+
+.PHONY : src/Armor_Detection/src/Armor_detection.s
+
+# target to generate assembly for a file
+src/Armor_Detection/src/Armor_detection.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.s
+.PHONY : src/Armor_Detection/src/Armor_detection.cpp.s
+
+src/Armor_Detection/src/Number_DNN.o: src/Armor_Detection/src/Number_DNN.cpp.o
+
+.PHONY : src/Armor_Detection/src/Number_DNN.o
+
+# target to build an object file
+src/Armor_Detection/src/Number_DNN.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o
+.PHONY : src/Armor_Detection/src/Number_DNN.cpp.o
+
+src/Armor_Detection/src/Number_DNN.i: src/Armor_Detection/src/Number_DNN.cpp.i
+
+.PHONY : src/Armor_Detection/src/Number_DNN.i
+
+# target to preprocess a source file
+src/Armor_Detection/src/Number_DNN.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.i
+.PHONY : src/Armor_Detection/src/Number_DNN.cpp.i
+
+src/Armor_Detection/src/Number_DNN.s: src/Armor_Detection/src/Number_DNN.cpp.s
+
+.PHONY : src/Armor_Detection/src/Number_DNN.s
+
+# target to generate assembly for a file
+src/Armor_Detection/src/Number_DNN.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.s
+.PHONY : src/Armor_Detection/src/Number_DNN.cpp.s
+
+src/Armor_Observe/src/Armor_Observe.o: src/Armor_Observe/src/Armor_Observe.cpp.o
+
+.PHONY : src/Armor_Observe/src/Armor_Observe.o
+
+# target to build an object file
+src/Armor_Observe/src/Armor_Observe.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o
+.PHONY : src/Armor_Observe/src/Armor_Observe.cpp.o
+
+src/Armor_Observe/src/Armor_Observe.i: src/Armor_Observe/src/Armor_Observe.cpp.i
+
+.PHONY : src/Armor_Observe/src/Armor_Observe.i
+
+# target to preprocess a source file
+src/Armor_Observe/src/Armor_Observe.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.i
+.PHONY : src/Armor_Observe/src/Armor_Observe.cpp.i
+
+src/Armor_Observe/src/Armor_Observe.s: src/Armor_Observe/src/Armor_Observe.cpp.s
+
+.PHONY : src/Armor_Observe/src/Armor_Observe.s
+
+# target to generate assembly for a file
+src/Armor_Observe/src/Armor_Observe.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.s
+.PHONY : src/Armor_Observe/src/Armor_Observe.cpp.s
+
+src/Armor_Observe/src/Circle_Kalman.o: src/Armor_Observe/src/Circle_Kalman.cpp.o
+
+.PHONY : src/Armor_Observe/src/Circle_Kalman.o
+
+# target to build an object file
+src/Armor_Observe/src/Circle_Kalman.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o
+.PHONY : src/Armor_Observe/src/Circle_Kalman.cpp.o
+
+src/Armor_Observe/src/Circle_Kalman.i: src/Armor_Observe/src/Circle_Kalman.cpp.i
+
+.PHONY : src/Armor_Observe/src/Circle_Kalman.i
+
+# target to preprocess a source file
+src/Armor_Observe/src/Circle_Kalman.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.i
+.PHONY : src/Armor_Observe/src/Circle_Kalman.cpp.i
+
+src/Armor_Observe/src/Circle_Kalman.s: src/Armor_Observe/src/Circle_Kalman.cpp.s
+
+.PHONY : src/Armor_Observe/src/Circle_Kalman.s
+
+# target to generate assembly for a file
+src/Armor_Observe/src/Circle_Kalman.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.s
+.PHONY : src/Armor_Observe/src/Circle_Kalman.cpp.s
+
+src/Armor_Track/src/Armor_Track.o: src/Armor_Track/src/Armor_Track.cpp.o
+
+.PHONY : src/Armor_Track/src/Armor_Track.o
+
+# target to build an object file
+src/Armor_Track/src/Armor_Track.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o
+.PHONY : src/Armor_Track/src/Armor_Track.cpp.o
+
+src/Armor_Track/src/Armor_Track.i: src/Armor_Track/src/Armor_Track.cpp.i
+
+.PHONY : src/Armor_Track/src/Armor_Track.i
+
+# target to preprocess a source file
+src/Armor_Track/src/Armor_Track.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.i
+.PHONY : src/Armor_Track/src/Armor_Track.cpp.i
+
+src/Armor_Track/src/Armor_Track.s: src/Armor_Track/src/Armor_Track.cpp.s
+
+.PHONY : src/Armor_Track/src/Armor_Track.s
+
+# target to generate assembly for a file
+src/Armor_Track/src/Armor_Track.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.s
+.PHONY : src/Armor_Track/src/Armor_Track.cpp.s
+
+src/Armor_Track/src/Kalman.o: src/Armor_Track/src/Kalman.cpp.o
+
+.PHONY : src/Armor_Track/src/Kalman.o
+
+# target to build an object file
+src/Armor_Track/src/Kalman.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o
+.PHONY : src/Armor_Track/src/Kalman.cpp.o
+
+src/Armor_Track/src/Kalman.i: src/Armor_Track/src/Kalman.cpp.i
+
+.PHONY : src/Armor_Track/src/Kalman.i
+
+# target to preprocess a source file
+src/Armor_Track/src/Kalman.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.i
+.PHONY : src/Armor_Track/src/Kalman.cpp.i
+
+src/Armor_Track/src/Kalman.s: src/Armor_Track/src/Kalman.cpp.s
+
+.PHONY : src/Armor_Track/src/Kalman.s
+
+# target to generate assembly for a file
+src/Armor_Track/src/Kalman.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.s
+.PHONY : src/Armor_Track/src/Kalman.cpp.s
+
+src/Armor_Track/src/SpinTracker.o: src/Armor_Track/src/SpinTracker.cpp.o
+
+.PHONY : src/Armor_Track/src/SpinTracker.o
+
+# target to build an object file
+src/Armor_Track/src/SpinTracker.cpp.o:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o
+.PHONY : src/Armor_Track/src/SpinTracker.cpp.o
+
+src/Armor_Track/src/SpinTracker.i: src/Armor_Track/src/SpinTracker.cpp.i
+
+.PHONY : src/Armor_Track/src/SpinTracker.i
+
+# target to preprocess a source file
+src/Armor_Track/src/SpinTracker.cpp.i:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.i
+.PHONY : src/Armor_Track/src/SpinTracker.cpp.i
+
+src/Armor_Track/src/SpinTracker.s: src/Armor_Track/src/SpinTracker.cpp.s
+
+.PHONY : src/Armor_Track/src/SpinTracker.s
+
+# target to generate assembly for a file
+src/Armor_Track/src/SpinTracker.cpp.s:
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.s
+.PHONY : src/Armor_Track/src/SpinTracker.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -226,6 +442,30 @@ help:
 	@echo "... Robot_Detection.o"
 	@echo "... Robot_Detection.i"
 	@echo "... Robot_Detection.s"
+	@echo "... src/AngleSolve/src/AngleSolve.o"
+	@echo "... src/AngleSolve/src/AngleSolve.i"
+	@echo "... src/AngleSolve/src/AngleSolve.s"
+	@echo "... src/Armor_Detection/src/Armor_detection.o"
+	@echo "... src/Armor_Detection/src/Armor_detection.i"
+	@echo "... src/Armor_Detection/src/Armor_detection.s"
+	@echo "... src/Armor_Detection/src/Number_DNN.o"
+	@echo "... src/Armor_Detection/src/Number_DNN.i"
+	@echo "... src/Armor_Detection/src/Number_DNN.s"
+	@echo "... src/Armor_Observe/src/Armor_Observe.o"
+	@echo "... src/Armor_Observe/src/Armor_Observe.i"
+	@echo "... src/Armor_Observe/src/Armor_Observe.s"
+	@echo "... src/Armor_Observe/src/Circle_Kalman.o"
+	@echo "... src/Armor_Observe/src/Circle_Kalman.i"
+	@echo "... src/Armor_Observe/src/Circle_Kalman.s"
+	@echo "... src/Armor_Track/src/Armor_Track.o"
+	@echo "... src/Armor_Track/src/Armor_Track.i"
+	@echo "... src/Armor_Track/src/Armor_Track.s"
+	@echo "... src/Armor_Track/src/Kalman.o"
+	@echo "... src/Armor_Track/src/Kalman.i"
+	@echo "... src/Armor_Track/src/Kalman.s"
+	@echo "... src/Armor_Track/src/SpinTracker.o"
+	@echo "... src/Armor_Track/src/SpinTracker.i"
+	@echo "... src/Armor_Track/src/SpinTracker.s"
 .PHONY : help
 
 

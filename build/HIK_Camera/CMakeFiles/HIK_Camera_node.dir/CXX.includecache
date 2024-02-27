@@ -48,6 +48,10 @@ CameraParams.h
 stdint.h
 -
 
+/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/src/HIK_Camera.cpp
+HIK_Camera.h
+/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/src/HIK_Camera.h
+
 /home/steins_xin/RM_Detection_ROS/src/public_include/robot_status.h
 opencv2/opencv.hpp
 -
