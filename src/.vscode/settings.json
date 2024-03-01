@@ -1,0 +1,18 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages",
+        "/home/steins_xin/RM_Detection_ROS/devel/lib/python3/dist-packages",
+        "/home/steins_xin/catkin_ws/devel/lib/python3/dist-packages",
+        "/home/steins_xin/vision_2023/devel/lib/python3/dist-packages",
+        "/home/steins_xin/ROS/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages",
+        "/home/steins_xin/RM_Detection_ROS/devel/lib/python3/dist-packages",
+        "/home/steins_xin/catkin_ws/devel/lib/python3/dist-packages",
+        "/home/steins_xin/vision_2023/devel/lib/python3/dist-packages",
+        "/home/steins_xin/ROS/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

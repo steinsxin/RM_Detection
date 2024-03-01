@@ -1,0 +1,37 @@
+<!-- 左云台启动文件 -->
+<launch>
+    <!-- <node
+        name="HIK_Camera"
+        pkg="HIK_Camera"
+        type="HIK_Camera_node"
+        respawn="true"  
+        >
+    </node> -->
+
+    <node
+        name="Serial_Device_Send"
+        pkg="Serial_Device"
+        type="Serial_Device_Send_node"
+        output="screen"
+        respawn="true"   
+        >
+    </node>
+
+    <node
+        name="Serial_Device_Receive"
+        pkg="Serial_Device"
+        type="Serial_Device_Receive_node"
+        output="screen"
+        respawn="true"  
+        >
+    </node>
+
+    <!-- <node
+        name="Robot_Detection"
+        pkg="Robot_Detection"
+        type="Robot_Detection_node"
+        output="screen"
+        respawn="true"  
+        >
+    </node> -->
+</launch>
