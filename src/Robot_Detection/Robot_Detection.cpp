@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include <ros/time.h>
+#include <ros/package.h>
 
 // 结构体
 #include "protocol.h"
@@ -56,8 +57,6 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
 
     // 读取图片
     src = cv_bridge::toCvShare(src_msg, "bgr8")->image;
-    cv::imshow("HIK_Camera_Receive", src);
-    cv::waitKey(1);
 
     // 读取IMU数据
     Vision_data.data[0] = Vision_msg->pitch;  // pitch
@@ -71,17 +70,18 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     }
     
 
-    ROS_INFO("Pitch: %.2f",Vision_msg->pitch);
+    // ROS_INFO("Pitch: %.2f",Vision_msg->pitch);
 
     // 初始化四元数
     Tracker.AS.Init(Vision_data.data, Vision_data.quat);
     AO.AS.Init(Vision_data.data, Vision_data.quat);
 
     // 进行识别处理
-    // Targets = Detector.Detection(src);
+    Targets = Detector.Detection(src);
     // // 获取最终装甲板
-    // Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
-    // Tracker.show();
+    Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
+    Tracker.show();
+    cv::waitKey(1);
    
     // // 整车观测
     // bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
@@ -205,15 +205,13 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     // else fire = 0;
 
     // 填充数据
-    Robot_ctrl_t.pitch = 10;
-    Robot_ctrl_t.yaw = 15;
+    Robot_ctrl_t.pitch = Tracker.Solve_pitch;
+    Robot_ctrl_t.yaw = Tracker.Solve_yaw;
     Robot_ctrl_t.fire_command = 0;
     Robot_ctrl_t.target_lock = 0x31;
 
     // 发送数据
     Vision_pub.publish(Robot_ctrl_t);
-
-
 }
 
 
@@ -241,7 +239,7 @@ int main(int argc, char *argv[]){
 
     // 创建同步器对象
     message_filters::Synchronizer<MySyncPolicy> sync(MySyncPolicy(10), HIK_Camera_sub, Imu_sub);
-
+    
     ROS_INFO("--Robot_Detection Start--");
     // 注册同步回调函数
     sync.registerCallback(boost::bind(&callback, _1, _2));

@@ -10,7 +10,8 @@
 #include "robot_status.h"
 #include "robot_struct.h"
 #include "Number_DNN.h"
-
+// ROS
+#include <ros/package.h>
 
 //灯条结构体
 //struct Light : public cv::RotatedRect     //灯条结构体

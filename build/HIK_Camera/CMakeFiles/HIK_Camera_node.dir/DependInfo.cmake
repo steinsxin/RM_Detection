@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/HIK_Camera_node.cpp" "/home/steins_xin/RM_Detection_ROS/build/HIK_Camera/CMakeFiles/HIK_Camera_node.dir/HIK_Camera_node.cpp.o"
-  "/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/src/HIK_Camera.cpp" "/home/steins_xin/RM_Detection_ROS/build/HIK_Camera/CMakeFiles/HIK_Camera_node.dir/src/HIK_Camera.cpp.o"
+  "/home/hj/RM_Detection_ROS/src/HIK_Camera/HIK_Camera_node.cpp" "/home/hj/RM_Detection_ROS/build/HIK_Camera/CMakeFiles/HIK_Camera_node.dir/HIK_Camera_node.cpp.o"
+  "/home/hj/RM_Detection_ROS/src/HIK_Camera/src/HIK_Camera.cpp" "/home/hj/RM_Detection_ROS/build/HIK_Camera/CMakeFiles/HIK_Camera_node.dir/src/HIK_Camera.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,12 +18,12 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/steins_xin/catkin_ws/src/cv_bridge/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/home/hj/catkin_ws/src/cv_bridge/include"
   "/usr/include/eigen3"
-  "/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include"
-  "/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/../public_include"
+  "/home/hj/RM_Detection_ROS/src/HIK_Camera/include"
+  "/home/hj/RM_Detection_ROS/src/HIK_Camera/../public_include"
   "/usr/local/include/opencv4"
   )
 

@@ -15,7 +15,8 @@ using namespace std;
 ArmorDetector::ArmorDetector()
 {
     //============================= 参数文件路径 =============================
-    FileStorage fs(PATH "Detect_data.yaml", FileStorage::READ);
+    std::string package_path = ros::package::getPath("Robot_Detection");
+    FileStorage fs(package_path + "/SetParam_File/Detect_data.yaml", FileStorage::READ);
 
     /** 二值化阈值*/
     binThresh = (int)fs["binThresh"];

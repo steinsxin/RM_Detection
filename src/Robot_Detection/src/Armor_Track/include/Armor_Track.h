@@ -13,6 +13,8 @@
 #include "robot_status.h"
 #include "robot_struct.h"
 #include "AngleSolve.h"
+// ROS
+#include <ros/package.h>
 
 /** 跟踪状态 */
 enum TrackerState {

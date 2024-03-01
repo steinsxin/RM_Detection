@@ -5,13 +5,17 @@
 #ifndef RM_DETECTION_ANGLESOLVE_H
 #define RM_DETECTION_ANGLESOLVE_H
 
-
 #include <Eigen/Dense>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/eigen.hpp>
+
 //外部头文件
 #include "robot_status.h"
 #include "robot_struct.h"
+
+// ROS
+#include <ros/package.h>
+
 
 class AngleSolve : public robot_state {
 public:

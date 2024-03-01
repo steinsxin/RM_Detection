@@ -12,7 +12,9 @@ using namespace std;
 DNN_detect::DNN_detect()
 {
     //============================= 参数文件路径 =============================
-    FileStorage fs(PATH "Dnn_data.yaml", FileStorage::READ);
+    std::string package_path = ros::package::getPath("Robot_Detection");
+    FileStorage fs(package_path + "/SetParam_File/Dnn_data.yaml", FileStorage::READ);
+
     net_path = (string)fs["net_path"];
     input_width = (int)fs["input_width"];
     input_height = (int)fs["input_height"];

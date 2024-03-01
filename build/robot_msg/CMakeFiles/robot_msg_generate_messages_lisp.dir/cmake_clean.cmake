@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/RM_Detection_ROS/devel/share/common-lisp/ros/robot_msg/msg/Robot_ctrl.lisp"
-  "/home/steins_xin/RM_Detection_ROS/devel/share/common-lisp/ros/robot_msg/msg/Vision.lisp"
+  "/home/hj/RM_Detection_ROS/devel/share/common-lisp/ros/robot_msg/msg/Robot_ctrl.lisp"
+  "/home/hj/RM_Detection_ROS/devel/share/common-lisp/ros/robot_msg/msg/Vision.lisp"
   "CMakeFiles/robot_msg_generate_messages_lisp"
 )
 

@@ -9,7 +9,8 @@
 using namespace Robot;
 ArmorTrack::ArmorTrack() {
 
-    cv::FileStorage fs(PATH "Track_data.yaml", cv::FileStorage::READ);
+    std::string package_path = ros::package::getPath("Robot_Detection");
+    cv::FileStorage fs(package_path + "/SetParam_File/Track_data.yaml", cv::FileStorage::READ);
 
     //=========================初始化=========================
     /** 卡尔曼 */

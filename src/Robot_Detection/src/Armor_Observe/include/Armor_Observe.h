@@ -12,6 +12,8 @@
 #include "robot_struct.h"
 #include "AngleSolve.h"
 #include "Armor_Track.h"
+// ROS
+#include <ros/package.h>
 
 /** 平滑滤波结构体 */
 struct Smooth{

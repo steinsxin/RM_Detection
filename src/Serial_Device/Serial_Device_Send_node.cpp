@@ -44,9 +44,12 @@ int main(int argc, char *argv[]){
             vision_t.pitch = serial.vision_msg_.pitch;
             vision_t.yaw = serial.vision_msg_.yaw;
             vision_t.roll = serial.vision_msg_.roll;
-            for (size_t i = 0; i < 4; i++)
+            
+            //! 注意:自定义数组resize设置大小,不然会出现数据错误的情况 
+            vision_t.quaternion.resize(4);
+            for (int i = 0; i < 4; i++)
             {
-                vision_t.quaternion.push_back(serial.vision_msg_.quaternion[i]);
+                vision_t.quaternion[i] = serial.vision_msg_.quaternion[i];
             }
             vision_t.shoot = serial.vision_msg_.shoot;
 

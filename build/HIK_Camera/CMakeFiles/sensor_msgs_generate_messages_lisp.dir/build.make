@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steins_xin/RM_Detection_ROS/src
+CMAKE_SOURCE_DIR = /home/hj/RM_Detection_ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_ROS/build
+CMAKE_BINARY_DIR = /home/hj/RM_Detection_ROS/build
 
 # Utility rule file for sensor_msgs_generate_messages_lisp.
 
@@ -63,10 +63,10 @@ HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build: sensor_msgs_
 .PHONY : HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 
 HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
-	cd /home/steins_xin/RM_Detection_ROS/build/HIK_Camera && $(CMAKE_COMMAND) -P CMakeFiles/sensor_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/hj/RM_Detection_ROS/build/HIK_Camera && $(CMAKE_COMMAND) -P CMakeFiles/sensor_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend:
-	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/RM_Detection_ROS/src /home/steins_xin/RM_Detection_ROS/src/HIK_Camera /home/steins_xin/RM_Detection_ROS/build /home/steins_xin/RM_Detection_ROS/build/HIK_Camera /home/steins_xin/RM_Detection_ROS/build/HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/RM_Detection_ROS/src /home/hj/RM_Detection_ROS/src/HIK_Camera /home/hj/RM_Detection_ROS/build /home/hj/RM_Detection_ROS/build/HIK_Camera /home/hj/RM_Detection_ROS/build/HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : HIK_Camera/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
 

@@ -11,7 +11,9 @@ void KalmanFilter::Initial() {
          0, 1, 0, 0, 0, 0,
          0, 0, 1, 0, 0, 0;
 
-    cv::FileStorage fs(PATH "Kalman_data.yaml", cv::FileStorage::READ);
+    std::string package_path = ros::package::getPath("Robot_Detection");
+    cv::FileStorage fs(package_path + "/SetParam_File/Kalman_data.yaml", cv::FileStorage::READ);
+
     cv::Mat Q_, R_;
     fs["Q"] >> Q_;
     fs["R"] >> R_;

@@ -6,27 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/steins_xin/RM_Detection_ROS/devel/include/robot_msg/Robot_ctrl.h
-string
--
-vector
--
-memory
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/Send_test.cpp
+/home/hj/RM_Detection_ROS/src/Serial_Device/Send_test.cpp
 ros/ros.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/ros/ros.h
+/home/hj/RM_Detection_ROS/src/Serial_Device/ros/ros.h
 robot_msg/Robot_ctrl.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/robot_msg/Robot_ctrl.h
+/home/hj/RM_Detection_ROS/src/Serial_Device/robot_msg/Robot_ctrl.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -236,10 +220,6 @@ boost/make_shared.hpp
 cstddef
 -
 memory
--
-
-/opt/ros/noetic/include/ros/message_operations.h
-ostream
 -
 
 /opt/ros/noetic/include/ros/message_traits.h

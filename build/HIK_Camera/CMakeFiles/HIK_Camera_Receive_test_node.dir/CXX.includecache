@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/Receive_test.cpp
+/home/hj/RM_Detection_ROS/src/HIK_Camera/Receive_test.cpp
 ros/ros.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/ros/ros.h
+/home/hj/RM_Detection_ROS/src/HIK_Camera/ros/ros.h
 opencv2/opencv.hpp
 -
 image_transport/image_transport.h
@@ -22,7 +22,7 @@ sensor_msgs/image_encodings.h
 sensor_msgs/CompressedImage.h
 -
 
-/home/steins_xin/catkin_ws/src/cv_bridge/include/cv_bridge/cv_bridge.h
+/opt/ros/noetic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h
 -
 sensor_msgs/CompressedImage.h

@@ -6,29 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/steins_xin/RM_Detection_ROS/devel/include/robot_msg/Vision.h
-string
--
-vector
--
-memory
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/Reveice_test.cpp
+/home/hj/RM_Detection_ROS/src/Serial_Device/Reveice_test.cpp
 ros/ros.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/ros/ros.h
+/home/hj/RM_Detection_ROS/src/Serial_Device/ros/ros.h
 robot_msg/Vision.h
-/home/steins_xin/RM_Detection_ROS/src/Serial_Device/robot_msg/Vision.h
+/home/hj/RM_Detection_ROS/src/Serial_Device/robot_msg/Vision.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -238,10 +220,6 @@ boost/make_shared.hpp
 cstddef
 -
 memory
--
-
-/opt/ros/noetic/include/ros/message_operations.h
-ostream
 -
 
 /opt/ros/noetic/include/ros/message_traits.h
@@ -677,22 +655,6 @@ ros/forwards.h
 /opt/ros/noetic/include/ros/ros/forwards.h
 
 /opt/ros/noetic/include/rosconsole/macros_generated.h
-
-/opt/ros/noetic/include/std_msgs/Header.h
-string
--
-vector
--
-memory
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
 
 /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 ros/macros.h

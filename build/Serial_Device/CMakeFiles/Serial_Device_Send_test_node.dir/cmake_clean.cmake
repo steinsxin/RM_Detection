@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Send_test_node"
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Send_test_node.pdb"
+  "/home/hj/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Send_test_node"
+  "/home/hj/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Send_test_node.pdb"
   "CMakeFiles/Serial_Device_Send_test_node.dir/Send_test.cpp.o"
 )
 

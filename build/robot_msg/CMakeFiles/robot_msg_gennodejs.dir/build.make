@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steins_xin/RM_Detection_ROS/src
+CMAKE_SOURCE_DIR = /home/hj/RM_Detection_ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_ROS/build
+CMAKE_BINARY_DIR = /home/hj/RM_Detection_ROS/build
 
 # Utility rule file for robot_msg_gennodejs.
 
@@ -63,10 +63,10 @@ robot_msg/CMakeFiles/robot_msg_gennodejs.dir/build: robot_msg_gennodejs
 .PHONY : robot_msg/CMakeFiles/robot_msg_gennodejs.dir/build
 
 robot_msg/CMakeFiles/robot_msg_gennodejs.dir/clean:
-	cd /home/steins_xin/RM_Detection_ROS/build/robot_msg && $(CMAKE_COMMAND) -P CMakeFiles/robot_msg_gennodejs.dir/cmake_clean.cmake
+	cd /home/hj/RM_Detection_ROS/build/robot_msg && $(CMAKE_COMMAND) -P CMakeFiles/robot_msg_gennodejs.dir/cmake_clean.cmake
 .PHONY : robot_msg/CMakeFiles/robot_msg_gennodejs.dir/clean
 
 robot_msg/CMakeFiles/robot_msg_gennodejs.dir/depend:
-	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/RM_Detection_ROS/src /home/steins_xin/RM_Detection_ROS/src/robot_msg /home/steins_xin/RM_Detection_ROS/build /home/steins_xin/RM_Detection_ROS/build/robot_msg /home/steins_xin/RM_Detection_ROS/build/robot_msg/CMakeFiles/robot_msg_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/RM_Detection_ROS/src /home/hj/RM_Detection_ROS/src/robot_msg /home/hj/RM_Detection_ROS/build /home/hj/RM_Detection_ROS/build/robot_msg /home/hj/RM_Detection_ROS/build/robot_msg/CMakeFiles/robot_msg_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : robot_msg/CMakeFiles/robot_msg_gennodejs.dir/depend
 

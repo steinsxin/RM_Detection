@@ -6,7 +6,8 @@
 
 HIK_Camera::HIK_Camera() {
     //============================= 参数文件路径 =============================
-    cv::FileStorage fs( PATH "HIKCamera_Param.yaml", cv::FileStorage::READ);
+    std::string package_path = ros::package::getPath("HIK_Camera");
+    cv::FileStorage fs(package_path + "/../SetParam_File/HIKCamera_Param.yaml", cv::FileStorage::READ);
     //============================= 相机读取参数 =============================
     ExposureTime = (float)fs["ExposureTime"];
     Gain = (float)fs["Gain"];
@@ -55,6 +56,48 @@ bool HIK_Camera::HIKCamera_Init() {
     return true;
 }
 
+bool HIK_Camera::HIKCamera_cUsername_Init(char* Name){
+    //============================= 枚举设备 =============================
+    nRet = MV_CC_EnumDevices(MV_GIGE_DEVICE | MV_USB_DEVICE, &stDeviceList);
+    if (MV_OK != nRet) {
+        printf("MV_CC_EnumDevices fail! nRet [%x]\n", nRet);
+        return false;
+    }
+    bool OK = false;
+    if (stDeviceList.nDeviceNum > 0) {
+        for (int i = 0; i < stDeviceList.nDeviceNum; i++) {
+            MV_CC_DEVICE_INFO *pDeviceInfo = stDeviceList.pDeviceInfo[i];
+            if (NULL == pDeviceInfo) {
+                return false;
+            }
+            //================== 相机自定义命名初始化 ===================
+            if(strcmp((const char*)pDeviceInfo->SpecialInfo.stUsb3VInfo.chUserDefinedName,Name) == 0){
+                // 打印相机自定义命名
+                printf("[HIKCamera Device %d]\n", i);
+                printf("[ccdName: %s]\n", Name);
+                OK = true;
+            }
+        }
+    }
+    if(!OK){
+        printf("Find No HIKCamera [%s]!\n",Name);
+        return false;
+    }
+   
+    //========================= 选择设备并创建句柄 =========================
+    nRet = MV_CC_CreateHandle(&handle, stDeviceList.pDeviceInfo[nIndex]);
+    if (MV_OK != nRet) {
+        printf("MV_CC_CreateHandle fail! nRet [%x]\n", nRet);
+        return false;
+    }
+    //============================= 打开设备 =============================
+    nRet = MV_CC_OpenDevice(handle);
+    if (MV_OK != nRet) {
+        printf("MV_CC_OpenDevice fail! nRet [%x]\n", nRet);
+        return false;
+    }
+    return true;
+}
 
 bool HIK_Camera::HIKCamera_SetParam(int WhiteAuto) {
     //========================= 设置相机曝光时间 =========================

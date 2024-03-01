@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steins_xin/RM_Detection_ROS/src
+CMAKE_SOURCE_DIR = /home/hj/RM_Detection_ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_ROS/build
+CMAKE_BINARY_DIR = /home/hj/RM_Detection_ROS/build
 
 # Utility rule file for rosgraph_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build: rosgraph_
 .PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 
 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
-	cd /home/steins_xin/RM_Detection_ROS/build/Serial_Device && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/hj/RM_Detection_ROS/build/Serial_Device && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 
 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend:
-	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/RM_Detection_ROS/src /home/steins_xin/RM_Detection_ROS/src/Serial_Device /home/steins_xin/RM_Detection_ROS/build /home/steins_xin/RM_Detection_ROS/build/Serial_Device /home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/RM_Detection_ROS/src /home/hj/RM_Detection_ROS/src/Serial_Device /home/hj/RM_Detection_ROS/build /home/hj/RM_Detection_ROS/build/Serial_Device /home/hj/RM_Detection_ROS/build/Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
 

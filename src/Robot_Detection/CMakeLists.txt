@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   image_transport
   message_filters
   sensor_msgs
+  roslib
 )
 
 # 链接Opencv和Eigen3

@@ -1,6 +1,8 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include "robot_status.h"
+// ROS
+#include <ros/package.h>
 
 class DNN_detect{
     std::string net_path;   // onnx模型路径

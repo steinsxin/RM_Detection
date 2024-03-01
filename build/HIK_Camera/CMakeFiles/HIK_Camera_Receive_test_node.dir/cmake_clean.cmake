@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/HIK_Camera/HIK_Camera_Receive_test_node"
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/HIK_Camera/HIK_Camera_Receive_test_node.pdb"
+  "/home/hj/RM_Detection_ROS/devel/lib/HIK_Camera/HIK_Camera_Receive_test_node"
+  "/home/hj/RM_Detection_ROS/devel/lib/HIK_Camera/HIK_Camera_Receive_test_node.pdb"
   "CMakeFiles/HIK_Camera_Receive_test_node.dir/Receive_test.cpp.o"
 )
 

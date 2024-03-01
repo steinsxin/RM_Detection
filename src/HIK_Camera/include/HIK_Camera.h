@@ -9,7 +9,8 @@
 //外部头文件
 #include "HIK_Camera_H/MvCameraControl.h"
 #include "robot_status.h"
-
+// ROS
+#include <ros/package.h>
 
 class HIK_Camera {
 public:
@@ -20,6 +21,7 @@ public:
     //========================= 相机使用函数 =========================
     HIK_Camera();                               // 相机构造函数(读取相机参数)
     bool HIKCamera_Init();                      // 海康工业相机初始化
+    bool HIKCamera_cUsername_Init(char* Name);  // 海康工业相机自定义命名初始化
     bool HIKCamera_SetParam(int WhiteAuto);     // 设置海康工业相机参数(是否开启白平衡)
     bool HIKCamera_startGrabbing();             // 相机开启取流
     void HIKCamera_read();                      // 读取相机图像(多线程)(是否录像)

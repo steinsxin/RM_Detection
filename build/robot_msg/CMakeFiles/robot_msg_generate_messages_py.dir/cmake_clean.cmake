@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Robot_ctrl.py"
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Vision.py"
-  "/home/steins_xin/RM_Detection_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py"
+  "/home/hj/RM_Detection_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Robot_ctrl.py"
+  "/home/hj/RM_Detection_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Vision.py"
+  "/home/hj/RM_Detection_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py"
   "CMakeFiles/robot_msg_generate_messages_py"
 )
 

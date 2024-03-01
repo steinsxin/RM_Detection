@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   image_transport
   sensor_msgs
+  roslib
 )
 # 链接Opencv和Eigen3
 find_package(OpenCV 4.5 REQUIRED)

@@ -10,6 +10,8 @@
 #include <opencv2/core/eigen.hpp>
 // 外部头文件
 #include "robot_status.h"
+// ROS
+#include <ros/package.h>
 
 class KalmanFilter {
 public:
