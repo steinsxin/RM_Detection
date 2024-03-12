@@ -21,12 +21,11 @@ class Vision {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.header = null;
       this.id = null;
-      this.mode = null;
       this.pitch = null;
       this.yaw = null;
       this.roll = null;
       this.quaternion = null;
-      this.shoot = null;
+      this.shoot_spd = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -40,12 +39,6 @@ class Vision {
       }
       else {
         this.id = 0;
-      }
-      if (initObj.hasOwnProperty('mode')) {
-        this.mode = initObj.mode
-      }
-      else {
-        this.mode = 0;
       }
       if (initObj.hasOwnProperty('pitch')) {
         this.pitch = initObj.pitch
@@ -71,11 +64,11 @@ class Vision {
       else {
         this.quaternion = [];
       }
-      if (initObj.hasOwnProperty('shoot')) {
-        this.shoot = initObj.shoot
+      if (initObj.hasOwnProperty('shoot_spd')) {
+        this.shoot_spd = initObj.shoot_spd
       }
       else {
-        this.shoot = 0.0;
+        this.shoot_spd = 0.0;
       }
     }
   }
@@ -86,8 +79,6 @@ class Vision {
     bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
     // Serialize message field [id]
     bufferOffset = _serializer.uint16(obj.id, buffer, bufferOffset);
-    // Serialize message field [mode]
-    bufferOffset = _serializer.uint16(obj.mode, buffer, bufferOffset);
     // Serialize message field [pitch]
     bufferOffset = _serializer.float32(obj.pitch, buffer, bufferOffset);
     // Serialize message field [yaw]
@@ -96,8 +87,8 @@ class Vision {
     bufferOffset = _serializer.float32(obj.roll, buffer, bufferOffset);
     // Serialize message field [quaternion]
     bufferOffset = _arraySerializer.float32(obj.quaternion, buffer, bufferOffset, null);
-    // Serialize message field [shoot]
-    bufferOffset = _serializer.float32(obj.shoot, buffer, bufferOffset);
+    // Serialize message field [shoot_spd]
+    bufferOffset = _serializer.float32(obj.shoot_spd, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -109,8 +100,6 @@ class Vision {
     data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
     // Deserialize message field [id]
     data.id = _deserializer.uint16(buffer, bufferOffset);
-    // Deserialize message field [mode]
-    data.mode = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [pitch]
     data.pitch = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [yaw]
@@ -119,8 +108,8 @@ class Vision {
     data.roll = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [quaternion]
     data.quaternion = _arrayDeserializer.float32(buffer, bufferOffset, null)
-    // Deserialize message field [shoot]
-    data.shoot = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [shoot_spd]
+    data.shoot_spd = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
@@ -128,7 +117,7 @@ class Vision {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
     length += 4 * object.quaternion.length;
-    return length + 24;
+    return length + 22;
   }
 
   static datatype() {
@@ -138,20 +127,19 @@ class Vision {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'b30d54651ad2a2d8242e6a86edff3997';
+    return 'e9ed3a3b641ae2139fa852e5cf4f6219';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
       Header header
-      uint16 id
-      uint16 mode
+      uint16 id         # 1:蓝 2:红 
       float32 pitch
       float32 yaw
       float32 roll
       float32[] quaternion
-      float32 shoot
+      float32 shoot_spd
     ================================================================================
     MSG: std_msgs/Header
     # Standard metadata for higher-level stamped data types.
@@ -191,13 +179,6 @@ class Vision {
       resolved.id = 0
     }
 
-    if (msg.mode !== undefined) {
-      resolved.mode = msg.mode;
-    }
-    else {
-      resolved.mode = 0
-    }
-
     if (msg.pitch !== undefined) {
       resolved.pitch = msg.pitch;
     }
@@ -226,11 +207,11 @@ class Vision {
       resolved.quaternion = []
     }
 
-    if (msg.shoot !== undefined) {
-      resolved.shoot = msg.shoot;
+    if (msg.shoot_spd !== undefined) {
+      resolved.shoot_spd = msg.shoot_spd;
     }
     else {
-      resolved.shoot = 0.0
+      resolved.shoot_spd = 0.0
     }
 
     return resolved;

@@ -20,6 +20,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/src/Communication/../../devel/include"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/Communication/../public_include"
+  "/usr/local/include/opencv4"
   )
 
 # Targets to which this target links.

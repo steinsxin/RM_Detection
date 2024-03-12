@@ -61,7 +61,7 @@ struct Armor : public cv::RotatedRect    //装甲板结构体
 //////////////////////////////  Serial_Device结构体  //////////////////////////////
 typedef struct form
 {
-    int mode;                           // 模式
+    int id;                           // 模式
     int dat_is_get;                     // 数据是否获取
     float data[3];                      // pitch yaw shoot
     float quat[4];                      // 四元数

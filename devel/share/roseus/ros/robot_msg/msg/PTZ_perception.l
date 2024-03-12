@@ -16,25 +16,29 @@
 
 (defclass robot_msg::PTZ_perception
   :super ros::object
-  :slots (_header _yaw _pitch _score _target_lock _fire_command _fire_mode ))
+  :slots (_header _track_id _yaw _pitch _score _target_lock _spin_state _fire_command _fire_mode ))
 
 (defmethod robot_msg::PTZ_perception
   (:init
    (&key
     ((:header __header) (instance std_msgs::Header :init))
+    ((:track_id __track_id) 0)
     ((:yaw __yaw) 0.0)
     ((:pitch __pitch) 0.0)
     ((:score __score) 0)
     ((:target_lock __target_lock) 0)
+    ((:spin_state __spin_state) 0)
     ((:fire_command __fire_command) 0)
     ((:fire_mode __fire_mode) 0)
     )
    (send-super :init)
    (setq _header __header)
+   (setq _track_id (round __track_id))
    (setq _yaw (float __yaw))
    (setq _pitch (float __pitch))
    (setq _score (round __score))
    (setq _target_lock (round __target_lock))
+   (setq _spin_state (round __spin_state))
    (setq _fire_command (round __fire_command))
    (setq _fire_mode (round __fire_mode))
    self)
@@ -45,6 +49,9 @@
      (progn
        (if __header (setq _header (car __header)))
        _header)))
+  (:track_id
+   (&optional __track_id)
+   (if __track_id (setq _track_id __track_id)) _track_id)
   (:yaw
    (&optional __yaw)
    (if __yaw (setq _yaw __yaw)) _yaw)
@@ -57,6 +64,9 @@
   (:target_lock
    (&optional __target_lock)
    (if __target_lock (setq _target_lock __target_lock)) _target_lock)
+  (:spin_state
+   (&optional __spin_state)
+   (if __spin_state (setq _spin_state __spin_state)) _spin_state)
   (:fire_command
    (&optional __fire_command)
    (if __fire_command (setq _fire_command __fire_command)) _fire_command)
@@ -68,6 +78,8 @@
    (+
     ;; std_msgs/Header _header
     (send _header :serialization-length)
+    ;; int8 _track_id
+    1
     ;; float32 _yaw
     4
     ;; float32 _pitch
@@ -75,6 +87,8 @@
     ;; int8 _score
     1
     ;; int8 _target_lock
+    1
+    ;; int8 _spin_state
     1
     ;; int8 _fire_command
     1
@@ -87,6 +101,8 @@
               (make-string-output-stream (send self :serialization-length)))))
      ;; std_msgs/Header _header
        (send _header :serialize s)
+     ;; int8 _track_id
+       (write-byte _track_id s)
      ;; float32 _yaw
        (sys::poke _yaw (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; float32 _pitch
@@ -95,6 +111,8 @@
        (write-byte _score s)
      ;; int8 _target_lock
        (write-byte _target_lock s)
+     ;; int8 _spin_state
+       (write-byte _spin_state s)
      ;; int8 _fire_command
        (write-byte _fire_command s)
      ;; int8 _fire_mode
@@ -105,6 +123,9 @@
    (buf &optional (ptr- 0))
    ;; std_msgs/Header _header
      (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
+   ;; int8 _track_id
+     (setq _track_id (sys::peek buf ptr- :char)) (incf ptr- 1)
+     (if (> _track_id 127) (setq _track_id (- _track_id 256)))
    ;; float32 _yaw
      (setq _yaw (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; float32 _pitch
@@ -115,6 +136,9 @@
    ;; int8 _target_lock
      (setq _target_lock (sys::peek buf ptr- :char)) (incf ptr- 1)
      (if (> _target_lock 127) (setq _target_lock (- _target_lock 256)))
+   ;; int8 _spin_state
+     (setq _spin_state (sys::peek buf ptr- :char)) (incf ptr- 1)
+     (if (> _spin_state 127) (setq _spin_state (- _spin_state 256)))
    ;; int8 _fire_command
      (setq _fire_command (sys::peek buf ptr- :char)) (incf ptr- 1)
      (if (> _fire_command 127) (setq _fire_command (- _fire_command 256)))
@@ -125,14 +149,16 @@
    self)
   )
 
-(setf (get robot_msg::PTZ_perception :md5sum-) "a850aebd0dc6b37d93b7c62b2378d3c2")
+(setf (get robot_msg::PTZ_perception :md5sum-) "f6811920662f8b712428f268fdd6cb2b")
 (setf (get robot_msg::PTZ_perception :datatype-) "robot_msg/PTZ_perception")
 (setf (get robot_msg::PTZ_perception :definition-)
       "Header header
+int8 track_id
 float32 yaw
 float32 pitch
 int8 score
 int8 target_lock
+int8 spin_state
 int8 fire_command
 int8 fire_mode
 ================================================================================
@@ -155,6 +181,6 @@ string frame_id
 
 
 
-(provide :robot_msg/PTZ_perception "a850aebd0dc6b37d93b7c62b2378d3c2")
+(provide :robot_msg/PTZ_perception "f6811920662f8b712428f268fdd6cb2b")
 
 

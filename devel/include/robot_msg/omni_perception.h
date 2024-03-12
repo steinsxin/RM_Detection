@@ -30,6 +30,7 @@ struct omni_perception_
     , y(0.0)
     , z(0.0)
     , yaw(0.0)
+    , id(0)
     , score(0)
     , target_lock(0)  {
     }
@@ -39,6 +40,7 @@ struct omni_perception_
     , y(0.0)
     , z(0.0)
     , yaw(0.0)
+    , id(0)
     , score(0)
     , target_lock(0)  {
   (void)_alloc;
@@ -60,6 +62,9 @@ struct omni_perception_
 
    typedef float _yaw_type;
   _yaw_type yaw;
+
+   typedef int8_t _id_type;
+  _id_type id;
 
    typedef int8_t _score_type;
   _score_type score;
@@ -101,6 +106,7 @@ bool operator==(const ::robot_msg::omni_perception_<ContainerAllocator1> & lhs, 
     lhs.y == rhs.y &&
     lhs.z == rhs.z &&
     lhs.yaw == rhs.yaw &&
+    lhs.id == rhs.id &&
     lhs.score == rhs.score &&
     lhs.target_lock == rhs.target_lock;
 }
@@ -159,12 +165,12 @@ struct MD5Sum< ::robot_msg::omni_perception_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7d82e3f9b96d03fe1d79d4bb3f0ed047";
+    return "bcf02bf291fe4deb8dd921151076c58f";
   }
 
   static const char* value(const ::robot_msg::omni_perception_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7d82e3f9b96d03feULL;
-  static const uint64_t static_value2 = 0x1d79d4bb3f0ed047ULL;
+  static const uint64_t static_value1 = 0xbcf02bf291fe4debULL;
+  static const uint64_t static_value2 = 0x8dd921151076c58fULL;
 };
 
 template<class ContainerAllocator>
@@ -188,6 +194,7 @@ struct Definition< ::robot_msg::omni_perception_<ContainerAllocator> >
 "float32 y\n"
 "float32 z\n"
 "float32 yaw\n"
+"int8 id\n"
 "int8 score\n"
 "int8 target_lock\n"
 "================================================================================\n"
@@ -228,6 +235,7 @@ namespace serialization
       stream.next(m.y);
       stream.next(m.z);
       stream.next(m.yaw);
+      stream.next(m.id);
       stream.next(m.score);
       stream.next(m.target_lock);
     }
@@ -259,6 +267,8 @@ struct Printer< ::robot_msg::omni_perception_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.z);
     s << indent << "yaw: ";
     Printer<float>::stream(s, indent + "  ", v.yaw);
+    s << indent << "id: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.id);
     s << indent << "score: ";
     Printer<int8_t>::stream(s, indent + "  ", v.score);
     s << indent << "target_lock: ";

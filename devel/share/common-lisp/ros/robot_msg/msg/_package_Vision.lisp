@@ -3,8 +3,6 @@
           HEADER
           ID-VAL
           ID
-          MODE-VAL
-          MODE
           PITCH-VAL
           PITCH
           YAW-VAL
@@ -13,6 +11,6 @@
           ROLL
           QUATERNION-VAL
           QUATERNION
-          SHOOT-VAL
-          SHOOT
+          SHOOT_SPD-VAL
+          SHOOT_SPD
 ))

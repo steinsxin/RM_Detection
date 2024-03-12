@@ -6,6 +6,7 @@ project(Robot_Detection)
 
 # 重定向自己编译的cv_bridge
 set(cv_bridge_DIR ~/catkin_ws/devel/share/cv_bridge/cmake)
+set(OpenCV_DIR ~/opencv/cmake)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy

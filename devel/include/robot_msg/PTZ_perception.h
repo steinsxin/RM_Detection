@@ -26,19 +26,23 @@ struct PTZ_perception_
 
   PTZ_perception_()
     : header()
+    , track_id(0)
     , yaw(0.0)
     , pitch(0.0)
     , score(0)
     , target_lock(0)
+    , spin_state(0)
     , fire_command(0)
     , fire_mode(0)  {
     }
   PTZ_perception_(const ContainerAllocator& _alloc)
     : header(_alloc)
+    , track_id(0)
     , yaw(0.0)
     , pitch(0.0)
     , score(0)
     , target_lock(0)
+    , spin_state(0)
     , fire_command(0)
     , fire_mode(0)  {
   (void)_alloc;
@@ -48,6 +52,9 @@ struct PTZ_perception_
 
    typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
   _header_type header;
+
+   typedef int8_t _track_id_type;
+  _track_id_type track_id;
 
    typedef float _yaw_type;
   _yaw_type yaw;
@@ -60,6 +67,9 @@ struct PTZ_perception_
 
    typedef int8_t _target_lock_type;
   _target_lock_type target_lock;
+
+   typedef int8_t _spin_state_type;
+  _spin_state_type spin_state;
 
    typedef int8_t _fire_command_type;
   _fire_command_type fire_command;
@@ -97,10 +107,12 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::robot_msg::PTZ_perception_<ContainerAllocator1> & lhs, const ::robot_msg::PTZ_perception_<ContainerAllocator2> & rhs)
 {
   return lhs.header == rhs.header &&
+    lhs.track_id == rhs.track_id &&
     lhs.yaw == rhs.yaw &&
     lhs.pitch == rhs.pitch &&
     lhs.score == rhs.score &&
     lhs.target_lock == rhs.target_lock &&
+    lhs.spin_state == rhs.spin_state &&
     lhs.fire_command == rhs.fire_command &&
     lhs.fire_mode == rhs.fire_mode;
 }
@@ -159,12 +171,12 @@ struct MD5Sum< ::robot_msg::PTZ_perception_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "a850aebd0dc6b37d93b7c62b2378d3c2";
+    return "f6811920662f8b712428f268fdd6cb2b";
   }
 
   static const char* value(const ::robot_msg::PTZ_perception_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xa850aebd0dc6b37dULL;
-  static const uint64_t static_value2 = 0x93b7c62b2378d3c2ULL;
+  static const uint64_t static_value1 = 0xf6811920662f8b71ULL;
+  static const uint64_t static_value2 = 0x2428f268fdd6cb2bULL;
 };
 
 template<class ContainerAllocator>
@@ -184,10 +196,12 @@ struct Definition< ::robot_msg::PTZ_perception_<ContainerAllocator> >
   static const char* value()
   {
     return "Header header\n"
+"int8 track_id\n"
 "float32 yaw\n"
 "float32 pitch\n"
 "int8 score\n"
 "int8 target_lock\n"
+"int8 spin_state\n"
 "int8 fire_command\n"
 "int8 fire_mode\n"
 "================================================================================\n"
@@ -224,10 +238,12 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.header);
+      stream.next(m.track_id);
       stream.next(m.yaw);
       stream.next(m.pitch);
       stream.next(m.score);
       stream.next(m.target_lock);
+      stream.next(m.spin_state);
       stream.next(m.fire_command);
       stream.next(m.fire_mode);
     }
@@ -251,6 +267,8 @@ struct Printer< ::robot_msg::PTZ_perception_<ContainerAllocator> >
     s << indent << "header: ";
     s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
+    s << indent << "track_id: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.track_id);
     s << indent << "yaw: ";
     Printer<float>::stream(s, indent + "  ", v.yaw);
     s << indent << "pitch: ";
@@ -259,6 +277,8 @@ struct Printer< ::robot_msg::PTZ_perception_<ContainerAllocator> >
     Printer<int8_t>::stream(s, indent + "  ", v.score);
     s << indent << "target_lock: ";
     Printer<int8_t>::stream(s, indent + "  ", v.target_lock);
+    s << indent << "spin_state: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.spin_state);
     s << indent << "fire_command: ";
     Printer<int8_t>::stream(s, indent + "  ", v.fire_command);
     s << indent << "fire_mode: ";

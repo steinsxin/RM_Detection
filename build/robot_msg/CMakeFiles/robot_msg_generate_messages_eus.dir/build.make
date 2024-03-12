@@ -56,8 +56,9 @@ include robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/progress.make
 robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Vision.l
 robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Robot_ctrl.l
 robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_Yaw.l
-robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/omni_perception.l
+robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/barrel.l
 robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_perception.l
+robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Track_reset.l
 robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/manifest.l
 
 
@@ -79,11 +80,11 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detect
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from robot_msg/PTZ_Yaw.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg
 
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/omni_perception.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/omni_perception.l: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/omni_perception.l: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from robot_msg/omni_perception.msg"
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/barrel.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/barrel.l: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/barrel.l: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from robot_msg/barrel.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_perception.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_perception.l: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg
@@ -91,16 +92,23 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_eus: /home/steins_xin/RM_Detect
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from robot_msg/PTZ_perception.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg
 
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Track_reset.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Track_reset.l: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Track_reset.l: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp code from robot_msg/Track_reset.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg
+
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp manifest code for robot_msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating EusLisp manifest code for robot_msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg robot_msg std_msgs
 
 robot_msg_generate_messages_eus: robot_msg/CMakeFiles/robot_msg_generate_messages_eus
 robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Vision.l
 robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Robot_ctrl.l
 robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_Yaw.l
-robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/omni_perception.l
+robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/barrel.l
 robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_perception.l
+robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Track_reset.l
 robot_msg_generate_messages_eus: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/manifest.l
 robot_msg_generate_messages_eus: robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/build.make
 

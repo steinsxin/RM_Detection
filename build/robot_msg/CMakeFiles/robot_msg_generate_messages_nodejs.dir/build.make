@@ -56,8 +56,9 @@ include robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/progress.mak
 robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Vision.js
 robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Robot_ctrl.js
 robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/PTZ_Yaw.js
-robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/omni_perception.js
+robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/barrel.js
 robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/PTZ_perception.js
+robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Track_reset.js
 
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Vision.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
@@ -78,11 +79,11 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Det
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from robot_msg/PTZ_Yaw.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg
 
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/omni_perception.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/omni_perception.js: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/omni_perception.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from robot_msg/omni_perception.msg"
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/barrel.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/barrel.js: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/barrel.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from robot_msg/barrel.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/PTZ_perception.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/PTZ_perception.js: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg
@@ -90,12 +91,19 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Det
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from robot_msg/PTZ_perception.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg
 
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Track_reset.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Track_reset.js: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Track_reset.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from robot_msg/Track_reset.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg
+
 robot_msg_generate_messages_nodejs: robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs
 robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Vision.js
 robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Robot_ctrl.js
 robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/PTZ_Yaw.js
-robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/omni_perception.js
+robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/barrel.js
 robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/PTZ_perception.js
+robot_msg_generate_messages_nodejs: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/gennodejs/ros/robot_msg/msg/Track_reset.js
 robot_msg_generate_messages_nodejs: robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/build.make
 
 .PHONY : robot_msg_generate_messages_nodejs

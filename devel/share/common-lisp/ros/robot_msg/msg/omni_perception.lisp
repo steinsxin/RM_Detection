@@ -32,6 +32,11 @@
     :initarg :yaw
     :type cl:float
     :initform 0.0)
+   (id
+    :reader id
+    :initarg :id
+    :type cl:fixnum
+    :initform 0)
    (score
     :reader score
     :initarg :score
@@ -77,6 +82,11 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader robot_msg-msg:yaw-val is deprecated.  Use robot_msg-msg:yaw instead.")
   (yaw m))
 
+(cl:ensure-generic-function 'id-val :lambda-list '(m))
+(cl:defmethod id-val ((m <omni_perception>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader robot_msg-msg:id-val is deprecated.  Use robot_msg-msg:id instead.")
+  (id m))
+
 (cl:ensure-generic-function 'score-val :lambda-list '(m))
 (cl:defmethod score-val ((m <omni_perception>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader robot_msg-msg:score-val is deprecated.  Use robot_msg-msg:score instead.")
@@ -109,6 +119,9 @@
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:let* ((signed (cl:slot-value msg 'id)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    )
   (cl:let* ((signed (cl:slot-value msg 'score)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     )
@@ -145,6 +158,9 @@
     (cl:setf (cl:slot-value msg 'yaw) (roslisp-utils:decode-single-float-bits bits)))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'id) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'score) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
@@ -159,16 +175,16 @@
   "robot_msg/omni_perception")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<omni_perception>)))
   "Returns md5sum for a message object of type '<omni_perception>"
-  "7d82e3f9b96d03fe1d79d4bb3f0ed047")
+  "bcf02bf291fe4deb8dd921151076c58f")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'omni_perception)))
   "Returns md5sum for a message object of type 'omni_perception"
-  "7d82e3f9b96d03fe1d79d4bb3f0ed047")
+  "bcf02bf291fe4deb8dd921151076c58f")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<omni_perception>)))
   "Returns full string definition for message of type '<omni_perception>"
-  (cl:format cl:nil "Header header~%float32 x~%float32 y~%float32 z~%float32 yaw~%int8 score~%int8 target_lock~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%string frame_id~%~%~%"))
+  (cl:format cl:nil "Header header~%float32 x~%float32 y~%float32 z~%float32 yaw~%int8 id~%int8 score~%int8 target_lock~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%string frame_id~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'omni_perception)))
   "Returns full string definition for message of type 'omni_perception"
-  (cl:format cl:nil "Header header~%float32 x~%float32 y~%float32 z~%float32 yaw~%int8 score~%int8 target_lock~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%string frame_id~%~%~%"))
+  (cl:format cl:nil "Header header~%float32 x~%float32 y~%float32 z~%float32 yaw~%int8 id~%int8 score~%int8 target_lock~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%string frame_id~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <omni_perception>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'header))
@@ -176,6 +192,7 @@
      4
      4
      4
+     1
      1
      1
 ))
@@ -187,6 +204,7 @@
     (cl:cons ':y (y msg))
     (cl:cons ':z (z msg))
     (cl:cons ':yaw (yaw msg))
+    (cl:cons ':id (id msg))
     (cl:cons ':score (score msg))
     (cl:cons ':target_lock (target_lock msg))
 ))

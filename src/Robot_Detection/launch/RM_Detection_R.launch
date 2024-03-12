@@ -1,14 +1,14 @@
 <!-- 右云台启动文件 -->
 <launch>
-    <!-- <node
-        name="HIK_Camera"
+    <node
+        name="HIK_Camera_R"
         pkg="HIK_Camera"
-        type="HIK_Camera_node"
+        type="HIK_Camera_R_node"
         respawn="true"  
         >
-    </node> -->
+    </node>
 
-    <node
+    <!-- <node
         name="Serial_Device_Send"
         pkg="Serial_Device"
         type="Serial_Device_Send_node"
@@ -24,7 +24,7 @@
         output="screen"
         respawn="true"  
         >
-    </node>
+    </node> -->
 
     <!-- <node
         name="Robot_Detection"

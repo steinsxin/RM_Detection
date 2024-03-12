@@ -56,6 +56,10 @@ public:
     int tracker_state;                              // 此时跟踪器的状态
     int tracking_id;                                // 跟踪的敌方ID
 
+    /** 决策框大小 */
+    float wide_ratio;                               // 距离图像左右的比例[0~0.5]
+    float high_ratio;                               // 距离图像上下的比例[0~0.5]
+
     /** 角度信息 */
     AngleSolve AS;                                  // 坐标系转换
     float Solve_pitch;                              // 解算出的pitch
@@ -66,14 +70,16 @@ public:
     std::deque<double> Angle_Speed_FPS;                          // 角速度帧率平滑
 
     cv::Point2f temp_cir;                           // 圆心像素坐标
-double angle_speed;
+    double angle_speed;
     /** 整车观测 */
     std::map<int,Observe> OB;                       // 整车观测结构体
     std::map<int,SpinTracker> OB_Track;             // 长短轴跟踪器
     //========================API接口========================
     bool Track(const cv::Mat& src, std::vector<Armor> &armors, const chrono_time &time);    // 预测流程入口函数
+    int Spin_State();
     void Reset();                                                                           // 重置初始化
     void show();
+    void Track_reset();
 private:
     //========================参数部分=======================
     /** 跟踪变量参数 */

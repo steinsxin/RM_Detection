@@ -20,13 +20,10 @@ class Robot_ctrl {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.header = null;
-      this.vx = null;
-      this.vy = null;
-      this.vw = null;
       this.yaw = null;
       this.pitch = null;
-      this.target_lock = null;
       this.fire_command = null;
+      this.fire_mode = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -34,24 +31,6 @@ class Robot_ctrl {
       }
       else {
         this.header = new std_msgs.msg.Header();
-      }
-      if (initObj.hasOwnProperty('vx')) {
-        this.vx = initObj.vx
-      }
-      else {
-        this.vx = 0.0;
-      }
-      if (initObj.hasOwnProperty('vy')) {
-        this.vy = initObj.vy
-      }
-      else {
-        this.vy = 0.0;
-      }
-      if (initObj.hasOwnProperty('vw')) {
-        this.vw = initObj.vw
-      }
-      else {
-        this.vw = 0.0;
       }
       if (initObj.hasOwnProperty('yaw')) {
         this.yaw = initObj.yaw
@@ -65,17 +44,17 @@ class Robot_ctrl {
       else {
         this.pitch = 0.0;
       }
-      if (initObj.hasOwnProperty('target_lock')) {
-        this.target_lock = initObj.target_lock
-      }
-      else {
-        this.target_lock = 0;
-      }
       if (initObj.hasOwnProperty('fire_command')) {
         this.fire_command = initObj.fire_command
       }
       else {
         this.fire_command = 0;
+      }
+      if (initObj.hasOwnProperty('fire_mode')) {
+        this.fire_mode = initObj.fire_mode
+      }
+      else {
+        this.fire_mode = 0;
       }
     }
   }
@@ -84,20 +63,14 @@ class Robot_ctrl {
     // Serializes a message object of type Robot_ctrl
     // Serialize message field [header]
     bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
-    // Serialize message field [vx]
-    bufferOffset = _serializer.float32(obj.vx, buffer, bufferOffset);
-    // Serialize message field [vy]
-    bufferOffset = _serializer.float32(obj.vy, buffer, bufferOffset);
-    // Serialize message field [vw]
-    bufferOffset = _serializer.float32(obj.vw, buffer, bufferOffset);
     // Serialize message field [yaw]
     bufferOffset = _serializer.float32(obj.yaw, buffer, bufferOffset);
     // Serialize message field [pitch]
     bufferOffset = _serializer.float32(obj.pitch, buffer, bufferOffset);
-    // Serialize message field [target_lock]
-    bufferOffset = _serializer.int8(obj.target_lock, buffer, bufferOffset);
     // Serialize message field [fire_command]
     bufferOffset = _serializer.int8(obj.fire_command, buffer, bufferOffset);
+    // Serialize message field [fire_mode]
+    bufferOffset = _serializer.int8(obj.fire_mode, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -107,27 +80,21 @@ class Robot_ctrl {
     let data = new Robot_ctrl(null);
     // Deserialize message field [header]
     data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
-    // Deserialize message field [vx]
-    data.vx = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [vy]
-    data.vy = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [vw]
-    data.vw = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [yaw]
     data.yaw = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [pitch]
     data.pitch = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [target_lock]
-    data.target_lock = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [fire_command]
     data.fire_command = _deserializer.int8(buffer, bufferOffset);
+    // Deserialize message field [fire_mode]
+    data.fire_mode = _deserializer.int8(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 22;
+    return length + 10;
   }
 
   static datatype() {
@@ -137,20 +104,18 @@ class Robot_ctrl {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'd72561e513163b9f64a8a93f7826d895';
+    return 'c5cc9d351855b438086f74e32049e817';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     Header header
-    float32 vx
-    float32 vy
-    float32 vw
     float32 yaw
     float32 pitch
-    int8 target_lock
     int8 fire_command
+    int8 fire_mode
+    
     ================================================================================
     MSG: std_msgs/Header
     # Standard metadata for higher-level stamped data types.
@@ -183,27 +148,6 @@ class Robot_ctrl {
       resolved.header = new std_msgs.msg.Header()
     }
 
-    if (msg.vx !== undefined) {
-      resolved.vx = msg.vx;
-    }
-    else {
-      resolved.vx = 0.0
-    }
-
-    if (msg.vy !== undefined) {
-      resolved.vy = msg.vy;
-    }
-    else {
-      resolved.vy = 0.0
-    }
-
-    if (msg.vw !== undefined) {
-      resolved.vw = msg.vw;
-    }
-    else {
-      resolved.vw = 0.0
-    }
-
     if (msg.yaw !== undefined) {
       resolved.yaw = msg.yaw;
     }
@@ -218,18 +162,18 @@ class Robot_ctrl {
       resolved.pitch = 0.0
     }
 
-    if (msg.target_lock !== undefined) {
-      resolved.target_lock = msg.target_lock;
-    }
-    else {
-      resolved.target_lock = 0
-    }
-
     if (msg.fire_command !== undefined) {
       resolved.fire_command = msg.fire_command;
     }
     else {
       resolved.fire_command = 0
+    }
+
+    if (msg.fire_mode !== undefined) {
+      resolved.fire_mode = msg.fire_mode;
+    }
+    else {
+      resolved.fire_mode = 0
     }
 
     return resolved;

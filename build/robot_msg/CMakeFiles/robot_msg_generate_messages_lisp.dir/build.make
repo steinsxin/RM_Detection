@@ -56,8 +56,9 @@ include robot_msg/CMakeFiles/robot_msg_generate_messages_lisp.dir/progress.make
 robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Vision.lisp
 robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Robot_ctrl.lisp
 robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/PTZ_Yaw.lisp
-robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/omni_perception.lisp
+robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/barrel.lisp
 robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/PTZ_perception.lisp
+robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Track_reset.lisp
 
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Vision.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
@@ -78,11 +79,11 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detec
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from robot_msg/PTZ_Yaw.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg
 
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/omni_perception.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/omni_perception.lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/omni_perception.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Lisp code from robot_msg/omni_perception.msg"
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/barrel.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/barrel.lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/barrel.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Lisp code from robot_msg/barrel.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/PTZ_perception.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/PTZ_perception.lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg
@@ -90,12 +91,19 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detec
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Lisp code from robot_msg/PTZ_perception.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg
 
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Track_reset.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Track_reset.lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Track_reset.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Lisp code from robot_msg/Track_reset.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg
+
 robot_msg_generate_messages_lisp: robot_msg/CMakeFiles/robot_msg_generate_messages_lisp
 robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Vision.lisp
 robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Robot_ctrl.lisp
 robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/PTZ_Yaw.lisp
-robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/omni_perception.lisp
+robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/barrel.lisp
 robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/PTZ_perception.lisp
+robot_msg_generate_messages_lisp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/common-lisp/ros/robot_msg/msg/Track_reset.lisp
 robot_msg_generate_messages_lisp: robot_msg/CMakeFiles/robot_msg_generate_messages_lisp.dir/build.make
 
 .PHONY : robot_msg_generate_messages_lisp

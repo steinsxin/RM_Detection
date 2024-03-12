@@ -4,6 +4,7 @@
 Robot_Detection/CMakeFiles/Robot_Detection_R_node.dir/Robot_Detection_R.cpp.o
  /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_perception.h
  /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Robot_ctrl.h
+ /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h
  /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Vision.h
  /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/Robot_Detection_R.cpp
  /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/AngleSolve/include/AngleSolve.h

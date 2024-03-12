@@ -27,22 +27,20 @@ struct Vision_
   Vision_()
     : header()
     , id(0)
-    , mode(0)
     , pitch(0.0)
     , yaw(0.0)
     , roll(0.0)
     , quaternion()
-    , shoot(0.0)  {
+    , shoot_spd(0.0)  {
     }
   Vision_(const ContainerAllocator& _alloc)
     : header(_alloc)
     , id(0)
-    , mode(0)
     , pitch(0.0)
     , yaw(0.0)
     , roll(0.0)
     , quaternion(_alloc)
-    , shoot(0.0)  {
+    , shoot_spd(0.0)  {
   (void)_alloc;
     }
 
@@ -53,9 +51,6 @@ struct Vision_
 
    typedef uint16_t _id_type;
   _id_type id;
-
-   typedef uint16_t _mode_type;
-  _mode_type mode;
 
    typedef float _pitch_type;
   _pitch_type pitch;
@@ -69,8 +64,8 @@ struct Vision_
    typedef std::vector<float, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<float>> _quaternion_type;
   _quaternion_type quaternion;
 
-   typedef float _shoot_type;
-  _shoot_type shoot;
+   typedef float _shoot_spd_type;
+  _shoot_spd_type shoot_spd;
 
 
 
@@ -103,12 +98,11 @@ bool operator==(const ::robot_msg::Vision_<ContainerAllocator1> & lhs, const ::r
 {
   return lhs.header == rhs.header &&
     lhs.id == rhs.id &&
-    lhs.mode == rhs.mode &&
     lhs.pitch == rhs.pitch &&
     lhs.yaw == rhs.yaw &&
     lhs.roll == rhs.roll &&
     lhs.quaternion == rhs.quaternion &&
-    lhs.shoot == rhs.shoot;
+    lhs.shoot_spd == rhs.shoot_spd;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -165,12 +159,12 @@ struct MD5Sum< ::robot_msg::Vision_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "b30d54651ad2a2d8242e6a86edff3997";
+    return "e9ed3a3b641ae2139fa852e5cf4f6219";
   }
 
   static const char* value(const ::robot_msg::Vision_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xb30d54651ad2a2d8ULL;
-  static const uint64_t static_value2 = 0x242e6a86edff3997ULL;
+  static const uint64_t static_value1 = 0xe9ed3a3b641ae213ULL;
+  static const uint64_t static_value2 = 0x9fa852e5cf4f6219ULL;
 };
 
 template<class ContainerAllocator>
@@ -190,13 +184,12 @@ struct Definition< ::robot_msg::Vision_<ContainerAllocator> >
   static const char* value()
   {
     return "  Header header\n"
-"  uint16 id\n"
-"  uint16 mode\n"
+"  uint16 id         # 1:蓝 2:红 \n"
 "  float32 pitch\n"
 "  float32 yaw\n"
 "  float32 roll\n"
 "  float32[] quaternion\n"
-"  float32 shoot\n"
+"  float32 shoot_spd\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
 "# Standard metadata for higher-level stamped data types.\n"
@@ -232,12 +225,11 @@ namespace serialization
     {
       stream.next(m.header);
       stream.next(m.id);
-      stream.next(m.mode);
       stream.next(m.pitch);
       stream.next(m.yaw);
       stream.next(m.roll);
       stream.next(m.quaternion);
-      stream.next(m.shoot);
+      stream.next(m.shoot_spd);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -261,8 +253,6 @@ struct Printer< ::robot_msg::Vision_<ContainerAllocator> >
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "id: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.id);
-    s << indent << "mode: ";
-    Printer<uint16_t>::stream(s, indent + "  ", v.mode);
     s << indent << "pitch: ";
     Printer<float>::stream(s, indent + "  ", v.pitch);
     s << indent << "yaw: ";
@@ -275,8 +265,8 @@ struct Printer< ::robot_msg::Vision_<ContainerAllocator> >
       s << indent << "  quaternion[" << i << "]: ";
       Printer<float>::stream(s, indent + "  ", v.quaternion[i]);
     }
-    s << indent << "shoot: ";
-    Printer<float>::stream(s, indent + "  ", v.shoot);
+    s << indent << "shoot_spd: ";
+    Printer<float>::stream(s, indent + "  ", v.shoot_spd);
   }
 };
 

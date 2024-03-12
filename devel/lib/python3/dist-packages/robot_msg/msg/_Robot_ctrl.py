@@ -9,17 +9,15 @@ import struct
 import std_msgs.msg
 
 class Robot_ctrl(genpy.Message):
-  _md5sum = "d72561e513163b9f64a8a93f7826d895"
+  _md5sum = "c5cc9d351855b438086f74e32049e817"
   _type = "robot_msg/Robot_ctrl"
   _has_header = True  # flag to mark the presence of a Header object
   _full_text = """Header header
-float32 vx
-float32 vy
-float32 vw
 float32 yaw
 float32 pitch
-int8 target_lock
 int8 fire_command
+int8 fire_mode
+
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -36,8 +34,8 @@ time stamp
 #Frame this data is associated with
 string frame_id
 """
-  __slots__ = ['header','vx','vy','vw','yaw','pitch','target_lock','fire_command']
-  _slot_types = ['std_msgs/Header','float32','float32','float32','float32','float32','int8','int8']
+  __slots__ = ['header','yaw','pitch','fire_command','fire_mode']
+  _slot_types = ['std_msgs/Header','float32','float32','int8','int8']
 
   def __init__(self, *args, **kwds):
     """
@@ -47,7 +45,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,vx,vy,vw,yaw,pitch,target_lock,fire_command
+       header,yaw,pitch,fire_command,fire_mode
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -58,29 +56,20 @@ string frame_id
       # message fields cannot be None, assign default values for those that are
       if self.header is None:
         self.header = std_msgs.msg.Header()
-      if self.vx is None:
-        self.vx = 0.
-      if self.vy is None:
-        self.vy = 0.
-      if self.vw is None:
-        self.vw = 0.
       if self.yaw is None:
         self.yaw = 0.
       if self.pitch is None:
         self.pitch = 0.
-      if self.target_lock is None:
-        self.target_lock = 0
       if self.fire_command is None:
         self.fire_command = 0
+      if self.fire_mode is None:
+        self.fire_mode = 0
     else:
       self.header = std_msgs.msg.Header()
-      self.vx = 0.
-      self.vy = 0.
-      self.vw = 0.
       self.yaw = 0.
       self.pitch = 0.
-      self.target_lock = 0
       self.fire_command = 0
+      self.fire_mode = 0
 
   def _get_types(self):
     """
@@ -103,7 +92,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_5f2b().pack(_x.vx, _x.vy, _x.vw, _x.yaw, _x.pitch, _x.target_lock, _x.fire_command))
+      buff.write(_get_struct_2f2b().pack(_x.yaw, _x.pitch, _x.fire_command, _x.fire_mode))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -133,8 +122,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 22
-      (_x.vx, _x.vy, _x.vw, _x.yaw, _x.pitch, _x.target_lock, _x.fire_command,) = _get_struct_5f2b().unpack(str[start:end])
+      end += 10
+      (_x.yaw, _x.pitch, _x.fire_command, _x.fire_mode,) = _get_struct_2f2b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -156,7 +145,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_5f2b().pack(_x.vx, _x.vy, _x.vw, _x.yaw, _x.pitch, _x.target_lock, _x.fire_command))
+      buff.write(_get_struct_2f2b().pack(_x.yaw, _x.pitch, _x.fire_command, _x.fire_mode))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -187,8 +176,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 22
-      (_x.vx, _x.vy, _x.vw, _x.yaw, _x.pitch, _x.target_lock, _x.fire_command,) = _get_struct_5f2b().unpack(str[start:end])
+      end += 10
+      (_x.yaw, _x.pitch, _x.fire_command, _x.fire_mode,) = _get_struct_2f2b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -197,15 +186,15 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_2f2b = None
+def _get_struct_2f2b():
+    global _struct_2f2b
+    if _struct_2f2b is None:
+        _struct_2f2b = struct.Struct("<2f2b")
+    return _struct_2f2b
 _struct_3I = None
 def _get_struct_3I():
     global _struct_3I
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
-_struct_5f2b = None
-def _get_struct_5f2b():
-    global _struct_5f2b
-    if _struct_5f2b is None:
-        _struct_5f2b = struct.Struct("<5f2b")
-    return _struct_5f2b

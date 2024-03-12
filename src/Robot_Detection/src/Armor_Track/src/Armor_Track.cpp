@@ -34,6 +34,10 @@ ArmorTrack::ArmorTrack() {
     spin_judge_low_threshold = (int)fs["spin_judge_low_threshold"];     // 陀螺最低分数阈值
     spin_judge_high_threshold = (int)fs["spin_judge_high_threshold"];   // 陀螺最高分数阈值
 
+    wide_ratio = (float)fs["wide_ratio"];
+    high_ratio = (float)fs["high_ratio"];
+
+    fs.release();
 }
 
 /**
@@ -54,7 +58,7 @@ bool ArmorTrack::Initial(std::vector<Armor> &Armors) {
 
     /** 锁定装甲板流程 */
     enemy_armor = Armors[0];                                        // 选择锁定装甲板
-    enemy_armor.world_position = AS.pixel2imu(enemy_armor);      // 最终装甲板的世界坐标系为像素转换为imu坐标系
+    enemy_armor.world_position = AS.pixel2imu(enemy_armor);         // 最终装甲板的世界坐标系为像素转换为imu坐标系
     tracking_id = enemy_armor.id;                                   // 设置跟踪id，根据最优装甲板选择
     tracker_state = DETECTING;                                      // 跟踪状态设置为初始化状态
 
@@ -87,6 +91,34 @@ void ArmorTrack::Reset() {
     /** 跟踪变量 */
     find_aim_number = 0;                // 锁定目标的次数初始化
     lost_aim_number = 0;                // 丢失目标的次数初始化
+}
+
+/**
+ *  函数名: Spin_State
+ *  传入: 无
+ *  传出: 无
+ *  功能: 返回当前跟踪装甲板陀螺状态
+ */
+int ArmorTrack::Spin_State(){
+    if(spin_status_map[tracking_id] == UNKNOWN) return 0;
+    else return spin_status_map[tracking_id];
+}
+
+/**
+ *  函数名: Track_reset
+ *  传入: 无
+ *  传出: 无
+ *  功能: 接受决策的跟踪重置命令,进行初始化
+ */
+void ArmorTrack::Track_reset(){
+    KF.Initial();                       // 卡尔曼初始化
+
+    /** 跟踪变量 */
+    find_aim_number = 0;                // 锁定目标的次数初始化
+    lost_aim_number = 0;                // 丢失目标的次数初始化
+    
+    /** 装甲板状态 */
+    enemy_armor = Armor();              // 初始化锁定装甲板
 }
 
 /**
@@ -142,7 +174,7 @@ void ArmorTrack::State_solve(bool match) {
 bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
 
     //=========================卡尔曼初始化=========================
-    KF.setF(dt);                                             // 设置状态转移矩阵时间间隔
+    KF.setF(dt);                                                // 设置状态转移矩阵时间间隔
     predicted = KF.predict();                                   // 预测值矩阵
     //==========================跟踪装甲板==========================
     SpinHeading spin_status;                                    // 记录陀螺状态（未知，顺时针，逆时针）
@@ -155,11 +187,13 @@ bool ArmorTrack::Lock_Armor(std::vector<Armor> &Armors, double dt) {
         double min_position_diff = DBL_MAX;                     // 初始化最小距离(DBL_MAX为double类型最大值)
         int Armor_number = 0;                                   // 当前锁定装甲板数量
         std::vector<Armor> Track_Armor;                         // 存放锁定装甲板
+
+        //! 如何进行装甲板的切换? 根据装甲板分数的记录来判断? 有更高分数的装甲板出现到一定次数进行跟随重置? 
         /** 选择距离最近的装甲板 */
         for (auto &armor: Armors) {
-            armor.world_position = AS.pixel2imu(armor);                 // 装甲板转换世界坐标系
-            Eigen::Vector3d pre = predicted.head(3);                    // 预测的世界坐标系
-            double position_diff = (pre - armor.world_position).norm();    // 计算坐标偏移量
+            armor.world_position = AS.pixel2imu(armor);                     // 装甲板转换世界坐标系
+            Eigen::Vector3d pre = predicted.head(3);                        // 预测的世界坐标系
+            double position_diff = (pre - armor.world_position).norm();     // 计算坐标偏移量
             /** 判断最小距离 */
             if (position_diff < min_position_diff) {
                 min_position_diff = position_diff;
@@ -835,7 +869,29 @@ void ArmorTrack::show() {
         circle(src,enemy_armor.center,4,CV_RGB(0, 255, 255),-1);
     }
     circle(src,temp_cir,4,CV_RGB(0, 255, 0),-1);
-    
+
+    // 绘制击打框[4点]
+    cv::Point2f Hitting_frame[4];
+    float img_rows,img_cols;
+    img_rows = (float)src.rows;
+    img_cols = (float)src.cols;
+    // 顺序: 左上 | 左下 | 右下 | 右上
+    Hitting_frame[0].x = img_cols*wide_ratio;
+    Hitting_frame[0].y = img_rows*high_ratio;
+
+    Hitting_frame[1].x = img_cols*wide_ratio;
+    Hitting_frame[1].y = img_rows - (img_rows*high_ratio);
+
+    Hitting_frame[2].x = img_cols - (img_cols*wide_ratio);
+    Hitting_frame[2].y = img_rows - (img_rows*high_ratio);
+
+    Hitting_frame[3].x = img_cols - (img_cols*wide_ratio);
+    Hitting_frame[3].y = img_rows*high_ratio;
+    for (int i = 0; i < 4; i++)
+    {
+        line(src, Hitting_frame[i], Hitting_frame[(i + 1) % 4], CV_RGB(0, 255, 255), 2);
+    }
+  
     //!             putText部分
     // 跟踪状态
     std::string Tracker_State[4] = {"MISSING","DETECTING","LOSING","TRACKING"};

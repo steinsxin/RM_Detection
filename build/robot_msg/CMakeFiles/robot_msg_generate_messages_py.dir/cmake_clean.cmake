@@ -2,9 +2,10 @@ file(REMOVE_RECURSE
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_Yaw.py"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_perception.py"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Robot_ctrl.py"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Vision.py"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py"
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py"
   "CMakeFiles/robot_msg_generate_messages_py"
 )
 

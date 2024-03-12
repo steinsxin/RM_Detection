@@ -145,18 +145,8 @@ set(SRC_DIR src/crc.cpp src/serial_device.cpp src/serial_main.cpp)
 
 # 左C板
 add_executable(${PROJECT_NAME}_Send_L_node Serial_Device_Send_L_node.cpp ${SRC_DIR})
-add_executable(${PROJECT_NAME}_Receive_L_node Serial_Device_Receive_L_node.cpp ${SRC_DIR})
 # 右C板
 add_executable(${PROJECT_NAME}_Send_R_node Serial_Device_Send_R_node.cpp ${SRC_DIR})
-add_executable(${PROJECT_NAME}_Receive_R_node Serial_Device_Receive_R_node.cpp ${SRC_DIR})
-
-
-# 左测试模块
-add_executable(${PROJECT_NAME}_Send_test_L_node test/Send_test_L.cpp)
-add_executable(${PROJECT_NAME}_Receive_test_L_node test/Reveice_test_L.cpp)
-# 右测试模块
-add_executable(${PROJECT_NAME}_Send_test_R_node test/Send_test_R.cpp)
-add_executable(${PROJECT_NAME}_Receive_test_R_node test/Reveice_test_R.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -175,38 +165,12 @@ target_link_libraries(${PROJECT_NAME}_Send_L_node
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )
-target_link_libraries(${PROJECT_NAME}_Receive_L_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
 # 右板
 target_link_libraries(${PROJECT_NAME}_Send_R_node
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )
-target_link_libraries(${PROJECT_NAME}_Receive_R_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
 
-# 左测试模块
-target_link_libraries(${PROJECT_NAME}_Send_test_L_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
-target_link_libraries(${PROJECT_NAME}_Receive_test_L_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
-# 右测试模块
-target_link_libraries(${PROJECT_NAME}_Send_test_R_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
-target_link_libraries(${PROJECT_NAME}_Receive_test_R_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
 #############
 ## Install ##
 #############

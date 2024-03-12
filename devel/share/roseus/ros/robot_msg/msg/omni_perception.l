@@ -16,7 +16,7 @@
 
 (defclass robot_msg::omni_perception
   :super ros::object
-  :slots (_header _x _y _z _yaw _score _target_lock ))
+  :slots (_header _x _y _z _yaw _id _score _target_lock ))
 
 (defmethod robot_msg::omni_perception
   (:init
@@ -26,6 +26,7 @@
     ((:y __y) 0.0)
     ((:z __z) 0.0)
     ((:yaw __yaw) 0.0)
+    ((:id __id) 0)
     ((:score __score) 0)
     ((:target_lock __target_lock) 0)
     )
@@ -35,6 +36,7 @@
    (setq _y (float __y))
    (setq _z (float __z))
    (setq _yaw (float __yaw))
+   (setq _id (round __id))
    (setq _score (round __score))
    (setq _target_lock (round __target_lock))
    self)
@@ -57,6 +59,9 @@
   (:yaw
    (&optional __yaw)
    (if __yaw (setq _yaw __yaw)) _yaw)
+  (:id
+   (&optional __id)
+   (if __id (setq _id __id)) _id)
   (:score
    (&optional __score)
    (if __score (setq _score __score)) _score)
@@ -76,6 +81,8 @@
     4
     ;; float32 _yaw
     4
+    ;; int8 _id
+    1
     ;; int8 _score
     1
     ;; int8 _target_lock
@@ -95,6 +102,8 @@
        (sys::poke _z (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; float32 _yaw
        (sys::poke _yaw (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; int8 _id
+       (write-byte _id s)
      ;; int8 _score
        (write-byte _score s)
      ;; int8 _target_lock
@@ -113,6 +122,9 @@
      (setq _z (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; float32 _yaw
      (setq _yaw (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; int8 _id
+     (setq _id (sys::peek buf ptr- :char)) (incf ptr- 1)
+     (if (> _id 127) (setq _id (- _id 256)))
    ;; int8 _score
      (setq _score (sys::peek buf ptr- :char)) (incf ptr- 1)
      (if (> _score 127) (setq _score (- _score 256)))
@@ -123,7 +135,7 @@
    self)
   )
 
-(setf (get robot_msg::omni_perception :md5sum-) "7d82e3f9b96d03fe1d79d4bb3f0ed047")
+(setf (get robot_msg::omni_perception :md5sum-) "bcf02bf291fe4deb8dd921151076c58f")
 (setf (get robot_msg::omni_perception :datatype-) "robot_msg/omni_perception")
 (setf (get robot_msg::omni_perception :definition-)
       "Header header
@@ -131,6 +143,7 @@ float32 x
 float32 y
 float32 z
 float32 yaw
+int8 id
 int8 score
 int8 target_lock
 ================================================================================
@@ -153,6 +166,6 @@ string frame_id
 
 
 
-(provide :robot_msg/omni_perception "7d82e3f9b96d03fe1d79d4bb3f0ed047")
+(provide :robot_msg/omni_perception "bcf02bf291fe4deb8dd921151076c58f")
 
 

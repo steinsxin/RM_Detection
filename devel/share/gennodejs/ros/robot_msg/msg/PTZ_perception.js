@@ -20,10 +20,12 @@ class PTZ_perception {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.header = null;
+      this.track_id = null;
       this.yaw = null;
       this.pitch = null;
       this.score = null;
       this.target_lock = null;
+      this.spin_state = null;
       this.fire_command = null;
       this.fire_mode = null;
     }
@@ -33,6 +35,12 @@ class PTZ_perception {
       }
       else {
         this.header = new std_msgs.msg.Header();
+      }
+      if (initObj.hasOwnProperty('track_id')) {
+        this.track_id = initObj.track_id
+      }
+      else {
+        this.track_id = 0;
       }
       if (initObj.hasOwnProperty('yaw')) {
         this.yaw = initObj.yaw
@@ -58,6 +66,12 @@ class PTZ_perception {
       else {
         this.target_lock = 0;
       }
+      if (initObj.hasOwnProperty('spin_state')) {
+        this.spin_state = initObj.spin_state
+      }
+      else {
+        this.spin_state = 0;
+      }
       if (initObj.hasOwnProperty('fire_command')) {
         this.fire_command = initObj.fire_command
       }
@@ -77,6 +91,8 @@ class PTZ_perception {
     // Serializes a message object of type PTZ_perception
     // Serialize message field [header]
     bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
+    // Serialize message field [track_id]
+    bufferOffset = _serializer.int8(obj.track_id, buffer, bufferOffset);
     // Serialize message field [yaw]
     bufferOffset = _serializer.float32(obj.yaw, buffer, bufferOffset);
     // Serialize message field [pitch]
@@ -85,6 +101,8 @@ class PTZ_perception {
     bufferOffset = _serializer.int8(obj.score, buffer, bufferOffset);
     // Serialize message field [target_lock]
     bufferOffset = _serializer.int8(obj.target_lock, buffer, bufferOffset);
+    // Serialize message field [spin_state]
+    bufferOffset = _serializer.int8(obj.spin_state, buffer, bufferOffset);
     // Serialize message field [fire_command]
     bufferOffset = _serializer.int8(obj.fire_command, buffer, bufferOffset);
     // Serialize message field [fire_mode]
@@ -98,6 +116,8 @@ class PTZ_perception {
     let data = new PTZ_perception(null);
     // Deserialize message field [header]
     data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
+    // Deserialize message field [track_id]
+    data.track_id = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [yaw]
     data.yaw = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [pitch]
@@ -106,6 +126,8 @@ class PTZ_perception {
     data.score = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [target_lock]
     data.target_lock = _deserializer.int8(buffer, bufferOffset);
+    // Deserialize message field [spin_state]
+    data.spin_state = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [fire_command]
     data.fire_command = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [fire_mode]
@@ -116,7 +138,7 @@ class PTZ_perception {
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 12;
+    return length + 14;
   }
 
   static datatype() {
@@ -126,17 +148,19 @@ class PTZ_perception {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'a850aebd0dc6b37d93b7c62b2378d3c2';
+    return 'f6811920662f8b712428f268fdd6cb2b';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     Header header
+    int8 track_id
     float32 yaw
     float32 pitch
     int8 score
     int8 target_lock
+    int8 spin_state
     int8 fire_command
     int8 fire_mode
     ================================================================================
@@ -171,6 +195,13 @@ class PTZ_perception {
       resolved.header = new std_msgs.msg.Header()
     }
 
+    if (msg.track_id !== undefined) {
+      resolved.track_id = msg.track_id;
+    }
+    else {
+      resolved.track_id = 0
+    }
+
     if (msg.yaw !== undefined) {
       resolved.yaw = msg.yaw;
     }
@@ -197,6 +228,13 @@ class PTZ_perception {
     }
     else {
       resolved.target_lock = 0
+    }
+
+    if (msg.spin_state !== undefined) {
+      resolved.spin_state = msg.spin_state;
+    }
+    else {
+      resolved.spin_state = 0
     }
 
     if (msg.fire_command !== undefined) {

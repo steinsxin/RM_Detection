@@ -518,8 +518,17 @@ bool ArmorDetector::get_max(const float *data, float &confidence, int &id)
             id = i;
         }
     }
-    // 如果id为0或者id为2(工程) | 置信度小于阈值
-    if(id == 0 || id == 2 || confidence < thresh_confidence)
+
+    // 选择不击打的列表
+    // 临时列表 1:英雄 2:工程 3|4:步兵 5:备用步兵 6:哨兵 7:前哨站 8:基地
+    for (int i = 0; i < Unattack_ID_list.size(); i++)
+    {
+        if(id == Unattack_ID_list[i])
+            return false;
+    }
+    
+    // 置信度小于阈值
+    if(confidence < thresh_confidence)
         return false;
     else
         return true;
@@ -535,10 +544,18 @@ int ArmorDetector::armorGrade(const Armor& checkArmor)
 {
     ////////////////////id优先级打分项目////////////////////////
     // 临时列表 1:英雄 2:工程 3|4:步兵 5:备用步兵 6:哨兵 7:前哨站 8:基地
-    int ID_list[8] = {1,3,4,5,6,7,8,2};
     int id_grade;
     int check_id = checkArmor.id;
-    id_grade = check_id == 1 ? 100 : 80;
+    // id_grade = check_id == 1 ? 100 : 80;
+    // 分数权重待调整
+    if(check_id == Priority_ID_list[0]) id_grade = 100;
+    if(check_id == Priority_ID_list[1]) id_grade = 80;
+    if(check_id == Priority_ID_list[2]) id_grade = 60;
+    if(check_id == Priority_ID_list[3]) id_grade = 40;
+    if(check_id == Priority_ID_list[4]) id_grade = 20;
+    if(check_id == Priority_ID_list[5]) id_grade = 0;
+    if(check_id == Priority_ID_list[6]) id_grade = -20;
+    if(check_id == Priority_ID_list[7]) id_grade = -40;
     ////////end//////////////////////////////////////////////
 
     /////////最大装甲板板打分项目/////////////////////

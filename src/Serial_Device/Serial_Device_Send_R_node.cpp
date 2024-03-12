@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
             vision_t.header.seq++;
             vision_t.header.stamp = ros::Time::now();
             vision_t.id = serial.vision_msg_.id;
-            vision_t.mode = serial.vision_msg_.mode;
+            // vision_t.mode = serial.vision_msg_.mode;
             vision_t.pitch = serial.vision_msg_.pitch;
             vision_t.yaw = serial.vision_msg_.yaw;
             vision_t.roll = serial.vision_msg_.roll;
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
             {
                 vision_t.quaternion[i] = serial.vision_msg_.quaternion[i];
             }
-            vision_t.shoot = serial.vision_msg_.shoot;
+            vision_t.shoot_spd = serial.vision_msg_.shoot;
 
             // 发送数据
             pub.publish(vision_t);

@@ -26,23 +26,17 @@ struct Robot_ctrl_
 
   Robot_ctrl_()
     : header()
-    , vx(0.0)
-    , vy(0.0)
-    , vw(0.0)
     , yaw(0.0)
     , pitch(0.0)
-    , target_lock(0)
-    , fire_command(0)  {
+    , fire_command(0)
+    , fire_mode(0)  {
     }
   Robot_ctrl_(const ContainerAllocator& _alloc)
     : header(_alloc)
-    , vx(0.0)
-    , vy(0.0)
-    , vw(0.0)
     , yaw(0.0)
     , pitch(0.0)
-    , target_lock(0)
-    , fire_command(0)  {
+    , fire_command(0)
+    , fire_mode(0)  {
   (void)_alloc;
     }
 
@@ -51,26 +45,17 @@ struct Robot_ctrl_
    typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
   _header_type header;
 
-   typedef float _vx_type;
-  _vx_type vx;
-
-   typedef float _vy_type;
-  _vy_type vy;
-
-   typedef float _vw_type;
-  _vw_type vw;
-
    typedef float _yaw_type;
   _yaw_type yaw;
 
    typedef float _pitch_type;
   _pitch_type pitch;
 
-   typedef int8_t _target_lock_type;
-  _target_lock_type target_lock;
-
    typedef int8_t _fire_command_type;
   _fire_command_type fire_command;
+
+   typedef int8_t _fire_mode_type;
+  _fire_mode_type fire_mode;
 
 
 
@@ -102,13 +87,10 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::robot_msg::Robot_ctrl_<ContainerAllocator1> & lhs, const ::robot_msg::Robot_ctrl_<ContainerAllocator2> & rhs)
 {
   return lhs.header == rhs.header &&
-    lhs.vx == rhs.vx &&
-    lhs.vy == rhs.vy &&
-    lhs.vw == rhs.vw &&
     lhs.yaw == rhs.yaw &&
     lhs.pitch == rhs.pitch &&
-    lhs.target_lock == rhs.target_lock &&
-    lhs.fire_command == rhs.fire_command;
+    lhs.fire_command == rhs.fire_command &&
+    lhs.fire_mode == rhs.fire_mode;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -165,12 +147,12 @@ struct MD5Sum< ::robot_msg::Robot_ctrl_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d72561e513163b9f64a8a93f7826d895";
+    return "c5cc9d351855b438086f74e32049e817";
   }
 
   static const char* value(const ::robot_msg::Robot_ctrl_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd72561e513163b9fULL;
-  static const uint64_t static_value2 = 0x64a8a93f7826d895ULL;
+  static const uint64_t static_value1 = 0xc5cc9d351855b438ULL;
+  static const uint64_t static_value2 = 0x086f74e32049e817ULL;
 };
 
 template<class ContainerAllocator>
@@ -190,13 +172,11 @@ struct Definition< ::robot_msg::Robot_ctrl_<ContainerAllocator> >
   static const char* value()
   {
     return "Header header\n"
-"float32 vx\n"
-"float32 vy\n"
-"float32 vw\n"
 "float32 yaw\n"
 "float32 pitch\n"
-"int8 target_lock\n"
 "int8 fire_command\n"
+"int8 fire_mode\n"
+"\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
 "# Standard metadata for higher-level stamped data types.\n"
@@ -231,13 +211,10 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.header);
-      stream.next(m.vx);
-      stream.next(m.vy);
-      stream.next(m.vw);
       stream.next(m.yaw);
       stream.next(m.pitch);
-      stream.next(m.target_lock);
       stream.next(m.fire_command);
+      stream.next(m.fire_mode);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -259,20 +236,14 @@ struct Printer< ::robot_msg::Robot_ctrl_<ContainerAllocator> >
     s << indent << "header: ";
     s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
-    s << indent << "vx: ";
-    Printer<float>::stream(s, indent + "  ", v.vx);
-    s << indent << "vy: ";
-    Printer<float>::stream(s, indent + "  ", v.vy);
-    s << indent << "vw: ";
-    Printer<float>::stream(s, indent + "  ", v.vw);
     s << indent << "yaw: ";
     Printer<float>::stream(s, indent + "  ", v.yaw);
     s << indent << "pitch: ";
     Printer<float>::stream(s, indent + "  ", v.pitch);
-    s << indent << "target_lock: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.target_lock);
     s << indent << "fire_command: ";
     Printer<int8_t>::stream(s, indent + "  ", v.fire_command);
+    s << indent << "fire_mode: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.fire_mode);
   }
 };
 

@@ -9,6 +9,8 @@
           Z
           YAW-VAL
           YAW
+          ID-VAL
+          ID
           SCORE-VAL
           SCORE
           TARGET_LOCK-VAL

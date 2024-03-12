@@ -24,6 +24,7 @@ class omni_perception {
       this.y = null;
       this.z = null;
       this.yaw = null;
+      this.id = null;
       this.score = null;
       this.target_lock = null;
     }
@@ -58,6 +59,12 @@ class omni_perception {
       else {
         this.yaw = 0.0;
       }
+      if (initObj.hasOwnProperty('id')) {
+        this.id = initObj.id
+      }
+      else {
+        this.id = 0;
+      }
       if (initObj.hasOwnProperty('score')) {
         this.score = initObj.score
       }
@@ -85,6 +92,8 @@ class omni_perception {
     bufferOffset = _serializer.float32(obj.z, buffer, bufferOffset);
     // Serialize message field [yaw]
     bufferOffset = _serializer.float32(obj.yaw, buffer, bufferOffset);
+    // Serialize message field [id]
+    bufferOffset = _serializer.int8(obj.id, buffer, bufferOffset);
     // Serialize message field [score]
     bufferOffset = _serializer.int8(obj.score, buffer, bufferOffset);
     // Serialize message field [target_lock]
@@ -106,6 +115,8 @@ class omni_perception {
     data.z = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [yaw]
     data.yaw = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [id]
+    data.id = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [score]
     data.score = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [target_lock]
@@ -116,7 +127,7 @@ class omni_perception {
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 18;
+    return length + 19;
   }
 
   static datatype() {
@@ -126,7 +137,7 @@ class omni_perception {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '7d82e3f9b96d03fe1d79d4bb3f0ed047';
+    return 'bcf02bf291fe4deb8dd921151076c58f';
   }
 
   static messageDefinition() {
@@ -137,6 +148,7 @@ class omni_perception {
     float32 y
     float32 z
     float32 yaw
+    int8 id
     int8 score
     int8 target_lock
     ================================================================================
@@ -197,6 +209,13 @@ class omni_perception {
     }
     else {
       resolved.yaw = 0.0
+    }
+
+    if (msg.id !== undefined) {
+      resolved.id = msg.id;
+    }
+    else {
+      resolved.id = 0
     }
 
     if (msg.score !== undefined) {

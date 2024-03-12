@@ -388,7 +388,6 @@ float AngleSolve::airResistanceSolve(Eigen::Vector3d Pos) {
     float y_temp, y_actual, dy;
     float Solve_pitch;
     y_temp = y;
-    bullet_speed = 25;
     // 迭代法 | 使用弹道模型对落点高度进行计算,直到落点高度达到要求,得到抬升角度
     for (int i = 0; i < 20; i++)
     {

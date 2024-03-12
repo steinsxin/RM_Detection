@@ -9,7 +9,7 @@ import struct
 import std_msgs.msg
 
 class omni_perception(genpy.Message):
-  _md5sum = "7d82e3f9b96d03fe1d79d4bb3f0ed047"
+  _md5sum = "bcf02bf291fe4deb8dd921151076c58f"
   _type = "robot_msg/omni_perception"
   _has_header = True  # flag to mark the presence of a Header object
   _full_text = """Header header
@@ -17,6 +17,7 @@ float32 x
 float32 y
 float32 z
 float32 yaw
+int8 id
 int8 score
 int8 target_lock
 ================================================================================
@@ -35,8 +36,8 @@ time stamp
 #Frame this data is associated with
 string frame_id
 """
-  __slots__ = ['header','x','y','z','yaw','score','target_lock']
-  _slot_types = ['std_msgs/Header','float32','float32','float32','float32','int8','int8']
+  __slots__ = ['header','x','y','z','yaw','id','score','target_lock']
+  _slot_types = ['std_msgs/Header','float32','float32','float32','float32','int8','int8','int8']
 
   def __init__(self, *args, **kwds):
     """
@@ -46,7 +47,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,x,y,z,yaw,score,target_lock
+       header,x,y,z,yaw,id,score,target_lock
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -65,6 +66,8 @@ string frame_id
         self.z = 0.
       if self.yaw is None:
         self.yaw = 0.
+      if self.id is None:
+        self.id = 0
       if self.score is None:
         self.score = 0
       if self.target_lock is None:
@@ -75,6 +78,7 @@ string frame_id
       self.y = 0.
       self.z = 0.
       self.yaw = 0.
+      self.id = 0
       self.score = 0
       self.target_lock = 0
 
@@ -99,7 +103,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_4f2b().pack(_x.x, _x.y, _x.z, _x.yaw, _x.score, _x.target_lock))
+      buff.write(_get_struct_4f3b().pack(_x.x, _x.y, _x.z, _x.yaw, _x.id, _x.score, _x.target_lock))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -129,8 +133,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 18
-      (_x.x, _x.y, _x.z, _x.yaw, _x.score, _x.target_lock,) = _get_struct_4f2b().unpack(str[start:end])
+      end += 19
+      (_x.x, _x.y, _x.z, _x.yaw, _x.id, _x.score, _x.target_lock,) = _get_struct_4f3b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -152,7 +156,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_4f2b().pack(_x.x, _x.y, _x.z, _x.yaw, _x.score, _x.target_lock))
+      buff.write(_get_struct_4f3b().pack(_x.x, _x.y, _x.z, _x.yaw, _x.id, _x.score, _x.target_lock))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -183,8 +187,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 18
-      (_x.x, _x.y, _x.z, _x.yaw, _x.score, _x.target_lock,) = _get_struct_4f2b().unpack(str[start:end])
+      end += 19
+      (_x.x, _x.y, _x.z, _x.yaw, _x.id, _x.score, _x.target_lock,) = _get_struct_4f3b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -199,9 +203,9 @@ def _get_struct_3I():
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
-_struct_4f2b = None
-def _get_struct_4f2b():
-    global _struct_4f2b
-    if _struct_4f2b is None:
-        _struct_4f2b = struct.Struct("<4f2b")
-    return _struct_4f2b
+_struct_4f3b = None
+def _get_struct_4f3b():
+    global _struct_4f3b
+    if _struct_4f3b is None:
+        _struct_4f3b = struct.Struct("<4f3b")
+    return _struct_4f3b

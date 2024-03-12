@@ -42,8 +42,9 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Vision.msg"
     "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Robot_ctrl.msg"
     "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg"
-    "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg"
+    "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg"
     "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg"
+    "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg"
     )
 endif()
 

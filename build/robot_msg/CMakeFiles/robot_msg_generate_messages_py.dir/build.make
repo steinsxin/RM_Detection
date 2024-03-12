@@ -56,8 +56,9 @@ include robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/progress.make
 robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Vision.py
 robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Robot_ctrl.py
 robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_Yaw.py
-robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py
+robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py
 robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_perception.py
+robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py
 robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py
 
 
@@ -79,11 +80,11 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detecti
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG robot_msg/PTZ_Yaw"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg
 
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG robot_msg/omni_perception"
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG robot_msg/barrel"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_perception.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_perception.py: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg
@@ -91,21 +92,29 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_py: /home/steins_xin/RM_Detecti
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG robot_msg/PTZ_perception"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg
 
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python from MSG robot_msg/Track_reset"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg
+
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Vision.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Robot_ctrl.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_Yaw.py
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_perception.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python msg __init__.py for robot_msg"
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python msg __init__.py for robot_msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg --initpy
 
 robot_msg_generate_messages_py: robot_msg/CMakeFiles/robot_msg_generate_messages_py
 robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Vision.py
 robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Robot_ctrl.py
 robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_Yaw.py
-robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_omni_perception.py
+robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_barrel.py
 robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_PTZ_perception.py
+robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/_Track_reset.py
 robot_msg_generate_messages_py: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/lib/python3/dist-packages/robot_msg/msg/__init__.py
 robot_msg_generate_messages_py: robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/build.make
 

@@ -23,6 +23,7 @@
 #include "robot_msg/Robot_ctrl.h"
 #include "robot_msg/Vision.h"
 #include "robot_msg/PTZ_perception.h"
+#include "robot_msg/Track_reset.h"
 
 // Opencv 4.5.5
 #include <opencv2/opencv.hpp>
@@ -50,6 +51,20 @@ ArmorTrack Tracker;
 ArmorObserve AO;
 std::vector<double> vdata(4);
 
+// 开火模式切换
+typedef enum
+{
+    Continuous_shoot = 1,       // 连发模式
+    Three_shoot = 2,            // 三连发模式
+}Fire_Mode;
+
+// 开火模式切换
+typedef enum
+{
+    Fire_ON = 1,                // 开火命令
+    Fire_OFF = 0,               // 关火命令
+}Fire;
+
 void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::VisionConstPtr &Vision_msg){
   
     // Armor容器
@@ -64,7 +79,9 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     Vision_data.data[0] = Vision_msg->pitch;  // pitch
     Vision_data.data[1] = Vision_msg->yaw;    // yaw
     Vision_data.data[2] = Vision_msg->roll;   // roll
-    Vision_data.mode = Vision_msg->mode;      // 0x21
+    Vision_data.id = Vision_msg->id;          // 1:蓝   2:红
+    // Vision_data.mode = Vision_msg->mode;      // 0x21(哨兵废弃模式选项)
+
     // 四元数
     for (size_t i = 0; i < 4; i++)
     {
@@ -83,6 +100,8 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     // // 获取最终装甲板
     Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
     // Tracker.show();
+    
+    AS.bullet_speed = 25;
    
     // // 整车观测
     // bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
@@ -197,29 +216,72 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     //       // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
     // }
 
+       // 开火指令判断
+    double Fire;
+    double Fire_mode;
+    // if(OK) Fire = 1;
+    // else Fire = 0;
+
+    // 决策框锁定开火[坐标点在左上和右下之间]
+    cv::Point2f Hitting_frame[4];
+    float img_rows,img_cols;
+    img_rows = (float)src.rows;
+    img_cols = (float)src.cols;
+    // 顺序: 左上 | 右下 
+    Hitting_frame[0].x = img_cols*Tracker.wide_ratio;
+    Hitting_frame[0].y = img_rows*Tracker.high_ratio;
+    Hitting_frame[2].x = img_cols - (img_cols*Tracker.wide_ratio);
+    Hitting_frame[2].y = img_rows - (img_rows*Tracker.high_ratio);
+
+    bool Fire_X_OK = (Tracker.enemy_armor.center.x > Hitting_frame[0].x) && (Tracker.enemy_armor.center.x < Hitting_frame[2].x);
+    bool Fire_Y_OK = (Tracker.enemy_armor.center.y > Hitting_frame[0].y) && (Tracker.enemy_armor.center.y < Hitting_frame[2].y);
+    
+    //! 决策框的大小需要根据距离来实际进行大小的调整[重点是左右的距离变化] (需要吗)
+
+    // 判断在决策框内 [需要放在跟踪状态内]
+    if(Fire_X_OK && Fire_Y_OK){
+        // 处于陀螺状态
+        if(Tracker.Spin_State()){
+            // 自动开火 | 三连发
+            Fire_mode = Three_shoot;
+        }
+        // 不处于陀螺状态
+        else{
+            // 进行开火 | 连发
+            Fire = Fire_ON;
+            Fire_mode = Continuous_shoot;
+        }
+    }else{
+        Fire = Fire_OFF;
+    }
+
     // 创建发送数据
     robot_msg::PTZ_perception PTZ_perception_t;
-
-    // 开火判断
-    // double fire;
-    // if(OK) fire = 1;
-    // else fire = 0;
 
     // 填充数据
     PTZ_perception_t.header.frame_id = "PTZ_perception_R";
     PTZ_perception_t.header.seq++;
     PTZ_perception_t.header.stamp = ros::Time::now();
-    
-    PTZ_perception_t.pitch = 10;          // pitch轴
-    PTZ_perception_t.yaw = 15;            // yaw轴
-    PTZ_perception_t.score = 10;          // 装甲板分数
-    PTZ_perception_t.fire_command = 0;    // 开火指令
-    PTZ_perception_t.target_lock = 0x31;  // 跟踪状态
+
+    PTZ_perception_t.pitch = 10;                            // pitch轴
+    PTZ_perception_t.yaw = 15;                              // yaw轴
+    PTZ_perception_t.score = Tracker.enemy_armor.grade;     // 装甲板分数
+    PTZ_perception_t.track_id = Tracker.tracking_id;        // 跟踪装甲板ID
+    PTZ_perception_t.fire_command = Fire;                   // 开火指令
+    PTZ_perception_t.fire_mode = Fire_mode;                 // 开火模式
+    PTZ_perception_t.target_lock = 0x31;                    // 跟踪状态
 
     // 发送数据
     PTZ_perception_pub.publish(PTZ_perception_t);
 }
 
+// 重置跟踪状态命令
+void Track_Reset_CMD(const robot_msg::Track_resetConstPtr &Track_reset_t){
+    // 初始化
+    Tracker.Track_reset();
+    // 重新设置跟踪ID(不进行跟踪状态的重置)
+    Tracker.tracking_id = Track_reset_t->Track_id;
+}
 
 int main(int argc, char *argv[]){
 
@@ -232,10 +294,13 @@ int main(int argc, char *argv[]){
     ros::NodeHandle nh;
 
     PTZ_perception_pub = nh.advertise<robot_msg::Robot_ctrl>("PTZ_perception_R",1);
+    ros::Subscriber Track_reset_sub = nh.subscribe<robot_msg::Track_reset>("/PTZ_R/Track_Reset",1,Track_Reset_CMD);   
 
     // 建立需要订阅的消息对应的订阅器
     message_filters::Subscriber<sensor_msgs::Image> HIK_Camera_sub(nh, "/HIK_Camera_R/image", 1);  
-    message_filters::Subscriber<robot_msg::Vision> Imu_sub(nh, "/Vision_R_data", 1);  
+    // message_filters::Subscriber<robot_msg::Vision> Imu_sub(nh, "/Serial_Device/Vision_R_data", 1);  
+    message_filters::Subscriber<robot_msg::Vision> Imu_sub(nh, "/right_gimbal_vision_data", 1);  
+
 
     // 同步ROS消息
     typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, robot_msg::Vision> MySyncPolicy;

@@ -16,29 +16,27 @@
 
 (defclass robot_msg::Vision
   :super ros::object
-  :slots (_header _id _mode _pitch _yaw _roll _quaternion _shoot ))
+  :slots (_header _id _pitch _yaw _roll _quaternion _shoot_spd ))
 
 (defmethod robot_msg::Vision
   (:init
    (&key
     ((:header __header) (instance std_msgs::Header :init))
     ((:id __id) 0)
-    ((:mode __mode) 0)
     ((:pitch __pitch) 0.0)
     ((:yaw __yaw) 0.0)
     ((:roll __roll) 0.0)
     ((:quaternion __quaternion) (make-array 0 :initial-element 0.0 :element-type :float))
-    ((:shoot __shoot) 0.0)
+    ((:shoot_spd __shoot_spd) 0.0)
     )
    (send-super :init)
    (setq _header __header)
    (setq _id (round __id))
-   (setq _mode (round __mode))
    (setq _pitch (float __pitch))
    (setq _yaw (float __yaw))
    (setq _roll (float __roll))
    (setq _quaternion __quaternion)
-   (setq _shoot (float __shoot))
+   (setq _shoot_spd (float __shoot_spd))
    self)
   (:header
    (&rest __header)
@@ -50,9 +48,6 @@
   (:id
    (&optional __id)
    (if __id (setq _id __id)) _id)
-  (:mode
-   (&optional __mode)
-   (if __mode (setq _mode __mode)) _mode)
   (:pitch
    (&optional __pitch)
    (if __pitch (setq _pitch __pitch)) _pitch)
@@ -65,17 +60,15 @@
   (:quaternion
    (&optional __quaternion)
    (if __quaternion (setq _quaternion __quaternion)) _quaternion)
-  (:shoot
-   (&optional __shoot)
-   (if __shoot (setq _shoot __shoot)) _shoot)
+  (:shoot_spd
+   (&optional __shoot_spd)
+   (if __shoot_spd (setq _shoot_spd __shoot_spd)) _shoot_spd)
   (:serialization-length
    ()
    (+
     ;; std_msgs/Header _header
     (send _header :serialization-length)
     ;; uint16 _id
-    2
-    ;; uint16 _mode
     2
     ;; float32 _pitch
     4
@@ -85,7 +78,7 @@
     4
     ;; float32[] _quaternion
     (* 4    (length _quaternion)) 4
-    ;; float32 _shoot
+    ;; float32 _shoot_spd
     4
     ))
   (:serialize
@@ -96,8 +89,6 @@
        (send _header :serialize s)
      ;; uint16 _id
        (write-word _id s)
-     ;; uint16 _mode
-       (write-word _mode s)
      ;; float32 _pitch
        (sys::poke _pitch (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; float32 _yaw
@@ -109,8 +100,8 @@
      (dotimes (i (length _quaternion))
        (sys::poke (elt _quaternion i) (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
        )
-     ;; float32 _shoot
-       (sys::poke _shoot (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _shoot_spd
+       (sys::poke _shoot_spd (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -119,8 +110,6 @@
      (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
    ;; uint16 _id
      (setq _id (sys::peek buf ptr- :short)) (incf ptr- 2)
-   ;; uint16 _mode
-     (setq _mode (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;; float32 _pitch
      (setq _pitch (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; float32 _yaw
@@ -134,23 +123,22 @@
      (dotimes (i n)
      (setf (elt _quaternion i) (sys::peek buf ptr- :float)) (incf ptr- 4)
      ))
-   ;; float32 _shoot
-     (setq _shoot (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _shoot_spd
+     (setq _shoot_spd (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get robot_msg::Vision :md5sum-) "b30d54651ad2a2d8242e6a86edff3997")
+(setf (get robot_msg::Vision :md5sum-) "e9ed3a3b641ae2139fa852e5cf4f6219")
 (setf (get robot_msg::Vision :datatype-) "robot_msg/Vision")
 (setf (get robot_msg::Vision :definition-)
       "  Header header
-  uint16 id
-  uint16 mode
+  uint16 id         # 1:蓝 2:红 
   float32 pitch
   float32 yaw
   float32 roll
   float32[] quaternion
-  float32 shoot
+  float32 shoot_spd
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -171,6 +159,6 @@ string frame_id
 
 
 
-(provide :robot_msg/Vision "b30d54651ad2a2d8242e6a86edff3997")
+(provide :robot_msg/Vision "e9ed3a3b641ae2139fa852e5cf4f6219")
 
 

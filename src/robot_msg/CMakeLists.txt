@@ -53,8 +53,9 @@ add_message_files(
   Vision.msg              # IMU数据
   Robot_ctrl.msg          # 发送下位机数据
   PTZ_Yaw.msg             # 大云台数据
-  omni_perception.msg     # 全向感知数据
+  barrel.msg              # 全向感知数据
   PTZ_perception.msg      # 云台|全向感知数据融合
+  Track_reset.msg         # 跟踪状态重置
 )
 
 ## Generate services in the 'srv' folder

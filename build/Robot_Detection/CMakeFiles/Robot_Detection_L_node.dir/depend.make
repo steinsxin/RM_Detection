@@ -3,6 +3,7 @@
 
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_perception.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Robot_ctrl.h
+Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Vision.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/Robot_Detection_L.cpp
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/AngleSolve/include/AngleSolve.h
@@ -100,6 +101,7 @@ Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /opt/ros/noetic/include/sensor_msgs/RegionOfInterest.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /opt/ros/noetic/include/sensor_msgs/image_encodings.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
+Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /opt/ros/noetic/include/std_msgs/UInt8.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
 Robot_Detection/CMakeFiles/Robot_Detection_L_node.dir/Robot_Detection_L.cpp.o: /usr/include/eigen3/Eigen/Cholesky

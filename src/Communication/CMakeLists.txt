@@ -7,6 +7,7 @@ project(Communication)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+set(OpenCV_DIR ~/opencv/cmake)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
@@ -14,7 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   message_filters
   sensor_msgs
 )
-
+# 链接Opencv和Eigen3
+find_package(OpenCV 4.5 REQUIRED)
+find_package(Eigen3 REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -121,6 +124,7 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
   ${PROJECT_SOURCE_DIR}/../../devel/include
+  ${PROJECT_SOURCE_DIR}/../public_include
 )
 
 ## Declare a C++ library
@@ -158,12 +162,15 @@ add_executable(${PROJECT_NAME}_PTZ_perception_R_node src/PTZ_perception_R.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_PTZ_Yaw_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
 )
 target_link_libraries(${PROJECT_NAME}_PTZ_perception_L_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
 )
 target_link_libraries(${PROJECT_NAME}_PTZ_perception_R_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
 )
 #############
 ## Install ##

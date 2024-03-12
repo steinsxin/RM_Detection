@@ -168,36 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-robot_msg/CMakeFiles/robot_msg_genpy.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_genpy.dir/rule
-.PHONY : robot_msg/CMakeFiles/robot_msg_genpy.dir/rule
-
-# Convenience name for target.
-robot_msg_genpy: robot_msg/CMakeFiles/robot_msg_genpy.dir/rule
-
-.PHONY : robot_msg_genpy
-
-# fast build rule for target.
-robot_msg_genpy/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_genpy.dir/build.make robot_msg/CMakeFiles/robot_msg_genpy.dir/build
-.PHONY : robot_msg_genpy/fast
-
-# Convenience name for target.
-robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule
-.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule
-
-# Convenience name for target.
-robot_msg_generate_messages_py: robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule
-
-.PHONY : robot_msg_generate_messages_py
-
-# fast build rule for target.
-robot_msg_generate_messages_py/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/build
-.PHONY : robot_msg_generate_messages_py/fast
-
-# Convenience name for target.
 robot_msg/CMakeFiles/robot_msg_gennodejs.dir/rule:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_gennodejs.dir/rule
 .PHONY : robot_msg/CMakeFiles/robot_msg_gennodejs.dir/rule
@@ -211,6 +181,36 @@ robot_msg_gennodejs: robot_msg/CMakeFiles/robot_msg_gennodejs.dir/rule
 robot_msg_gennodejs/fast:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_gennodejs.dir/build.make robot_msg/CMakeFiles/robot_msg_gennodejs.dir/build
 .PHONY : robot_msg_gennodejs/fast
+
+# Convenience name for target.
+robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule
+.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+robot_msg_generate_messages_nodejs: robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule
+
+.PHONY : robot_msg_generate_messages_nodejs
+
+# fast build rule for target.
+robot_msg_generate_messages_nodejs/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/build
+.PHONY : robot_msg_generate_messages_nodejs/fast
+
+# Convenience name for target.
+robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule
+.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule
+
+# Convenience name for target.
+robot_msg_generate_messages: robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule
+
+.PHONY : robot_msg_generate_messages
+
+# fast build rule for target.
+robot_msg_generate_messages/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages.dir/build
+.PHONY : robot_msg_generate_messages/fast
 
 # Convenience name for target.
 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Vision.dir/rule:
@@ -258,21 +258,6 @@ robot_msg_generate_messages_cpp/fast:
 .PHONY : robot_msg_generate_messages_cpp/fast
 
 # Convenience name for target.
-robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule
-.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-robot_msg_generate_messages_nodejs: robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/rule
-
-.PHONY : robot_msg_generate_messages_nodejs
-
-# fast build rule for target.
-robot_msg_generate_messages_nodejs/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages_nodejs.dir/build
-.PHONY : robot_msg_generate_messages_nodejs/fast
-
-# Convenience name for target.
 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Robot_ctrl.dir/rule:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Robot_ctrl.dir/rule
 .PHONY : robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Robot_ctrl.dir/rule
@@ -303,34 +288,94 @@ robot_msg_genlisp/fast:
 .PHONY : robot_msg_genlisp/fast
 
 # Convenience name for target.
-robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule
-.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule
+robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_barrel.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_barrel.dir/rule
+.PHONY : robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_barrel.dir/rule
 
 # Convenience name for target.
-robot_msg_generate_messages: robot_msg/CMakeFiles/robot_msg_generate_messages.dir/rule
+_robot_msg_generate_messages_check_deps_barrel: robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_barrel.dir/rule
 
-.PHONY : robot_msg_generate_messages
+.PHONY : _robot_msg_generate_messages_check_deps_barrel
 
 # fast build rule for target.
-robot_msg_generate_messages/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages.dir/build
-.PHONY : robot_msg_generate_messages/fast
+_robot_msg_generate_messages_check_deps_barrel/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_barrel.dir/build.make robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_barrel.dir/build
+.PHONY : _robot_msg_generate_messages_check_deps_barrel/fast
 
 # Convenience name for target.
-robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_omni_perception.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_omni_perception.dir/rule
-.PHONY : robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_omni_perception.dir/rule
+robot_msg/CMakeFiles/robot_msg_genpy.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_genpy.dir/rule
+.PHONY : robot_msg/CMakeFiles/robot_msg_genpy.dir/rule
 
 # Convenience name for target.
-_robot_msg_generate_messages_check_deps_omni_perception: robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_omni_perception.dir/rule
+robot_msg_genpy: robot_msg/CMakeFiles/robot_msg_genpy.dir/rule
 
-.PHONY : _robot_msg_generate_messages_check_deps_omni_perception
+.PHONY : robot_msg_genpy
 
 # fast build rule for target.
-_robot_msg_generate_messages_check_deps_omni_perception/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_omni_perception.dir/build.make robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_omni_perception.dir/build
-.PHONY : _robot_msg_generate_messages_check_deps_omni_perception/fast
+robot_msg_genpy/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_genpy.dir/build.make robot_msg/CMakeFiles/robot_msg_genpy.dir/build
+.PHONY : robot_msg_genpy/fast
+
+# Convenience name for target.
+robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule
+.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule
+
+# Convenience name for target.
+robot_msg_generate_messages_py: robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/rule
+
+.PHONY : robot_msg_generate_messages_py
+
+# fast build rule for target.
+robot_msg_generate_messages_py/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages_py.dir/build
+.PHONY : robot_msg_generate_messages_py/fast
+
+# Convenience name for target.
+robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Track_reset.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Track_reset.dir/rule
+.PHONY : robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Track_reset.dir/rule
+
+# Convenience name for target.
+_robot_msg_generate_messages_check_deps_Track_reset: robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Track_reset.dir/rule
+
+.PHONY : _robot_msg_generate_messages_check_deps_Track_reset
+
+# fast build rule for target.
+_robot_msg_generate_messages_check_deps_Track_reset/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Track_reset.dir/build.make robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_Track_reset.dir/build
+.PHONY : _robot_msg_generate_messages_check_deps_Track_reset/fast
+
+# Convenience name for target.
+robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule
+.PHONY : robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule
+
+# Convenience name for target.
+robot_msg_gencpp: robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule
+
+.PHONY : robot_msg_gencpp
+
+# fast build rule for target.
+robot_msg_gencpp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_gencpp.dir/build.make robot_msg/CMakeFiles/robot_msg_gencpp.dir/build
+.PHONY : robot_msg_gencpp/fast
+
+# Convenience name for target.
+robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule
+.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+robot_msg_generate_messages_eus: robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule
+
+.PHONY : robot_msg_generate_messages_eus
+
+# fast build rule for target.
+robot_msg_generate_messages_eus/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/build
+.PHONY : robot_msg_generate_messages_eus/fast
 
 # Convenience name for target.
 robot_msg/CMakeFiles/_robot_msg_generate_messages_check_deps_PTZ_Yaw.dir/rule:
@@ -363,36 +408,6 @@ robot_msg_generate_messages_lisp/fast:
 .PHONY : robot_msg_generate_messages_lisp/fast
 
 # Convenience name for target.
-robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule
-.PHONY : robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-robot_msg_generate_messages_eus: robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/rule
-
-.PHONY : robot_msg_generate_messages_eus
-
-# fast build rule for target.
-robot_msg_generate_messages_eus/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/build.make robot_msg/CMakeFiles/robot_msg_generate_messages_eus.dir/build
-.PHONY : robot_msg_generate_messages_eus/fast
-
-# Convenience name for target.
-robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule
-.PHONY : robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule
-
-# Convenience name for target.
-robot_msg_gencpp: robot_msg/CMakeFiles/robot_msg_gencpp.dir/rule
-
-.PHONY : robot_msg_gencpp
-
-# fast build rule for target.
-robot_msg_gencpp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f robot_msg/CMakeFiles/robot_msg_gencpp.dir/build.make robot_msg/CMakeFiles/robot_msg_gencpp.dir/build
-.PHONY : robot_msg_gencpp/fast
-
-# Convenience name for target.
 robot_msg/CMakeFiles/robot_msg_geneus.dir/rule:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 robot_msg/CMakeFiles/robot_msg_geneus.dir/rule
 .PHONY : robot_msg/CMakeFiles/robot_msg_geneus.dir/rule
@@ -417,24 +432,25 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
-	@echo "... robot_msg_genpy"
-	@echo "... robot_msg_generate_messages_py"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... robot_msg_gennodejs"
+	@echo "... robot_msg_generate_messages_nodejs"
+	@echo "... robot_msg_generate_messages"
 	@echo "... _robot_msg_generate_messages_check_deps_Vision"
 	@echo "... _robot_msg_generate_messages_check_deps_PTZ_perception"
 	@echo "... install/local"
 	@echo "... robot_msg_generate_messages_cpp"
-	@echo "... robot_msg_generate_messages_nodejs"
 	@echo "... _robot_msg_generate_messages_check_deps_Robot_ctrl"
 	@echo "... robot_msg_genlisp"
-	@echo "... robot_msg_generate_messages"
-	@echo "... _robot_msg_generate_messages_check_deps_omni_perception"
+	@echo "... _robot_msg_generate_messages_check_deps_barrel"
+	@echo "... robot_msg_genpy"
+	@echo "... robot_msg_generate_messages_py"
+	@echo "... _robot_msg_generate_messages_check_deps_Track_reset"
+	@echo "... robot_msg_gencpp"
+	@echo "... robot_msg_generate_messages_eus"
 	@echo "... _robot_msg_generate_messages_check_deps_PTZ_Yaw"
 	@echo "... robot_msg_generate_messages_lisp"
-	@echo "... robot_msg_generate_messages_eus"
-	@echo "... robot_msg_gencpp"
 	@echo "... robot_msg_geneus"
 .PHONY : help
 

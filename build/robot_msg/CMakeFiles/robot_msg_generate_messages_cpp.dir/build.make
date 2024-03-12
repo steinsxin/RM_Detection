@@ -56,8 +56,9 @@ include robot_msg/CMakeFiles/robot_msg_generate_messages_cpp.dir/progress.make
 robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Vision.h
 robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Robot_ctrl.h
 robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_Yaw.h
-robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/omni_perception.h
+robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/barrel.h
 robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_perception.h
+robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h
 
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Vision.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
@@ -81,12 +82,12 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detect
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from robot_msg/PTZ_Yaw.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg && /home/steins_xin/RM_Detection_Sentinel_ROS/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg -e /opt/ros/noetic/share/gencpp/cmake/..
 
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/omni_perception.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/omni_perception.h: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/omni_perception.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/omni_perception.h: /opt/ros/noetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from robot_msg/omni_perception.msg"
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg && /home/steins_xin/RM_Detection_Sentinel_ROS/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg -e /opt/ros/noetic/share/gencpp/cmake/..
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/barrel.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/barrel.h: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/barrel.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/barrel.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from robot_msg/barrel.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg && /home/steins_xin/RM_Detection_Sentinel_ROS/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_perception.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_perception.h: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg
@@ -95,12 +96,20 @@ robot_msg/CMakeFiles/robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detect
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from robot_msg/PTZ_perception.msg"
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg && /home/steins_xin/RM_Detection_Sentinel_ROS/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg -e /opt/ros/noetic/share/gencpp/cmake/..
 
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h: /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/steins_xin/RM_Detection_Sentinel_ROS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating C++ code from robot_msg/Track_reset.msg"
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg && /home/steins_xin/RM_Detection_Sentinel_ROS/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg -Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_msg -o /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg -e /opt/ros/noetic/share/gencpp/cmake/..
+
 robot_msg_generate_messages_cpp: robot_msg/CMakeFiles/robot_msg_generate_messages_cpp
 robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Vision.h
 robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Robot_ctrl.h
 robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_Yaw.h
-robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/omni_perception.h
+robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/barrel.h
 robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/PTZ_perception.h
+robot_msg_generate_messages_cpp: /home/steins_xin/RM_Detection_Sentinel_ROS/devel/include/robot_msg/Track_reset.h
 robot_msg_generate_messages_cpp: robot_msg/CMakeFiles/robot_msg_generate_messages_cpp.dir/build.make
 
 .PHONY : robot_msg_generate_messages_cpp

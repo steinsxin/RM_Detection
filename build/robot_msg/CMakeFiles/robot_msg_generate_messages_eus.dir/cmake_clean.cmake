@@ -3,8 +3,9 @@ file(REMOVE_RECURSE
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_Yaw.l"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/PTZ_perception.l"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Robot_ctrl.l"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Track_reset.l"
   "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/Vision.l"
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/omni_perception.l"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/devel/share/roseus/ros/robot_msg/msg/barrel.l"
   "CMakeFiles/robot_msg_generate_messages_eus"
 )
 

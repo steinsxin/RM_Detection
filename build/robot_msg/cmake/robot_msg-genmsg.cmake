@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "robot_msg: 5 messages, 0 services")
+message(STATUS "robot_msg: 6 messages, 0 services")
 
 set(MSG_I_FLAGS "-Irobot_msg:/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
@@ -32,14 +32,19 @@ add_custom_target(_robot_msg_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_msg" "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg" "std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" NAME_WE)
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" NAME_WE)
 add_custom_target(_robot_msg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_msg" "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" "std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_msg" "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" "std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" NAME_WE)
 add_custom_target(_robot_msg_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_msg" "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" "std_msgs/Header"
+)
+
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" NAME_WE)
+add_custom_target(_robot_msg_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "robot_msg" "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" "std_msgs/Header"
 )
 
 #
@@ -67,13 +72,19 @@ _generate_msg_cpp(robot_msg
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_msg
 )
 _generate_msg_cpp(robot_msg
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_msg
 )
 _generate_msg_cpp(robot_msg
   "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_msg
+)
+_generate_msg_cpp(robot_msg
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/robot_msg
@@ -99,9 +110,11 @@ get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src
 add_dependencies(robot_msg_generate_messages_cpp _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_cpp _robot_msg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" NAME_WE)
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_cpp _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" NAME_WE)
+add_dependencies(robot_msg_generate_messages_cpp _robot_msg_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_cpp _robot_msg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -132,13 +145,19 @@ _generate_msg_eus(robot_msg
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_msg
 )
 _generate_msg_eus(robot_msg
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_msg
 )
 _generate_msg_eus(robot_msg
   "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_msg
+)
+_generate_msg_eus(robot_msg
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/robot_msg
@@ -164,9 +183,11 @@ get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src
 add_dependencies(robot_msg_generate_messages_eus _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_eus _robot_msg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" NAME_WE)
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_eus _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" NAME_WE)
+add_dependencies(robot_msg_generate_messages_eus _robot_msg_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_eus _robot_msg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -197,13 +218,19 @@ _generate_msg_lisp(robot_msg
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_msg
 )
 _generate_msg_lisp(robot_msg
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_msg
 )
 _generate_msg_lisp(robot_msg
   "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_msg
+)
+_generate_msg_lisp(robot_msg
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/robot_msg
@@ -229,9 +256,11 @@ get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src
 add_dependencies(robot_msg_generate_messages_lisp _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_lisp _robot_msg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" NAME_WE)
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_lisp _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" NAME_WE)
+add_dependencies(robot_msg_generate_messages_lisp _robot_msg_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_lisp _robot_msg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -262,13 +291,19 @@ _generate_msg_nodejs(robot_msg
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_msg
 )
 _generate_msg_nodejs(robot_msg
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_msg
 )
 _generate_msg_nodejs(robot_msg
   "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_msg
+)
+_generate_msg_nodejs(robot_msg
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/robot_msg
@@ -294,9 +329,11 @@ get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src
 add_dependencies(robot_msg_generate_messages_nodejs _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_nodejs _robot_msg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" NAME_WE)
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_nodejs _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" NAME_WE)
+add_dependencies(robot_msg_generate_messages_nodejs _robot_msg_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_nodejs _robot_msg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -327,13 +364,19 @@ _generate_msg_py(robot_msg
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_msg
 )
 _generate_msg_py(robot_msg
-  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg"
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_msg
 )
 _generate_msg_py(robot_msg
   "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_msg
+)
+_generate_msg_py(robot_msg
+  "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/robot_msg
@@ -359,9 +402,11 @@ get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src
 add_dependencies(robot_msg_generate_messages_py _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_Yaw.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_py _robot_msg_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/omni_perception.msg" NAME_WE)
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/barrel.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_py _robot_msg_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/PTZ_perception.msg" NAME_WE)
+add_dependencies(robot_msg_generate_messages_py _robot_msg_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg/msg/Track_reset.msg" NAME_WE)
 add_dependencies(robot_msg_generate_messages_py _robot_msg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

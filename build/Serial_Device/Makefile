@@ -56,17 +56,60 @@ CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_Sentinel_ROS/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -80,60 +123,17 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,231 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/rule
-
-# Convenience name for target.
-Serial_Device_Receive_L_node: Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/rule
-
-.PHONY : Serial_Device_Receive_L_node
-
-# fast build rule for target.
-Serial_Device_Receive_L_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build
-.PHONY : Serial_Device_Receive_L_node/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/rule
-
-# Convenience name for target.
-Serial_Device_Receive_test_R_node: Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/rule
-
-.PHONY : Serial_Device_Receive_test_R_node
-
-# fast build rule for target.
-Serial_Device_Receive_test_R_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/build
-.PHONY : Serial_Device_Receive_test_R_node/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule
-
-# Convenience name for target.
-Serial_Device_Send_L_node: Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule
-
-.PHONY : Serial_Device_Send_L_node
-
-# fast build rule for target.
-Serial_Device_Send_L_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build
-.PHONY : Serial_Device_Send_L_node/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/rule
-
-# Convenience name for target.
-Serial_Device_Send_test_L_node: Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/rule
-
-.PHONY : Serial_Device_Send_test_L_node
-
-# fast build rule for target.
-Serial_Device_Send_test_L_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/build
-.PHONY : Serial_Device_Send_test_L_node/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule
-
-# Convenience name for target.
-Serial_Device_Send_R_node: Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule
-
-.PHONY : Serial_Device_Send_R_node
-
-# fast build rule for target.
-Serial_Device_Send_R_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build
-.PHONY : Serial_Device_Send_R_node/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
 Serial_Device/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 .PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_py.dir/rule
@@ -423,64 +198,34 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/rule
+Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-Serial_Device_Receive_R_node: Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/rule
+roscpp_generate_messages_cpp: Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
-.PHONY : Serial_Device_Receive_R_node
+.PHONY : roscpp_generate_messages_cpp
 
 # fast build rule for target.
-Serial_Device_Receive_R_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build
-.PHONY : Serial_Device_Receive_R_node/fast
+roscpp_generate_messages_cpp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/rule
+Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule
+.PHONY : Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule
 
 # Convenience name for target.
-Serial_Device_Receive_test_L_node: Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/rule
+Serial_Device_Send_R_node: Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/rule
 
-.PHONY : Serial_Device_Receive_test_L_node
+.PHONY : Serial_Device_Send_R_node
 
 # fast build rule for target.
-Serial_Device_Receive_test_L_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/build
-.PHONY : Serial_Device_Receive_test_L_node/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/rule:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/rule
-.PHONY : Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/rule
-
-# Convenience name for target.
-Serial_Device_Send_test_R_node: Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/rule
-
-.PHONY : Serial_Device_Send_test_R_node
-
-# fast build rule for target.
-Serial_Device_Send_test_R_node/fast:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/build
-.PHONY : Serial_Device_Send_test_R_node/fast
+Serial_Device_Send_R_node/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build
+.PHONY : Serial_Device_Send_R_node/fast
 
 # Convenience name for target.
 Serial_Device/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
@@ -498,6 +243,126 @@ roscpp_generate_messages_eus/fast:
 .PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
+Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule
+.PHONY : Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule
+
+# Convenience name for target.
+Serial_Device_Send_L_node: Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/rule
+
+.PHONY : Serial_Device_Send_L_node
+
+# fast build rule for target.
+Serial_Device_Send_L_node/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build
+.PHONY : Serial_Device_Send_L_node/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_nodejs: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make Serial_Device/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_eus: Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+.PHONY : std_msgs_generate_messages_eus
+
+# fast build rule for target.
+std_msgs_generate_messages_eus/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make Serial_Device/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_nodejs: Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+.PHONY : roscpp_generate_messages_nodejs
+
+# fast build rule for target.
+roscpp_generate_messages_nodejs/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make Serial_Device/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 .PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
@@ -512,59 +377,50 @@ rosgraph_msgs_generate_messages_eus/fast:
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
-Serial_Device_Receive_L_node.o: Serial_Device_Receive_L_node.cpp.o
+# Convenience name for target.
+Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : Serial_Device_Receive_L_node.o
+# Convenience name for target.
+rosgraph_msgs_generate_messages_lisp: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
-# target to build an object file
-Serial_Device_Receive_L_node.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/Serial_Device_Receive_L_node.cpp.o
-.PHONY : Serial_Device_Receive_L_node.cpp.o
+.PHONY : rosgraph_msgs_generate_messages_lisp
 
-Serial_Device_Receive_L_node.i: Serial_Device_Receive_L_node.cpp.i
+# fast build rule for target.
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
-.PHONY : Serial_Device_Receive_L_node.i
+# Convenience name for target.
+Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
-# target to preprocess a source file
-Serial_Device_Receive_L_node.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/Serial_Device_Receive_L_node.cpp.i
-.PHONY : Serial_Device_Receive_L_node.cpp.i
+# Convenience name for target.
+roscpp_generate_messages_lisp: Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
-Serial_Device_Receive_L_node.s: Serial_Device_Receive_L_node.cpp.s
+.PHONY : roscpp_generate_messages_lisp
 
-.PHONY : Serial_Device_Receive_L_node.s
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make Serial_Device/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
 
-# target to generate assembly for a file
-Serial_Device_Receive_L_node.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/Serial_Device_Receive_L_node.cpp.s
-.PHONY : Serial_Device_Receive_L_node.cpp.s
+# Convenience name for target.
+Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
-Serial_Device_Receive_R_node.o: Serial_Device_Receive_R_node.cpp.o
+# Convenience name for target.
+rosgraph_msgs_generate_messages_py: Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
-.PHONY : Serial_Device_Receive_R_node.o
+.PHONY : rosgraph_msgs_generate_messages_py
 
-# target to build an object file
-Serial_Device_Receive_R_node.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/Serial_Device_Receive_R_node.cpp.o
-.PHONY : Serial_Device_Receive_R_node.cpp.o
-
-Serial_Device_Receive_R_node.i: Serial_Device_Receive_R_node.cpp.i
-
-.PHONY : Serial_Device_Receive_R_node.i
-
-# target to preprocess a source file
-Serial_Device_Receive_R_node.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/Serial_Device_Receive_R_node.cpp.i
-.PHONY : Serial_Device_Receive_R_node.cpp.i
-
-Serial_Device_Receive_R_node.s: Serial_Device_Receive_R_node.cpp.s
-
-.PHONY : Serial_Device_Receive_R_node.s
-
-# target to generate assembly for a file
-Serial_Device_Receive_R_node.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/Serial_Device_Receive_R_node.cpp.s
-.PHONY : Serial_Device_Receive_R_node.cpp.s
+# fast build rule for target.
+rosgraph_msgs_generate_messages_py/fast:
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make Serial_Device/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
 
 Serial_Device_Send_L_node.o: Serial_Device_Send_L_node.cpp.o
 
@@ -626,10 +482,8 @@ src/crc.o: src/crc.cpp.o
 
 # target to build an object file
 src/crc.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/crc.cpp.o
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/crc.cpp.o
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/crc.cpp.o
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/crc.cpp.o
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/crc.cpp.o
 .PHONY : src/crc.cpp.o
 
 src/crc.i: src/crc.cpp.i
@@ -638,10 +492,8 @@ src/crc.i: src/crc.cpp.i
 
 # target to preprocess a source file
 src/crc.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/crc.cpp.i
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/crc.cpp.i
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/crc.cpp.i
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/crc.cpp.i
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/crc.cpp.i
 .PHONY : src/crc.cpp.i
 
 src/crc.s: src/crc.cpp.s
@@ -650,10 +502,8 @@ src/crc.s: src/crc.cpp.s
 
 # target to generate assembly for a file
 src/crc.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/crc.cpp.s
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/crc.cpp.s
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/crc.cpp.s
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/crc.cpp.s
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/crc.cpp.s
 .PHONY : src/crc.cpp.s
 
 src/serial_device.o: src/serial_device.cpp.o
@@ -662,10 +512,8 @@ src/serial_device.o: src/serial_device.cpp.o
 
 # target to build an object file
 src/serial_device.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/serial_device.cpp.o
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_device.cpp.o
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/serial_device.cpp.o
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/serial_device.cpp.o
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_device.cpp.o
 .PHONY : src/serial_device.cpp.o
 
 src/serial_device.i: src/serial_device.cpp.i
@@ -674,10 +522,8 @@ src/serial_device.i: src/serial_device.cpp.i
 
 # target to preprocess a source file
 src/serial_device.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/serial_device.cpp.i
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_device.cpp.i
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/serial_device.cpp.i
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/serial_device.cpp.i
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_device.cpp.i
 .PHONY : src/serial_device.cpp.i
 
 src/serial_device.s: src/serial_device.cpp.s
@@ -686,10 +532,8 @@ src/serial_device.s: src/serial_device.cpp.s
 
 # target to generate assembly for a file
 src/serial_device.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/serial_device.cpp.s
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_device.cpp.s
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/serial_device.cpp.s
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/serial_device.cpp.s
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_device.cpp.s
 .PHONY : src/serial_device.cpp.s
 
 src/serial_main.o: src/serial_main.cpp.o
@@ -698,10 +542,8 @@ src/serial_main.o: src/serial_main.cpp.o
 
 # target to build an object file
 src/serial_main.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/serial_main.cpp.o
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_main.cpp.o
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/serial_main.cpp.o
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/serial_main.cpp.o
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_main.cpp.o
 .PHONY : src/serial_main.cpp.o
 
 src/serial_main.i: src/serial_main.cpp.i
@@ -710,10 +552,8 @@ src/serial_main.i: src/serial_main.cpp.i
 
 # target to preprocess a source file
 src/serial_main.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/serial_main.cpp.i
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_main.cpp.i
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/serial_main.cpp.i
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/serial_main.cpp.i
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_main.cpp.i
 .PHONY : src/serial_main.cpp.i
 
 src/serial_main.s: src/serial_main.cpp.s
@@ -722,119 +562,9 @@ src/serial_main.s: src/serial_main.cpp.s
 
 # target to generate assembly for a file
 src/serial_main.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_L_node.dir/src/serial_main.cpp.s
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_main.cpp.s
 	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_R_node.dir/src/serial_main.cpp.s
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_R_node.dir/src/serial_main.cpp.s
+	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_L_node.dir/src/serial_main.cpp.s
 .PHONY : src/serial_main.cpp.s
-
-test/Reveice_test_L.o: test/Reveice_test_L.cpp.o
-
-.PHONY : test/Reveice_test_L.o
-
-# target to build an object file
-test/Reveice_test_L.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/test/Reveice_test_L.cpp.o
-.PHONY : test/Reveice_test_L.cpp.o
-
-test/Reveice_test_L.i: test/Reveice_test_L.cpp.i
-
-.PHONY : test/Reveice_test_L.i
-
-# target to preprocess a source file
-test/Reveice_test_L.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/test/Reveice_test_L.cpp.i
-.PHONY : test/Reveice_test_L.cpp.i
-
-test/Reveice_test_L.s: test/Reveice_test_L.cpp.s
-
-.PHONY : test/Reveice_test_L.s
-
-# target to generate assembly for a file
-test/Reveice_test_L.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_L_node.dir/test/Reveice_test_L.cpp.s
-.PHONY : test/Reveice_test_L.cpp.s
-
-test/Reveice_test_R.o: test/Reveice_test_R.cpp.o
-
-.PHONY : test/Reveice_test_R.o
-
-# target to build an object file
-test/Reveice_test_R.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/test/Reveice_test_R.cpp.o
-.PHONY : test/Reveice_test_R.cpp.o
-
-test/Reveice_test_R.i: test/Reveice_test_R.cpp.i
-
-.PHONY : test/Reveice_test_R.i
-
-# target to preprocess a source file
-test/Reveice_test_R.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/test/Reveice_test_R.cpp.i
-.PHONY : test/Reveice_test_R.cpp.i
-
-test/Reveice_test_R.s: test/Reveice_test_R.cpp.s
-
-.PHONY : test/Reveice_test_R.s
-
-# target to generate assembly for a file
-test/Reveice_test_R.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Receive_test_R_node.dir/test/Reveice_test_R.cpp.s
-.PHONY : test/Reveice_test_R.cpp.s
-
-test/Send_test_L.o: test/Send_test_L.cpp.o
-
-.PHONY : test/Send_test_L.o
-
-# target to build an object file
-test/Send_test_L.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/test/Send_test_L.cpp.o
-.PHONY : test/Send_test_L.cpp.o
-
-test/Send_test_L.i: test/Send_test_L.cpp.i
-
-.PHONY : test/Send_test_L.i
-
-# target to preprocess a source file
-test/Send_test_L.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/test/Send_test_L.cpp.i
-.PHONY : test/Send_test_L.cpp.i
-
-test/Send_test_L.s: test/Send_test_L.cpp.s
-
-.PHONY : test/Send_test_L.s
-
-# target to generate assembly for a file
-test/Send_test_L.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_L_node.dir/test/Send_test_L.cpp.s
-.PHONY : test/Send_test_L.cpp.s
-
-test/Send_test_R.o: test/Send_test_R.cpp.o
-
-.PHONY : test/Send_test_R.o
-
-# target to build an object file
-test/Send_test_R.cpp.o:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/test/Send_test_R.cpp.o
-.PHONY : test/Send_test_R.cpp.o
-
-test/Send_test_R.i: test/Send_test_R.cpp.i
-
-.PHONY : test/Send_test_R.i
-
-# target to preprocess a source file
-test/Send_test_R.cpp.i:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/test/Send_test_R.cpp.i
-.PHONY : test/Send_test_R.cpp.i
-
-test/Send_test_R.s: test/Send_test_R.cpp.s
-
-.PHONY : test/Send_test_R.s
-
-# target to generate assembly for a file
-test/Send_test_R.cpp.s:
-	cd /home/steins_xin/RM_Detection_Sentinel_ROS/build && $(MAKE) -f Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/build.make Serial_Device/CMakeFiles/Serial_Device_Send_test_R_node.dir/test/Send_test_R.cpp.s
-.PHONY : test/Send_test_R.cpp.s
 
 # Help Target
 help:
@@ -842,42 +572,30 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... Serial_Device_Receive_L_node"
-	@echo "... Serial_Device_Receive_test_R_node"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... install"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... list_install_components"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... Serial_Device_Send_L_node"
-	@echo "... Serial_Device_Send_test_L_node"
-	@echo "... Serial_Device_Send_R_node"
-	@echo "... roscpp_generate_messages_cpp"
+	@echo "... install/local"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... Serial_Device_Receive_R_node"
-	@echo "... Serial_Device_Receive_test_L_node"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... Serial_Device_Send_test_R_node"
-	@echo "... test"
-	@echo "... edit_cache"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... Serial_Device_Send_R_node"
 	@echo "... roscpp_generate_messages_eus"
-	@echo "... rebuild_cache"
+	@echo "... Serial_Device_Send_L_node"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... list_install_components"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... install"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... install/strip"
+	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... install/local"
-	@echo "... Serial_Device_Receive_L_node.o"
-	@echo "... Serial_Device_Receive_L_node.i"
-	@echo "... Serial_Device_Receive_L_node.s"
-	@echo "... Serial_Device_Receive_R_node.o"
-	@echo "... Serial_Device_Receive_R_node.i"
-	@echo "... Serial_Device_Receive_R_node.s"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... Serial_Device_Send_L_node.o"
 	@echo "... Serial_Device_Send_L_node.i"
 	@echo "... Serial_Device_Send_L_node.s"
@@ -893,18 +611,6 @@ help:
 	@echo "... src/serial_main.o"
 	@echo "... src/serial_main.i"
 	@echo "... src/serial_main.s"
-	@echo "... test/Reveice_test_L.o"
-	@echo "... test/Reveice_test_L.i"
-	@echo "... test/Reveice_test_L.s"
-	@echo "... test/Reveice_test_R.o"
-	@echo "... test/Reveice_test_R.i"
-	@echo "... test/Reveice_test_R.s"
-	@echo "... test/Send_test_L.o"
-	@echo "... test/Send_test_L.i"
-	@echo "... test/Send_test_L.s"
-	@echo "... test/Send_test_R.o"
-	@echo "... test/Send_test_R.i"
-	@echo "... test/Send_test_R.s"
 .PHONY : help
 
 

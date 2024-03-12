@@ -7,9 +7,11 @@
    "PTZ_PERCEPTION"
    "<ROBOT_CTRL>"
    "ROBOT_CTRL"
+   "<TRACK_RESET>"
+   "TRACK_RESET"
    "<VISION>"
    "VISION"
-   "<OMNI_PERCEPTION>"
-   "OMNI_PERCEPTION"
+   "<BARREL>"
+   "BARREL"
   ))
 

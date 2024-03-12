@@ -9,17 +9,16 @@ import struct
 import std_msgs.msg
 
 class Vision(genpy.Message):
-  _md5sum = "b30d54651ad2a2d8242e6a86edff3997"
+  _md5sum = "e9ed3a3b641ae2139fa852e5cf4f6219"
   _type = "robot_msg/Vision"
   _has_header = True  # flag to mark the presence of a Header object
   _full_text = """  Header header
-  uint16 id
-  uint16 mode
+  uint16 id         # 1:蓝 2:红 
   float32 pitch
   float32 yaw
   float32 roll
   float32[] quaternion
-  float32 shoot
+  float32 shoot_spd
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -36,8 +35,8 @@ time stamp
 #Frame this data is associated with
 string frame_id
 """
-  __slots__ = ['header','id','mode','pitch','yaw','roll','quaternion','shoot']
-  _slot_types = ['std_msgs/Header','uint16','uint16','float32','float32','float32','float32[]','float32']
+  __slots__ = ['header','id','pitch','yaw','roll','quaternion','shoot_spd']
+  _slot_types = ['std_msgs/Header','uint16','float32','float32','float32','float32[]','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -47,7 +46,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,id,mode,pitch,yaw,roll,quaternion,shoot
+       header,id,pitch,yaw,roll,quaternion,shoot_spd
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -60,8 +59,6 @@ string frame_id
         self.header = std_msgs.msg.Header()
       if self.id is None:
         self.id = 0
-      if self.mode is None:
-        self.mode = 0
       if self.pitch is None:
         self.pitch = 0.
       if self.yaw is None:
@@ -70,17 +67,16 @@ string frame_id
         self.roll = 0.
       if self.quaternion is None:
         self.quaternion = []
-      if self.shoot is None:
-        self.shoot = 0.
+      if self.shoot_spd is None:
+        self.shoot_spd = 0.
     else:
       self.header = std_msgs.msg.Header()
       self.id = 0
-      self.mode = 0
       self.pitch = 0.
       self.yaw = 0.
       self.roll = 0.
       self.quaternion = []
-      self.shoot = 0.
+      self.shoot_spd = 0.
 
   def _get_types(self):
     """
@@ -103,12 +99,12 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_2H3f().pack(_x.id, _x.mode, _x.pitch, _x.yaw, _x.roll))
+      buff.write(_get_struct_H3f().pack(_x.id, _x.pitch, _x.yaw, _x.roll))
       length = len(self.quaternion)
       buff.write(_struct_I.pack(length))
       pattern = '<%sf'%length
       buff.write(struct.Struct(pattern).pack(*self.quaternion))
-      _x = self.shoot
+      _x = self.shoot_spd
       buff.write(_get_struct_f().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
@@ -139,8 +135,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 16
-      (_x.id, _x.mode, _x.pitch, _x.yaw, _x.roll,) = _get_struct_2H3f().unpack(str[start:end])
+      end += 14
+      (_x.id, _x.pitch, _x.yaw, _x.roll,) = _get_struct_H3f().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -151,7 +147,7 @@ string frame_id
       self.quaternion = s.unpack(str[start:end])
       start = end
       end += 4
-      (self.shoot,) = _get_struct_f().unpack(str[start:end])
+      (self.shoot_spd,) = _get_struct_f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -173,12 +169,12 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_2H3f().pack(_x.id, _x.mode, _x.pitch, _x.yaw, _x.roll))
+      buff.write(_get_struct_H3f().pack(_x.id, _x.pitch, _x.yaw, _x.roll))
       length = len(self.quaternion)
       buff.write(_struct_I.pack(length))
       pattern = '<%sf'%length
       buff.write(self.quaternion.tostring())
-      _x = self.shoot
+      _x = self.shoot_spd
       buff.write(_get_struct_f().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
@@ -210,8 +206,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 16
-      (_x.id, _x.mode, _x.pitch, _x.yaw, _x.roll,) = _get_struct_2H3f().unpack(str[start:end])
+      end += 14
+      (_x.id, _x.pitch, _x.yaw, _x.roll,) = _get_struct_H3f().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
@@ -222,7 +218,7 @@ string frame_id
       self.quaternion = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
       start = end
       end += 4
-      (self.shoot,) = _get_struct_f().unpack(str[start:end])
+      (self.shoot_spd,) = _get_struct_f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -231,18 +227,18 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2H3f = None
-def _get_struct_2H3f():
-    global _struct_2H3f
-    if _struct_2H3f is None:
-        _struct_2H3f = struct.Struct("<2H3f")
-    return _struct_2H3f
 _struct_3I = None
 def _get_struct_3I():
     global _struct_3I
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
+_struct_H3f = None
+def _get_struct_H3f():
+    global _struct_H3f
+    if _struct_H3f is None:
+        _struct_H3f = struct.Struct("<H3f")
+    return _struct_H3f
 _struct_f = None
 def _get_struct_f():
     global _struct_f
