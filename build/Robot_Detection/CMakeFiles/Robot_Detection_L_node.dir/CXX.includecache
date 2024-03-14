@@ -148,6 +148,10 @@ robot_struct.h
 ros/package.h
 -
 
+/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/AngleSolve/src/AngleSolve.cpp
+../include/AngleSolve.h
+/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/AngleSolve/include/AngleSolve.h
+
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Detection/include/Armor_detection.h
 iostream
 -
@@ -177,10 +181,6 @@ robot_status.h
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Detection/include/robot_status.h
 ros/package.h
 -
-
-/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Detection/src/Armor_detection.cpp
-../include/Armor_detection.h
-/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Detection/include/Armor_detection.h
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Observe/include/Armor_Observe.h
 opencv2/opencv.hpp
@@ -239,6 +239,10 @@ robot_struct.h
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/include/robot_struct.h
 robot_status.h
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/include/robot_status.h
+
+/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/src/Armor_Track.cpp
+../include/Armor_Track.h
+/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/include/Armor_Track.h
 
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/public_include/protocol.h
 stdint.h

@@ -91,6 +91,9 @@ void ArmorTrack::Reset() {
     /** 跟踪变量 */
     find_aim_number = 0;                // 锁定目标的次数初始化
     lost_aim_number = 0;                // 丢失目标的次数初始化
+
+    /** 陀螺角速度 */
+    Angle_Speed = 0;                    // 陀螺状态下的角速度
 }
 
 /**

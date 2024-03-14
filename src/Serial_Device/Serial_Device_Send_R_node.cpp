@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     std::string Universal_Device = "/dev/robomaster";     // 通用设备
     std::string Board_L_Device = "/dev/Steins_Xin_L";     // 左板设备
     std::string Board_R_Device = "/dev/Steins_Xin_R";     // 右板设备
-    SerialMain serial(Board_R_Device);  // usb
+    SerialMain serial(Universal_Device);  // usb
     ROS_INFO("---Vision_R_pub Start---");
     while (ros::ok()){
         Get_data = serial.ReceiverMain();                                          // usb

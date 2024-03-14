@@ -123,21 +123,29 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
 
         // 转速调节陀螺模式[0.10~0.2][0.2~0.35]?
         if(Tracker.Angle_Speed > 0.10 && Tracker.Angle_Speed < 0.2){
-            // 逆时针[L] 顺时针[R] 击打当前装甲板不需要区分
-            if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
-                Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
-                OK = true;
-                Tracker.Solve_pitch = rpy[1];
-                Tracker.Solve_yaw = rpy[2];
-            } 
-            else {
-                // 改到固定点位？需要顺逆时针
-                // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.right_target);
-                // Tracker.Solve_pitch = rpy[1];
-                // Tracker.Solve_yaw = rpy[2];
-                Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
-                Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
-            }   
+            
+            // 判断陀螺状态
+            if((Tracker.Spin_State() == COUNTER_CLOCKWISE) || (Tracker.Spin_State() == CLOCKWISE)){
+                // 逆时针[L] 顺时针[R] 击打当前装甲板不需要区分
+                if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
+                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+                    OK = true;
+                    Tracker.Solve_pitch = rpy[1];
+                    Tracker.Solve_yaw = rpy[2];
+                } 
+                else {
+                    // 改到固定点位？需要顺逆时针
+                    // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.right_target);
+                    // Tracker.Solve_pitch = rpy[1];
+                    // Tracker.Solve_yaw = rpy[2];
+                    Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                    Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                }   
+            }
+            else{
+                // 退出陀螺模式
+                Tracker.Angle_Speed = 0;
+            }
         }
         else if(Tracker.Angle_Speed > 0.20 && Tracker.Angle_Speed < 0.35)
         {
@@ -171,9 +179,10 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
                     Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
                     Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
                 }
-            }else{
-                Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
-                Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+            }
+            else{
+                // 退出陀螺模式
+                Tracker.Angle_Speed = 0;
             }
         }else if (Tracker.Angle_Speed > 0.35)
         {  // 最快陀螺速度

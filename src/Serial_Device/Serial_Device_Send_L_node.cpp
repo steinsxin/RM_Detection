@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
     std::string Universal_Device = "/dev/robomaster";     // 通用设备
     std::string Board_L_Device = "/dev/Steins_Xin_L";     // 左板设备
     std::string Board_R_Device = "/dev/Steins_Xin_R";     // 右板设备
-    SerialMain serial(Board_L_Device);  // usb
+    SerialMain serial(Universal_Device);  // usb
 
     ROS_INFO("---Vision_L_pub Start---");
     while (ros::ok()){
@@ -49,6 +49,7 @@ int main(int argc, char *argv[]){
             vision_t.pitch = serial.vision_msg_.pitch;
             vision_t.yaw = serial.vision_msg_.yaw;
             vision_t.roll = serial.vision_msg_.roll;
+            ROS_INFO("yaw: %f",vision_t.yaw);
             
             //! 注意:自定义数组resize设置大小,不然会出现数据错误的情况 
             vision_t.quaternion.resize(4);
