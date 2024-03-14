@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/hj/RM_Detection_ROS/src/Serial_Device/Send_test.cpp
+/home/steins_xin/RM_Detection_ROS/src/Serial_Device/Send_test.cpp
 ros/ros.h
-/home/hj/RM_Detection_ROS/src/Serial_Device/ros/ros.h
+/home/steins_xin/RM_Detection_ROS/src/Serial_Device/ros/ros.h
 robot_msg/Robot_ctrl.h
-/home/hj/RM_Detection_ROS/src/Serial_Device/robot_msg/Robot_ctrl.h
+/home/steins_xin/RM_Detection_ROS/src/Serial_Device/robot_msg/Robot_ctrl.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

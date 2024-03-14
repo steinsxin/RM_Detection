@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/hj/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node"
-  "/home/hj/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node.pdb"
+  "/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node"
+  "/home/steins_xin/RM_Detection_ROS/devel/lib/Robot_Detection/Robot_Detection_node.pdb"
   "CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.o"
   "CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o"
   "CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o"

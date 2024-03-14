@@ -67,14 +67,14 @@ set(Robot_Detection_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(Robot_Detection_SOURCE_PREFIX /home/hj/RM_Detection_ROS/src/Robot_Detection)
-  set(Robot_Detection_DEVEL_PREFIX /home/hj/RM_Detection_ROS/devel)
+  set(Robot_Detection_SOURCE_PREFIX /home/steins_xin/RM_Detection_ROS/src/Robot_Detection)
+  set(Robot_Detection_DEVEL_PREFIX /home/steins_xin/RM_Detection_ROS/devel)
   set(Robot_Detection_INSTALL_PREFIX "")
   set(Robot_Detection_PREFIX ${Robot_Detection_DEVEL_PREFIX})
 else()
   set(Robot_Detection_SOURCE_PREFIX "")
   set(Robot_Detection_DEVEL_PREFIX "")
-  set(Robot_Detection_INSTALL_PREFIX /home/hj/RM_Detection_ROS/install)
+  set(Robot_Detection_INSTALL_PREFIX /home/steins_xin/RM_Detection_ROS/install)
   set(Robot_Detection_PREFIX ${Robot_Detection_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/hj/RM_Detection_ROS/install/lib;/opt/ros/noetic/lib)
+    foreach(path /home/steins_xin/RM_Detection_ROS/install/lib;/home/steins_xin/catkin_ws/devel/lib;/home/steins_xin/ROS_test/devel/lib;/home/steins_xin/vision_2023/devel/lib;/home/steins_xin/ROS/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

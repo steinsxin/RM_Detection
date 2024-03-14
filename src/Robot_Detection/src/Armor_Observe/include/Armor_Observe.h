@@ -35,7 +35,7 @@ public:
     bool Fit_OK;                                                                // 圆心是否拟合成功标志
     Eigen::Vector3d Smooth_position;                                            // 平滑之后的圆心世界坐标
     //========================API接口=======================
-    void Center_fitting(Armor &armor,double axes_length,double z,Observe OB,SpinTracker OB_Track);                       // 拟合圆心位置
+    void Center_fitting(Armor &armor,double z,Observe OB,SpinTracker OB_Track);                       // 拟合圆心位置
     void World_projection_show();                                               // 绘制重投影装甲板
     /** 通过重投影绘制整车观测 */
     void ArmorObserve_show(Eigen::Matrix<double, 3, 1> center,Observe OB,SpinTracker OB_Track);
@@ -43,6 +43,7 @@ public:
     Eigen::Vector3d pre_pos;          // 预测圆心坐标
     Eigen::Vector3d pre_Armor;        // 预测装甲板坐标
     double Angle_Speed;                             // 角速度
+    int Spin_State;                                 // 角速度
     Eigen::Vector3d spin_Aromor;                    // 陀螺装甲板
     double spin_angle;
     double Left_Armor_angle;

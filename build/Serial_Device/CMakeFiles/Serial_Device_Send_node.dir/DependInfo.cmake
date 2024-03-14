@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/Serial_Device_Send_node.cpp" "/home/hj/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/Serial_Device_Send_node.cpp.o"
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/src/crc.cpp" "/home/hj/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/src/crc.cpp.o"
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/src/serial_device.cpp" "/home/hj/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/src/serial_device.cpp.o"
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/src/serial_main.cpp" "/home/hj/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/src/serial_main.cpp.o"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/Serial_Device_Send_node.cpp" "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/Serial_Device_Send_node.cpp.o"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/crc.cpp" "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/src/crc.cpp.o"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/serial_device.cpp" "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/src/serial_device.cpp.o"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/src/serial_main.cpp" "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Send_node.dir/src/serial_main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -23,9 +23,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/include"
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/../public_include"
-  "/home/hj/RM_Detection_ROS/src/Serial_Device/../../devel/include"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/include"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/../public_include"
+  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/../../devel/include"
   "/usr/local/include/opencv4"
   )
 

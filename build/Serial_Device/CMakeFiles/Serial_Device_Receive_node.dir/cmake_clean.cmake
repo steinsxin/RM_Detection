@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/hj/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Receive_node"
-  "/home/hj/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Receive_node.pdb"
+  "/home/steins_xin/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Receive_node"
+  "/home/steins_xin/RM_Detection_ROS/devel/lib/Serial_Device/Serial_Device_Receive_node.pdb"
   "CMakeFiles/Serial_Device_Receive_node.dir/Serial_Device_Receive_node.cpp.o"
   "CMakeFiles/Serial_Device_Receive_node.dir/src/crc.cpp.o"
   "CMakeFiles/Serial_Device_Receive_node.dir/src/serial_device.cpp.o"

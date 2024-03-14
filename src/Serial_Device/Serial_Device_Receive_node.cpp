@@ -18,8 +18,8 @@ void Robot_ctrl_Send(const robot_msg::Robot_ctrl::ConstPtr& Robot_ctrl_t){
     serial.SenderMain(vdata);   // 启动跟踪自瞄
 
     /* Test */
-    // ROS_INFO("Pitch:%.2f Yaw: %.2f Fire:%.2f Mode: %.2f",
-    // Robot_ctrl_t->pitch,Robot_ctrl_t->yaw,fire,mode);
+    ROS_INFO("Pitch:%.2f Yaw: %.2f Fire:%.2f Mode: %.2f",
+    Robot_ctrl_t->pitch,Robot_ctrl_t->yaw,fire,mode);
 }
 
 int main(int argc, char *argv[]){

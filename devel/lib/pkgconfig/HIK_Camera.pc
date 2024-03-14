@@ -1,4 +1,4 @@
-prefix=/home/hj/RM_Detection_ROS/devel
+prefix=/home/steins_xin/RM_Detection_ROS/devel
 
 Name: HIK_Camera
 Description: Description of HIK_Camera

@@ -1,11 +1,11 @@
 <launch>
-    <node
+    <!-- <node
         name="HIK_Camera"
         pkg="HIK_Camera"
         type="HIK_Camera_node"
         respawn="true"  
         >
-    </node>
+    </node> -->
 
     <node
         name="Serial_Device_Send"
@@ -25,12 +25,12 @@
         >
     </node>
 
-    <node
+    <!-- <node
         name="Robot_Detection"
-        pkg="Robot_Detection"
+        pkg="Robot_Detection"`
         type="Robot_Detection_node"
         output="screen"
         respawn="true"  
         >
-    </node>
+    </node> -->
 </launch>

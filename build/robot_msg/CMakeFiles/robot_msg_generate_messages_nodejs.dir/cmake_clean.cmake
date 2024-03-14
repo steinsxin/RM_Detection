@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/hj/RM_Detection_ROS/devel/share/gennodejs/ros/robot_msg/msg/Robot_ctrl.js"
-  "/home/hj/RM_Detection_ROS/devel/share/gennodejs/ros/robot_msg/msg/Vision.js"
+  "/home/steins_xin/RM_Detection_ROS/devel/share/gennodejs/ros/robot_msg/msg/Robot_ctrl.js"
+  "/home/steins_xin/RM_Detection_ROS/devel/share/gennodejs/ros/robot_msg/msg/Vision.js"
   "CMakeFiles/robot_msg_generate_messages_nodejs"
 )
 

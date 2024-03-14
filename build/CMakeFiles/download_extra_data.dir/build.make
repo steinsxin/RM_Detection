@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hj/RM_Detection_ROS/src
+CMAKE_SOURCE_DIR = /home/steins_xin/RM_Detection_ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hj/RM_Detection_ROS/build
+CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_ROS/build
 
 # Utility rule file for download_extra_data.
 
@@ -67,6 +67,6 @@ CMakeFiles/download_extra_data.dir/clean:
 .PHONY : CMakeFiles/download_extra_data.dir/clean
 
 CMakeFiles/download_extra_data.dir/depend:
-	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/RM_Detection_ROS/src /home/hj/RM_Detection_ROS/src /home/hj/RM_Detection_ROS/build /home/hj/RM_Detection_ROS/build /home/hj/RM_Detection_ROS/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/RM_Detection_ROS/src /home/steins_xin/RM_Detection_ROS/src /home/steins_xin/RM_Detection_ROS/build /home/steins_xin/RM_Detection_ROS/build /home/steins_xin/RM_Detection_ROS/build/CMakeFiles/download_extra_data.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/download_extra_data.dir/depend
 

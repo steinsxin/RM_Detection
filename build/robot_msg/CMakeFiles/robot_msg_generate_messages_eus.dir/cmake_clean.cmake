@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/hj/RM_Detection_ROS/devel/share/roseus/ros/robot_msg/manifest.l"
-  "/home/hj/RM_Detection_ROS/devel/share/roseus/ros/robot_msg/msg/Robot_ctrl.l"
-  "/home/hj/RM_Detection_ROS/devel/share/roseus/ros/robot_msg/msg/Vision.l"
+  "/home/steins_xin/RM_Detection_ROS/devel/share/roseus/ros/robot_msg/manifest.l"
+  "/home/steins_xin/RM_Detection_ROS/devel/share/roseus/ros/robot_msg/msg/Robot_ctrl.l"
+  "/home/steins_xin/RM_Detection_ROS/devel/share/roseus/ros/robot_msg/msg/Vision.l"
   "CMakeFiles/robot_msg_generate_messages_eus"
 )
 

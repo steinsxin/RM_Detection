@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hj/RM_Detection_ROS/src
+CMAKE_SOURCE_DIR = /home/steins_xin/RM_Detection_ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hj/RM_Detection_ROS/build
+CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_ROS/build
 
 # Utility rule file for roscpp_generate_messages_nodejs.
 
@@ -63,10 +63,10 @@ Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/build: roscpp_gener
 .PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 
 Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
-	cd /home/hj/RM_Detection_ROS/build/Serial_Device && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_nodejs.dir/cmake_clean.cmake
+	cd /home/steins_xin/RM_Detection_ROS/build/Serial_Device && $(CMAKE_COMMAND) -P CMakeFiles/roscpp_generate_messages_nodejs.dir/cmake_clean.cmake
 .PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend:
-	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hj/RM_Detection_ROS/src /home/hj/RM_Detection_ROS/src/Serial_Device /home/hj/RM_Detection_ROS/build /home/hj/RM_Detection_ROS/build/Serial_Device /home/hj/RM_Detection_ROS/build/Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steins_xin/RM_Detection_ROS/src /home/steins_xin/RM_Detection_ROS/src/Serial_Device /home/steins_xin/RM_Detection_ROS/build /home/steins_xin/RM_Detection_ROS/build/Serial_Device /home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : Serial_Device/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
 

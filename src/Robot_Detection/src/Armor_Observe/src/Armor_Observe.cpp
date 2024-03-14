@@ -50,7 +50,7 @@ bool Smooth::update(Eigen::Vector3d position,Eigen::Vector3d &Smooth) {
         }
         x /=  max_size;
         y /=  max_size;
-       z /=  max_size;
+        z /=  max_size;
         // z = position[2];
         Smooth[0] = x;
         Smooth[1] = y;
@@ -65,7 +65,7 @@ bool Smooth::update(Eigen::Vector3d position,Eigen::Vector3d &Smooth) {
  *  传出: 无
  *  功能: 通过计算得到的yaw值,车的半径,拟合车的圆心
  */
-void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Observe OB,SpinTracker OB_Track) {
+void ArmorObserve::Center_fitting(Armor &armor,double z,Observe OB,SpinTracker OB_Track) {
     // center_position = armor.world_position;                                 // 圆心坐标
 
     center_position = armor.camera_position;                                 // 圆心坐标
@@ -117,8 +117,8 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Obser
 
 
     /** 计算圆心坐标 */  // TODO: 需要将在相机坐标系下操作再转换到世界坐标系
-    center_position[0] += sin(yaw)*axes_length;                                   // 三角函数解圆心
-    center_position[1] += cos(abs(yaw))*axes_length;                           // 三角函数解圆心
+    center_position[0] += sin(yaw)*OF_length;                                   // 三角函数解圆心
+    center_position[1] += cos(abs(yaw))*OF_length;                           // 三角函数解圆心
     center_position = {center_position[0],-center_position[2],center_position[1]};      //相机坐标系
     center_position = AS.cam2imu(center_position);
     Smooth_Filter.update(center_position,Smooth_position);                // 更新数据,进行平滑
@@ -168,8 +168,6 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Obser
 //
 //        pre_cir = AS.imu2pixel(pre_pos);
 
-
-
         cv::putText(_src,"Smooth_position_x:"+ std::to_string(Smooth_position[0]),cv::Point(0,280),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"Smooth_position_y:"+ std::to_string(Smooth_position[1]),cv::Point(0,320),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         cv::putText(_src,"Smooth_position_z:"+ std::to_string(Smooth_position[2]),cv::Point(0,360),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
@@ -189,10 +187,11 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Obser
         double time;                                    // 距离使用车中心试试？还是使用装甲板的距离？ 现使用车中心看看
 
         double Diff = sqrt(pow(Smooth_position[0],2)+pow(Smooth_position[1],2));
-        double bullet_speed = 25;
+        double bullet_speed = 25;                       // 更换实时弹速
         double compensate_size = 1;                     // 倍率 TODO:测试可行,有上升空间(待测试)
         time = Diff/bullet_speed;                       // 单位: s
-        Dial_time = 80;                                // 单位: ms
+        Dial_time = 80;                                 // 单位: ms
+        
         compensate = compensate_size*(time*1000)*(Angle_Speed) + Dial_time*(Angle_Speed);               // 计算补偿角度 (等待测试看效果)
         std::cout << "compensate:" << compensate << std::endl;
         // std::cout << "anglespend:" << Angle_Speed << std::endl;
@@ -200,7 +199,14 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Obser
         cv::putText(_src,"compensate:"+ std::to_string(compensate),cv::Point(0,600),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
 
         // 计算预测角度 (帧数补偿设置为15ms)
-        spin_angle = yaw*(180.0f/CV_PI) - FPS_size*(Angle_Speed*15) - compensate;          // 陀螺装甲板所在角度(逆时针)
+        if(Spin_State == COUNTER_CLOCKWISE){
+            // 逆时针
+            spin_angle = yaw*(180.0f/CV_PI) - FPS_size*(Angle_Speed*15) - compensate;          // 陀螺装甲板所在角度(逆时针)
+        }
+        else if(Spin_State == CLOCKWISE){
+            // 顺时针
+            spin_angle = yaw*(180.0f/CV_PI) + FPS_size*(Angle_Speed*15) + compensate;          // 陀螺装甲板所在角度(顺时针)
+        }
         spin_angle *= (CV_PI/180.0f);
         center_temp = AS.imu2cam(Smooth_position);
         center_temp = {center_temp[0],center_temp[2],-center_temp[1]}; // 世界坐标系
@@ -230,7 +236,6 @@ void ArmorObserve::Center_fitting(Armor &armor,double axes_length,double z,Obser
         // F_center_imu = {center[0]-OF_sin_r,center[1]-OF_cos_r,center[2]};
         // F_center_imu = {center[0]+OF_sin_r,center[1]-OF_cos_r,center[2]};
         if(yaw > 0){
-
             // Left_Armor = {center_temp[0] - RL_cos_r,center_temp[1] + RL_sin_r,center_temp[2]+(RL_height/2)};
             Left_Armor = {center_temp[0] - RL_cos_r,center_temp[1] - RL_sin_r,center_temp[2]};//test
             Right_Armor = {center_temp[0] + RL_cos_r,center_temp[1] - RL_sin_r,center_temp[2]+(RL_height/2)};

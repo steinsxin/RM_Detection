@@ -6,8 +6,8 @@
 
 HIK_Camera::HIK_Camera() {
     //============================= 参数文件路径 =============================
-    std::string package_path = ros::package::getPath("HIK_Camera");
-    cv::FileStorage fs(package_path + "/../SetParam_File/HIKCamera_Param.yaml", cv::FileStorage::READ);
+    std::string package_path = ros::package::getPath("Robot_Detection");
+    cv::FileStorage fs(package_path + "/SetParam_File/HIKCamera_Param.yaml", cv::FileStorage::READ);
     //============================= 相机读取参数 =============================
     ExposureTime = (float)fs["ExposureTime"];
     Gain = (float)fs["Gain"];

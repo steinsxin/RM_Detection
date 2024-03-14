@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/hj/RM_Detection_ROS/devel/include/robot_msg/Robot_ctrl.h"
-  "/home/hj/RM_Detection_ROS/devel/include/robot_msg/Vision.h"
+  "/home/steins_xin/RM_Detection_ROS/devel/include/robot_msg/Robot_ctrl.h"
+  "/home/steins_xin/RM_Detection_ROS/devel/include/robot_msg/Vision.h"
   "CMakeFiles/robot_msg_generate_messages_cpp"
 )
 

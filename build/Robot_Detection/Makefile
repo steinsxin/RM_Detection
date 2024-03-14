@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hj/RM_Detection_ROS/src
+CMAKE_SOURCE_DIR = /home/steins_xin/RM_Detection_ROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hj/RM_Detection_ROS/build
+CMAKE_BINARY_DIR = /home/steins_xin/RM_Detection_ROS/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/hj/RM_Detection_ROS/build/CMakeFiles /home/hj/RM_Detection_ROS/build/Robot_Detection/CMakeFiles/progress.marks
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hj/RM_Detection_ROS/build/CMakeFiles 0
+	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/steins_xin/RM_Detection_ROS/build/CMakeFiles /home/steins_xin/RM_Detection_ROS/build/Robot_Detection/CMakeFiles/progress.marks
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/steins_xin/RM_Detection_ROS/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/clean
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/preinstall
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/preinstall
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Robot_Detection/CMakeFiles/Robot_Detection_node.dir/rule:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/CMakeFiles/Robot_Detection_node.dir/rule
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f CMakeFiles/Makefile2 Robot_Detection/CMakeFiles/Robot_Detection_node.dir/rule
 .PHONY : Robot_Detection/CMakeFiles/Robot_Detection_node.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ Robot_Detection_node: Robot_Detection/CMakeFiles/Robot_Detection_node.dir/rule
 
 # fast build rule for target.
 Robot_Detection_node/fast:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build
 .PHONY : Robot_Detection_node/fast
 
 Robot_Detection.o: Robot_Detection.cpp.o
@@ -188,7 +188,7 @@ Robot_Detection.o: Robot_Detection.cpp.o
 
 # target to build an object file
 Robot_Detection.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.o
 .PHONY : Robot_Detection.cpp.o
 
 Robot_Detection.i: Robot_Detection.cpp.i
@@ -197,7 +197,7 @@ Robot_Detection.i: Robot_Detection.cpp.i
 
 # target to preprocess a source file
 Robot_Detection.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.i
 .PHONY : Robot_Detection.cpp.i
 
 Robot_Detection.s: Robot_Detection.cpp.s
@@ -206,7 +206,7 @@ Robot_Detection.s: Robot_Detection.cpp.s
 
 # target to generate assembly for a file
 Robot_Detection.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/Robot_Detection.cpp.s
 .PHONY : Robot_Detection.cpp.s
 
 src/AngleSolve/src/AngleSolve.o: src/AngleSolve/src/AngleSolve.cpp.o
@@ -215,7 +215,7 @@ src/AngleSolve/src/AngleSolve.o: src/AngleSolve/src/AngleSolve.cpp.o
 
 # target to build an object file
 src/AngleSolve/src/AngleSolve.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.o
 .PHONY : src/AngleSolve/src/AngleSolve.cpp.o
 
 src/AngleSolve/src/AngleSolve.i: src/AngleSolve/src/AngleSolve.cpp.i
@@ -224,7 +224,7 @@ src/AngleSolve/src/AngleSolve.i: src/AngleSolve/src/AngleSolve.cpp.i
 
 # target to preprocess a source file
 src/AngleSolve/src/AngleSolve.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.i
 .PHONY : src/AngleSolve/src/AngleSolve.cpp.i
 
 src/AngleSolve/src/AngleSolve.s: src/AngleSolve/src/AngleSolve.cpp.s
@@ -233,7 +233,7 @@ src/AngleSolve/src/AngleSolve.s: src/AngleSolve/src/AngleSolve.cpp.s
 
 # target to generate assembly for a file
 src/AngleSolve/src/AngleSolve.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/AngleSolve/src/AngleSolve.cpp.s
 .PHONY : src/AngleSolve/src/AngleSolve.cpp.s
 
 src/Armor_Detection/src/Armor_detection.o: src/Armor_Detection/src/Armor_detection.cpp.o
@@ -242,7 +242,7 @@ src/Armor_Detection/src/Armor_detection.o: src/Armor_Detection/src/Armor_detecti
 
 # target to build an object file
 src/Armor_Detection/src/Armor_detection.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.o
 .PHONY : src/Armor_Detection/src/Armor_detection.cpp.o
 
 src/Armor_Detection/src/Armor_detection.i: src/Armor_Detection/src/Armor_detection.cpp.i
@@ -251,7 +251,7 @@ src/Armor_Detection/src/Armor_detection.i: src/Armor_Detection/src/Armor_detecti
 
 # target to preprocess a source file
 src/Armor_Detection/src/Armor_detection.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.i
 .PHONY : src/Armor_Detection/src/Armor_detection.cpp.i
 
 src/Armor_Detection/src/Armor_detection.s: src/Armor_Detection/src/Armor_detection.cpp.s
@@ -260,7 +260,7 @@ src/Armor_Detection/src/Armor_detection.s: src/Armor_Detection/src/Armor_detecti
 
 # target to generate assembly for a file
 src/Armor_Detection/src/Armor_detection.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Armor_detection.cpp.s
 .PHONY : src/Armor_Detection/src/Armor_detection.cpp.s
 
 src/Armor_Detection/src/Number_DNN.o: src/Armor_Detection/src/Number_DNN.cpp.o
@@ -269,7 +269,7 @@ src/Armor_Detection/src/Number_DNN.o: src/Armor_Detection/src/Number_DNN.cpp.o
 
 # target to build an object file
 src/Armor_Detection/src/Number_DNN.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.o
 .PHONY : src/Armor_Detection/src/Number_DNN.cpp.o
 
 src/Armor_Detection/src/Number_DNN.i: src/Armor_Detection/src/Number_DNN.cpp.i
@@ -278,7 +278,7 @@ src/Armor_Detection/src/Number_DNN.i: src/Armor_Detection/src/Number_DNN.cpp.i
 
 # target to preprocess a source file
 src/Armor_Detection/src/Number_DNN.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.i
 .PHONY : src/Armor_Detection/src/Number_DNN.cpp.i
 
 src/Armor_Detection/src/Number_DNN.s: src/Armor_Detection/src/Number_DNN.cpp.s
@@ -287,7 +287,7 @@ src/Armor_Detection/src/Number_DNN.s: src/Armor_Detection/src/Number_DNN.cpp.s
 
 # target to generate assembly for a file
 src/Armor_Detection/src/Number_DNN.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Detection/src/Number_DNN.cpp.s
 .PHONY : src/Armor_Detection/src/Number_DNN.cpp.s
 
 src/Armor_Observe/src/Armor_Observe.o: src/Armor_Observe/src/Armor_Observe.cpp.o
@@ -296,7 +296,7 @@ src/Armor_Observe/src/Armor_Observe.o: src/Armor_Observe/src/Armor_Observe.cpp.o
 
 # target to build an object file
 src/Armor_Observe/src/Armor_Observe.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.o
 .PHONY : src/Armor_Observe/src/Armor_Observe.cpp.o
 
 src/Armor_Observe/src/Armor_Observe.i: src/Armor_Observe/src/Armor_Observe.cpp.i
@@ -305,7 +305,7 @@ src/Armor_Observe/src/Armor_Observe.i: src/Armor_Observe/src/Armor_Observe.cpp.i
 
 # target to preprocess a source file
 src/Armor_Observe/src/Armor_Observe.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.i
 .PHONY : src/Armor_Observe/src/Armor_Observe.cpp.i
 
 src/Armor_Observe/src/Armor_Observe.s: src/Armor_Observe/src/Armor_Observe.cpp.s
@@ -314,7 +314,7 @@ src/Armor_Observe/src/Armor_Observe.s: src/Armor_Observe/src/Armor_Observe.cpp.s
 
 # target to generate assembly for a file
 src/Armor_Observe/src/Armor_Observe.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Armor_Observe.cpp.s
 .PHONY : src/Armor_Observe/src/Armor_Observe.cpp.s
 
 src/Armor_Observe/src/Circle_Kalman.o: src/Armor_Observe/src/Circle_Kalman.cpp.o
@@ -323,7 +323,7 @@ src/Armor_Observe/src/Circle_Kalman.o: src/Armor_Observe/src/Circle_Kalman.cpp.o
 
 # target to build an object file
 src/Armor_Observe/src/Circle_Kalman.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.o
 .PHONY : src/Armor_Observe/src/Circle_Kalman.cpp.o
 
 src/Armor_Observe/src/Circle_Kalman.i: src/Armor_Observe/src/Circle_Kalman.cpp.i
@@ -332,7 +332,7 @@ src/Armor_Observe/src/Circle_Kalman.i: src/Armor_Observe/src/Circle_Kalman.cpp.i
 
 # target to preprocess a source file
 src/Armor_Observe/src/Circle_Kalman.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.i
 .PHONY : src/Armor_Observe/src/Circle_Kalman.cpp.i
 
 src/Armor_Observe/src/Circle_Kalman.s: src/Armor_Observe/src/Circle_Kalman.cpp.s
@@ -341,7 +341,7 @@ src/Armor_Observe/src/Circle_Kalman.s: src/Armor_Observe/src/Circle_Kalman.cpp.s
 
 # target to generate assembly for a file
 src/Armor_Observe/src/Circle_Kalman.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Observe/src/Circle_Kalman.cpp.s
 .PHONY : src/Armor_Observe/src/Circle_Kalman.cpp.s
 
 src/Armor_Track/src/Armor_Track.o: src/Armor_Track/src/Armor_Track.cpp.o
@@ -350,7 +350,7 @@ src/Armor_Track/src/Armor_Track.o: src/Armor_Track/src/Armor_Track.cpp.o
 
 # target to build an object file
 src/Armor_Track/src/Armor_Track.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.o
 .PHONY : src/Armor_Track/src/Armor_Track.cpp.o
 
 src/Armor_Track/src/Armor_Track.i: src/Armor_Track/src/Armor_Track.cpp.i
@@ -359,7 +359,7 @@ src/Armor_Track/src/Armor_Track.i: src/Armor_Track/src/Armor_Track.cpp.i
 
 # target to preprocess a source file
 src/Armor_Track/src/Armor_Track.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.i
 .PHONY : src/Armor_Track/src/Armor_Track.cpp.i
 
 src/Armor_Track/src/Armor_Track.s: src/Armor_Track/src/Armor_Track.cpp.s
@@ -368,7 +368,7 @@ src/Armor_Track/src/Armor_Track.s: src/Armor_Track/src/Armor_Track.cpp.s
 
 # target to generate assembly for a file
 src/Armor_Track/src/Armor_Track.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Armor_Track.cpp.s
 .PHONY : src/Armor_Track/src/Armor_Track.cpp.s
 
 src/Armor_Track/src/Kalman.o: src/Armor_Track/src/Kalman.cpp.o
@@ -377,7 +377,7 @@ src/Armor_Track/src/Kalman.o: src/Armor_Track/src/Kalman.cpp.o
 
 # target to build an object file
 src/Armor_Track/src/Kalman.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.o
 .PHONY : src/Armor_Track/src/Kalman.cpp.o
 
 src/Armor_Track/src/Kalman.i: src/Armor_Track/src/Kalman.cpp.i
@@ -386,7 +386,7 @@ src/Armor_Track/src/Kalman.i: src/Armor_Track/src/Kalman.cpp.i
 
 # target to preprocess a source file
 src/Armor_Track/src/Kalman.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.i
 .PHONY : src/Armor_Track/src/Kalman.cpp.i
 
 src/Armor_Track/src/Kalman.s: src/Armor_Track/src/Kalman.cpp.s
@@ -395,7 +395,7 @@ src/Armor_Track/src/Kalman.s: src/Armor_Track/src/Kalman.cpp.s
 
 # target to generate assembly for a file
 src/Armor_Track/src/Kalman.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/Kalman.cpp.s
 .PHONY : src/Armor_Track/src/Kalman.cpp.s
 
 src/Armor_Track/src/SpinTracker.o: src/Armor_Track/src/SpinTracker.cpp.o
@@ -404,7 +404,7 @@ src/Armor_Track/src/SpinTracker.o: src/Armor_Track/src/SpinTracker.cpp.o
 
 # target to build an object file
 src/Armor_Track/src/SpinTracker.cpp.o:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.o
 .PHONY : src/Armor_Track/src/SpinTracker.cpp.o
 
 src/Armor_Track/src/SpinTracker.i: src/Armor_Track/src/SpinTracker.cpp.i
@@ -413,7 +413,7 @@ src/Armor_Track/src/SpinTracker.i: src/Armor_Track/src/SpinTracker.cpp.i
 
 # target to preprocess a source file
 src/Armor_Track/src/SpinTracker.cpp.i:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.i
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.i
 .PHONY : src/Armor_Track/src/SpinTracker.cpp.i
 
 src/Armor_Track/src/SpinTracker.s: src/Armor_Track/src/SpinTracker.cpp.s
@@ -422,7 +422,7 @@ src/Armor_Track/src/SpinTracker.s: src/Armor_Track/src/SpinTracker.cpp.s
 
 # target to generate assembly for a file
 src/Armor_Track/src/SpinTracker.cpp.s:
-	cd /home/hj/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.s
+	cd /home/steins_xin/RM_Detection_ROS/build && $(MAKE) -f Robot_Detection/CMakeFiles/Robot_Detection_node.dir/build.make Robot_Detection/CMakeFiles/Robot_Detection_node.dir/src/Armor_Track/src/SpinTracker.cpp.s
 .PHONY : src/Armor_Track/src/SpinTracker.cpp.s
 
 # Help Target
@@ -477,6 +477,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/hj/RM_Detection_ROS/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/steins_xin/RM_Detection_ROS/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
