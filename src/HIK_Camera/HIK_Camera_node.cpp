@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
         ROS_INFO("HIK_YES");
         while (HIK.Camera_OK){
             HIK.HIKCamera_read();           //读取相机图像
-            cv::imshow("src", HIK.src);
+            // cv::imshow("src", HIK.src);
 
             // 填充数据
             cv_bridge::CvImage img_msg;

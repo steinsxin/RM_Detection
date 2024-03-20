@@ -74,19 +74,22 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     Tracker.AS.Init(Vision_data.data, Vision_data.quat);
     AO.AS.Init(Vision_data.data, Vision_data.quat);
 
+    double OK = false;
+    if(Vision_data.mode == 0x21)
+    {
+        
     // 进行识别处理
     Targets = Detector.Detection(src);
     // 获取最终装甲板
     Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
     Tracker.show();
 
-    // 弹道速度(后面改成发过来的弹道数据)
+    // 弹道速度(后面改成发过来的弹道数据) | 有点问题,赋值的地方
     AS.bullet_speed = 25;
 
     // 整车观测(跟踪情况和当前跟踪车辆的观测情况)
     bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
     // 开始拟合圆心
-    double OK = false;
     if(AO_OK) {
         double angle =  AO.spin_angle*(180.0f/CV_PI);
         // 左右角度[以逆时针为基准]
@@ -170,6 +173,8 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
         cv::putText(src,"OK: "+ std::to_string(OK),cv::Point(0,100),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
         // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
     }
+    }
+    
 
 
     // 创建发送数据

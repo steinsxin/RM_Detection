@@ -44,8 +44,6 @@ int main(int argc, char *argv[]){
             vision_t.pitch = serial.vision_msg_.pitch;
             vision_t.yaw = serial.vision_msg_.yaw;
             vision_t.roll = serial.vision_msg_.roll;
-            ROS_INFO("yaw: %f",vision_t.yaw);
-            ROS_INFO("pitch: %f",vision_t.pitch);
 
             //! 注意:自定义数组resize设置大小,不然会出现数据错误的情况 
             vision_t.quaternion.resize(4);
