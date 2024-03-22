@@ -83,6 +83,7 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     // 获取最终装甲板
     Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
     Tracker.show();
+    cv::waitKey(1);
 
     // 弹道速度(后面改成发过来的弹道数据) | 有点问题,赋值的地方
     AS.bullet_speed = 25;
