@@ -528,7 +528,7 @@ bool ArmorDetector::get_max(const float *data, float &confidence, int &id)
     }
     
     // 置信度小于阈值
-    if(confidence < thresh_confidence)
+    if(confidence < thresh_confidence || id == 0)
         return false;
     else
         return true;
@@ -546,16 +546,16 @@ int ArmorDetector::armorGrade(const Armor& checkArmor)
     // 临时列表 1:英雄 2:工程 3|4:步兵 5:备用步兵 6:哨兵 7:前哨站 8:基地
     int id_grade;
     int check_id = checkArmor.id;
-    // id_grade = check_id == 1 ? 100 : 80;
+    id_grade = check_id == 1 ? 100 : 80;
     // 分数权重待调整
-    if(check_id == Priority_ID_list[0]) id_grade = 100;
-    if(check_id == Priority_ID_list[1]) id_grade = 80;
-    if(check_id == Priority_ID_list[2]) id_grade = 60;
-    if(check_id == Priority_ID_list[3]) id_grade = 40;
-    if(check_id == Priority_ID_list[4]) id_grade = 20;
-    if(check_id == Priority_ID_list[5]) id_grade = 0;
-    if(check_id == Priority_ID_list[6]) id_grade = -20;
-    if(check_id == Priority_ID_list[7]) id_grade = -40;
+    // if(check_id == Priority_ID_list[0]) id_grade = 100;
+    // if(check_id == Priority_ID_list[1]) id_grade = 80;
+    // if(check_id == Priority_ID_list[2]) id_grade = 60;
+    // if(check_id == Priority_ID_list[3]) id_grade = 40;
+    // if(check_id == Priority_ID_list[4]) id_grade = 20;
+    // if(check_id == Priority_ID_list[5]) id_grade = 0;
+    // if(check_id == Priority_ID_list[6]) id_grade = -20;
+    // if(check_id == Priority_ID_list[7]) id_grade = -40;
     ////////end//////////////////////////////////////////////
 
     /////////最大装甲板板打分项目/////////////////////
