@@ -103,8 +103,8 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     Tracker.show();
     cv::waitKey(1);
     
-    // 弹道速度(后面改成发过来的弹道数据)
-    AS.bullet_speed = 25;
+    // 弹道速度(后面改成发过来的弹道数据) | 有点问题
+    // AS.bullet_speed = 25;
 
     // 整车观测
     bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;

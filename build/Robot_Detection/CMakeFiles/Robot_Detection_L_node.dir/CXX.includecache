@@ -240,10 +240,6 @@ robot_struct.h
 robot_status.h
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/include/robot_status.h
 
-/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/src/Armor_Track.cpp
-../include/Armor_Track.h
-/home/steins_xin/RM_Detection_Sentinel_ROS/src/Robot_Detection/src/Armor_Track/include/Armor_Track.h
-
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/public_include/protocol.h
 stdint.h
 /home/steins_xin/RM_Detection_Sentinel_ROS/src/public_include/stdint.h

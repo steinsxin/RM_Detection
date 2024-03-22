@@ -12,5 +12,5 @@ spin_judge_high_threshold: 20000
 max_delta_t: 120
 max_history_len: 30
 # 决策开火框
-wide_ratio: 0.3
-high_ratio: 0.3
+wide_ratio: 0.7
+high_ratio: 0.7

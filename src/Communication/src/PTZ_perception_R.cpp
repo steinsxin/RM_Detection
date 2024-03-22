@@ -101,7 +101,7 @@ void callback(const robot_msg::barrelConstPtr &omni, const robot_msg::PTZ_percep
         robot_msg::Track_reset Track_reset_t;
         
         // 填充数据
-        Track_reset_t.header.frame_id = "Track_reset_L";
+        Track_reset_t.header.frame_id = "Track_reset_R";
         Track_reset_t.header.seq++;
         Track_reset_t.header.stamp = ros::Time::now();
         

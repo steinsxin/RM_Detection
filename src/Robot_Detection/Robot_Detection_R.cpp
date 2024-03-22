@@ -24,6 +24,7 @@
 #include "robot_msg/Vision.h"
 #include "robot_msg/PTZ_perception.h"
 #include "robot_msg/Track_reset.h"
+#include "std_msgs/UInt8.h"
 
 // Opencv 4.5.5
 #include <opencv2/opencv.hpp>
@@ -65,15 +66,15 @@ typedef enum
     Fire_OFF = 0,               // 关火命令
 }Fire;
 
+int Mode;                       // 击打模式
+
 void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::VisionConstPtr &Vision_msg){
-  
+    
     // Armor容器
     std::vector<Armor> Targets;
 
     // 读取图片
     src = cv_bridge::toCvShare(src_msg, "bgr8")->image;
-    cv::imshow("HIK_Camera_Receive", src);
-    cv::waitKey(1);
 
     // 读取IMU数据
     Vision_data.data[0] = Vision_msg->pitch;  // pitch
@@ -88,139 +89,114 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
       Vision_data.quat[i] = Vision_msg->quaternion[i];
     }
     
-
-    // ROS_INFO("Pitch: %.2f",Vision_msg->pitch);
-
+    // 根据模式选择击打目标
+    
     // 初始化四元数
     Tracker.AS.Init(Vision_data.data, Vision_data.quat);
     AO.AS.Init(Vision_data.data, Vision_data.quat);
 
     // 进行识别处理
-    // Targets = Detector.Detection(src);
+    Targets = Detector.Detection(src);
     // // 获取最终装甲板
     Tracker.Track(src,Targets,std::chrono::high_resolution_clock::now());
-    // Tracker.show();
+    Tracker.show();
+    cv::waitKey(1);
     
-    AS.bullet_speed = 25;
-   
-    // // 整车观测
-    // bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
-    // // 开始拟合圆心
-    // double OK = false;
-    // if(AO_OK) {
-    //   double angle =  AO.spin_angle*(180.0f/CV_PI);
-    //   // 左右角度
-    //   // -30 -45
-    //   double select_angle_left = -15;
-    //   double select_angle_right = -25;
-    //   if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::LONG){
-    //       AO.Angle_Speed = Tracker.Angle_Speed; 
-    //       AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_Armor);
+    // 弹道速度(后面改成发过来的弹道数据)
+    // AS.bullet_speed = 25;
 
-    //       // 根据旋转方向两确定跟踪两个点 逆时针旋转
-    //       // if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
-    //       //     OK = true;
-    //       //     Tracker.Solve_pitch = rpy[1];
-    //       //     Tracker.Solve_yaw = rpy[2];
-    //       // } 
-    //       // else {
-    //       //     // 改到固定点位 
-    //       //     // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.right_target);
-    //       //     // Tracker.Solve_pitch = rpy[1];
-    //       //     // Tracker.Solve_yaw = rpy[2];
-    //       //     Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
-    //       //     Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
-    //       // }
-                    
-    //       // 快速陀螺测试
-    //       if(AO.Left_Armor_angle < select_angle_left && AO.Left_Armor_angle > select_angle_right){
-    //           Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
-    //           OK = true;
-    //           Tracker.Solve_pitch = rpy[1];
-    //           Tracker.Solve_yaw = rpy[2];
-    //       } 
-    //       // 固定点位需要修改
-    //       else {
-    //           Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
-    //           Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
-    //       }
+    // 整车观测
+    bool AO_OK = (Tracker.tracker_state == TRACKING) && Tracker.OB_Track[Tracker.tracking_id].is_initialized;
+    // 开始拟合圆心
+    double OK = false;
+    if(AO_OK) {
+        double angle =  AO.spin_angle*(180.0f/CV_PI);
+        // 左右角度[以逆时针为基准]
+        // -30 -45
+        double select_angle_left = -15;
+        double select_angle_right = -25;
+    
+        AO.Angle_Speed = Tracker.Angle_Speed; 
+        AO.Spin_State = Tracker.Spin_State(); 
+        AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].center_Z,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);
 
-    //       // else if(AO.Left_Armor_angle < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > -select_angle_right){
-    //       //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
-    //       //     OK = true;
-    //       //     Tracker.Solve_pitch = rpy[1];
-    //       //     Tracker.Solve_yaw = rpy[2];
-    //       // } 
-    //       // else{
-    //       //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.left_target);
-    //       //     Tracker.Solve_pitch = rpy[1];
-    //       //     Tracker.Solve_yaw = rpy[2];
-    //       // }
-    //   }
-    //   else if(Tracker.OB_Track[Tracker.tracking_id].axesState == Robot::SHORT){
+        // 转速调节陀螺模式[0.10~0.2][0.2~0.35]?
+        if(Tracker.Angle_Speed > 0.10 && Tracker.Angle_Speed < 0.2){
+            
+            // 判断陀螺状态
+            if((Tracker.Spin_State() == COUNTER_CLOCKWISE) || (Tracker.Spin_State() == CLOCKWISE)){
+                // 逆时针[L] 顺时针[R] 击打当前装甲板不需要区分
+                if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
+                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
+                    OK = true;
+                    Tracker.Solve_pitch = rpy[1];
+                    Tracker.Solve_yaw = rpy[2];
+                } 
+                else {
+                    // 改到固定点位？需要顺逆时针
+                    // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.right_target);
+                    // Tracker.Solve_pitch = rpy[1];
+                    // Tracker.Solve_yaw = rpy[2];
+                    Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                    Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                }   
+            }
+            else{
+                // 退出陀螺模式
+                Tracker.Angle_Speed = 0;
+            }
+        }
+        else if(Tracker.Angle_Speed > 0.20 && Tracker.Angle_Speed < 0.35)
+        {
+            // 逆时针[L]
+            if(Tracker.Spin_State() == COUNTER_CLOCKWISE){
+                // 快速陀螺测试
+                if(AO.Left_Armor_angle < select_angle_left && AO.Left_Armor_angle > select_angle_right){
+                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
+                    OK = true;
+                    Tracker.Solve_pitch = rpy[1];
+                    Tracker.Solve_yaw = rpy[2];
+                } 
+                // 固定点位需要修改
+                else {
+                    Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                    Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                }
+            }
+            // 顺时针[R] 陀螺状态判断上还有点问题
+            else if (Tracker.Spin_State() == CLOCKWISE)
+            {
+                // 快速陀螺测试
+                if(AO.Right_Armor_angle > -select_angle_left && AO.Right_Armor_angle < -select_angle_right){
+                    Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Right_Armor);
+                    OK = true;
+                    Tracker.Solve_pitch = rpy[1];
+                    Tracker.Solve_yaw = rpy[2];
+                } 
+                // 固定点位需要修改
+                else {
+                    Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
+                    Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
+                }
+            }
+            else{
+                // 退出陀螺模式
+                Tracker.Angle_Speed = 0;
+            }
+        }else if (Tracker.Angle_Speed > 0.35)
+        {  // 最快陀螺速度
 
-    //       AO.Center_fitting(Tracker.enemy_armor,Tracker.OB[Tracker.tracking_id].Long_axes,Tracker.OB[Tracker.tracking_id].center_Z,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);
+        }
+            
+        cv::putText(src,"OK: "+ std::to_string(OK),cv::Point(0,100),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
+        // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
+    }
 
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Smooth_position);
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_pos);
-    //       // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.pre_Armor);
-
-    //       // 根据旋转方向两确定跟踪两个点 逆时针旋转
-    //       // if(AO.spin_angle*(180.0f/CV_PI) < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > select_angle_right){
-    //       //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.spin_Aromor);
-    //       //     OK = true;
-    //       //     Tracker.Solve_pitch = rpy[1];
-    //       //     Tracker.Solve_yaw = rpy[2];
-    //       // } 
-    //       // else {
-    //       //     // 改到固定点位 
-
-    //       //     // Eigen::Vector3d rpy = AS.Barrel_Solve(AO.right_target);
-    //       //     // Tracker.Solve_pitch = rpy[1];
-    //       //     // Tracker.Solve_yaw = rpy[2];
-
-    //       //     Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
-    //       //     Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
-    //       // }
-                    
-    //       // 快速陀螺测试
-    //       if(AO.Left_Armor_angle < select_angle_left && AO.Left_Armor_angle > select_angle_right){
-    //           Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
-    //           OK = true;
-    //           Tracker.Solve_pitch = rpy[1];
-    //           Tracker.Solve_yaw = rpy[2];
-    //       } 
-    //       // 固定点位需要修改
-    //       else {
-    //           Tracker.Solve_pitch = Tracker.AS.Robot_msg.Controller_pitch;
-    //           Tracker.Solve_yaw = Tracker.AS.Robot_msg.Controller_yaw;
-    //       }
-
-    //       // else if(AO.Left_Armor_angle < select_angle_left && AO.spin_angle*(180.0f/CV_PI) > -select_angle_right){
-    //       //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.Left_Armor);
-    //       //     OK = true;
-    //       //     Tracker.Solve_pitch = rpy[1];
-    //       //     Tracker.Solve_yaw = rpy[2];
-    //       // } 
-    //       // else{
-    //       //     Eigen::Vector3d rpy = AS.Barrel_Solve(AO.left_target);
-    //       //     Tracker.Solve_pitch = rpy[1];
-    //       //     Tracker.Solve_yaw = rpy[2];
-    //       // }
-    //       }
-    //       cv::putText(src,"OK: "+ std::to_string(OK),cv::Point(0,100),cv::FONT_HERSHEY_SIMPLEX, 1,cv::Scalar(255, 255, 0),2,3);
-    //       // if(AO.Fit_OK) {AO.ArmorObserve_show(AO.Smooth_position,Tracker.OB[Tracker.tracking_id],Tracker.OB_Track[Tracker.tracking_id]);}
-    // }
-
-       // 开火指令判断
+    // 开火指令判断
     double Fire;
     double Fire_mode;
-    // if(OK) Fire = 1;
-    // else Fire = 0;
+    if(OK) Fire = 1;
+    else Fire = 0;
 
     // 决策框锁定开火[坐标点在左上和右下之间]
     cv::Point2f Hitting_frame[4];
@@ -255,11 +231,15 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
         Fire = Fire_OFF;
     }
 
+
     // 创建发送数据
     robot_msg::PTZ_perception PTZ_perception_t;
 
+    // 开火判断(需要在限定框内进行开火,开火模式的选择: 陀螺模式下(三连发) 正常模式下(连发))[暂定]
+    //！一般情况下,需要卡尔曼进行移动预测,陀螺暂时不需要
+
     // 填充数据
-    PTZ_perception_t.header.frame_id = "PTZ_perception_R";
+    PTZ_perception_t.header.frame_id = "PTZ_perception_L";
     PTZ_perception_t.header.seq++;
     PTZ_perception_t.header.stamp = ros::Time::now();
 
@@ -267,10 +247,22 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     PTZ_perception_t.yaw = 15;                              // yaw轴
     PTZ_perception_t.score = Tracker.enemy_armor.grade;     // 装甲板分数
     PTZ_perception_t.track_id = Tracker.tracking_id;        // 跟踪装甲板ID
+    PTZ_perception_t.spin_state = Tracker.Spin_State();     // 陀螺状态
     PTZ_perception_t.fire_command = Fire;                   // 开火指令
     PTZ_perception_t.fire_mode = Fire_mode;                 // 开火模式
-    PTZ_perception_t.target_lock = 0x31;                    // 跟踪状态
 
+    // 陀螺情况下属于跟踪状态
+    if(Tracker.Spin_State()){
+        PTZ_perception_t.target_lock = 0x31;                    // 跟踪状态
+    }else{
+        // 非陀螺状态下
+        if(Tracker.tracker_state == TRACKING){
+            PTZ_perception_t.target_lock = 0x31;                    // 跟踪状态
+        }else{
+            PTZ_perception_t.target_lock = 0x32;                    // 跟踪状态
+        }
+    }
+    
     // 发送数据
     PTZ_perception_pub.publish(PTZ_perception_t);
 }
@@ -281,6 +273,11 @@ void Track_Reset_CMD(const robot_msg::Track_resetConstPtr &Track_reset_t){
     Tracker.Track_reset();
     // 重新设置跟踪ID(不进行跟踪状态的重置)
     Tracker.tracking_id = Track_reset_t->Track_id;
+}
+
+// 获取模式
+void Vision_mode(const std_msgs::UInt8ConstPtr &Vision_Mode){
+    Mode = Vision_Mode->data;
 }
 
 int main(int argc, char *argv[]){
@@ -295,6 +292,7 @@ int main(int argc, char *argv[]){
 
     PTZ_perception_pub = nh.advertise<robot_msg::Robot_ctrl>("PTZ_perception_R",1);
     ros::Subscriber Track_reset_sub = nh.subscribe<robot_msg::Track_reset>("/PTZ_R/Track_Reset",1,Track_Reset_CMD);   
+    ros::Subscriber mode_sub = nh.subscribe<std_msgs::UInt8>("/attack_mode",1,Vision_mode);   
 
     // 建立需要订阅的消息对应的订阅器
     message_filters::Subscriber<sensor_msgs::Image> HIK_Camera_sub(nh, "/HIK_Camera_R/image", 1);  
