@@ -26,7 +26,8 @@ int main(int argc, char *argv[]){
     HIK_Camera HIK;
     char Name[20] = {"Steins_Xin_R"};   // 相机自定义名称
     //相机初始化
-    if(HIK.HIKCamera_cUsername_Init(Name)){
+    //if(HIK.HIKCamera_cUsername_Init(Name)){
+    if(HIK.HIKCamera_Init()){
         HIK.HIKCamera_SetParam(Robot::HIK_ON);      // 设置相机参数(自动白平衡) | ON:自动白平衡  OFF:手动白平衡
         HIK.HIKCamera_startGrabbing();              // 相机开始取流
         HIK.HIKCamera_outParam();                   // 相机输出参数
