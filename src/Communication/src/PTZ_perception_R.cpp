@@ -57,7 +57,7 @@ void Auto(const robot_msgs::PTZ_perceptionConstPtr &PTZ){
     Decision_pub.publish(PTZ_Yaw_t);
 }
 
-void callback(const robot_msgs::barrelConstPtr &omni, const robot_msgs::PTZ_perceptionConstPtr &PTZ){
+void callback(const robot_msgs::barrel::ConstPtr &omni, const robot_msgs::PTZ_perception::ConstPtr &PTZ){
 
     float Decision_pitch;           // 决策pitch
     float Decision_yaw;             // 决策yaw

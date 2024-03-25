@@ -101,8 +101,8 @@ void callback(const robot_msgs::PTZ_perceptionConstPtr &PTZ_L, const robot_msgs:
     Robot_L_ctrl_t.fire_mode = PTZ_L->fire_mode;
     Robot_R_ctrl_t.fire_mode = PTZ_R->fire_mode;
     // 左右yaw轴数据
-    Robot_L_ctrl_t.yaw = PTZ_L->yaw;
-    Robot_R_ctrl_t.yaw = PTZ_R->yaw;
+    Robot_L_ctrl_t.yaw = Yaw_L;
+    Robot_R_ctrl_t.yaw = Yaw_R;
     // 左右pitch轴数据
     Robot_L_ctrl_t.pitch = PTZ_L->pitch;
     Robot_R_ctrl_t.pitch = PTZ_R->pitch;
@@ -126,6 +126,35 @@ void Vision_mode(const std_msgs::UInt8ConstPtr &Vision_Mode){
     Mode = Vision_Mode->data;
 }
 
+// 左云台独立自瞄 | 离线模式下直接控制大yaw轴
+void PTZ_L_Auto(const robot_msgs::PTZ_perceptionConstPtr &PTZ_L){
+
+    // 对ROS时间戳的判断
+
+    // 创建发送数据
+    robot_msgs::robot_ctrl Robot_L_ctrl_t;
+
+    // 左右开火命令
+    Robot_L_ctrl_t.fire_command = PTZ_L->fire_command;
+    // 左右开火模式
+    Robot_L_ctrl_t.fire_mode = PTZ_L->fire_mode;
+    // 左右yaw轴数据
+    Robot_L_ctrl_t.yaw = PTZ_L->yaw;
+    // 左右pitch轴数据
+    Robot_L_ctrl_t.pitch = PTZ_L->pitch;
+    // 左右跟踪情况
+    Robot_L_ctrl_t.is_follow = PTZ_L->target_lock;
+
+    // 发送数据
+    Robot_L_ctrl_pub.publish(Robot_L_ctrl_t);
+}
+
+
+// 右云台独立自瞄
+void PTZ_R_Auto(const robot_msgs::PTZ_perceptionConstPtr &PTZ_R){
+
+}
+
 
 // 同步左右云台的yaw轴数据和大云台的yaw轴数据,进行数据处理
 int main(int argc, char *argv[]){
@@ -142,7 +171,10 @@ int main(int argc, char *argv[]){
     // 创建订阅对象
     ros::Subscriber main_yaw_sub = nh.subscribe<std_msgs::Float32>("/main_yaw",1,Robot_Main_Yaw);   
     ros::Subscriber mode_sub = nh.subscribe<std_msgs::UInt8>("/attack_mode",1,Vision_mode);   
-
+    
+    // 独立自瞄部分
+    // ros::Subscriber PTZ_L_Auto_sub = nh.subscribe<robot_msgs::PTZ_perception>("/PTZ_L/PTZ_perception",1,PTZ_L_Auto);   
+    // ros::Subscriber PTZ_R_Auto_sub = nh.subscribe<robot_msgs::PTZ_perception>("/PTZ_R/PTZ_perception",1,PTZ_R_Auto);   
 
     // 发送数据
     Robot_L_ctrl_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_left_gimble_ctrl",1);
@@ -152,7 +184,6 @@ int main(int argc, char *argv[]){
     // 建立需要订阅的消息对应的订阅器 (可能还得添加一个模式的同步)
     message_filters::Subscriber<robot_msgs::PTZ_perception> PTZ_L_sub(nh, "/PTZ_L/PTZ_perception", 1);  
     message_filters::Subscriber<robot_msgs::PTZ_perception> PTZ_R_sub(nh, "/PTZ_R/PTZ_perception", 1);  
-    // message_filters::Subscriber<robot_msgs::PTZ_Yaw> PTZ_YAW_sub(nh, "/PTZ_Yaw_data", 1);  
 
     // 同步ROS消息
     typedef message_filters::sync_policies::ApproximateTime<robot_msgs::PTZ_perception, robot_msgs::PTZ_perception> MySyncPolicy;

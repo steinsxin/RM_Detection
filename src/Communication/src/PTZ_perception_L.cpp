@@ -20,6 +20,12 @@ ros::Publisher Decision_pub;
 ros::Publisher Track_reset_pub;
 static int lose_num = 0; 
 
+// 全向感知和自瞄的切换方案
+// 目前问题在于两个回调函数会有同时发送数据的情况,现在需要在全向感知开启的情况下
+// 将自瞄发送数据给断开,目前想法是在接受到全向的数据时将标识符设置为1,表示开启全向感知,同时设置ROS时间戳
+// 在自瞄下进行时间戳的判断,如果在一段时间内并未更新时间戳,则将标识符设置为0,判断全向感知离线
+// 双头自瞄也需要进行这个判断,避免1个电脑离线的情况下双头无法自瞄
+
 void Auto(const robot_msgs::PTZ_perceptionConstPtr &PTZ){
 
     float Decision_pitch;           // 决策pitch
