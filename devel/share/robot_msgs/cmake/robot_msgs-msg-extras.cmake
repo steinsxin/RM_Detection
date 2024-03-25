@@ -1,0 +1,2 @@
+set(robot_msgs_MESSAGE_FILES "/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs/msg/vision.msg;/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs/msg/robot_ctrl.msg;/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs/msg/PTZ_Yaw.msg;/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs/msg/barrel.msg;/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs/msg/PTZ_perception.msg;/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs/msg/Track_reset.msg")
+set(robot_msgs_SERVICE_FILES "")

@@ -528,7 +528,7 @@ bool ArmorDetector::get_max(const float *data, float &confidence, int &id)
     }
     
     // 置信度小于阈值
-    if(confidence < thresh_confidence)
+    if(confidence < thresh_confidence || id == 0)
         return false;
     else
         return true;

@@ -5,9 +5,9 @@
 #include "robot_status.h"
 
 // msg
-#include "robot_msg/barrel.h"
-#include "robot_msg/PTZ_perception.h"
-#include "robot_msg/Track_reset.h"
+#include "robot_msgs/barrel.h"
+#include "robot_msgs/PTZ_perception.h"
+#include "robot_msgs/Track_reset.h"
 
 // 消息过滤器
 #include <message_filters/subscriber.h>
@@ -19,7 +19,45 @@
 ros::Publisher Decision_pub;
 ros::Publisher Track_reset_pub;
 static int lose_num = 0; 
-void callback(const robot_msg::barrelConstPtr &omni, const robot_msg::PTZ_perceptionConstPtr &PTZ){
+
+void Auto(const robot_msgs::PTZ_perceptionConstPtr &PTZ){
+
+    float Decision_pitch;           // 决策pitch
+    float Decision_yaw;             // 决策yaw
+    float Decision_score;           // 决策开火
+    float Decision_fire_command;    // 决策开火
+    float Decision_fire_mode;       // 决策开火模式[连发|三连发]
+
+    // 只使用云台数据
+    Decision_pitch = PTZ->pitch;
+    Decision_yaw = PTZ->yaw;        
+    Decision_fire_command = PTZ->fire_command;
+    Decision_fire_mode = PTZ->fire_mode;
+    Decision_score = PTZ->score;
+
+
+    // 创建发送数据
+    robot_msgs::PTZ_perception PTZ_Yaw_t;
+    
+    //! 还需要判断跟踪状态
+    // 填充数据
+    PTZ_Yaw_t.header.frame_id = "PTZ_Yaw_L";
+    PTZ_Yaw_t.header.seq++;
+    PTZ_Yaw_t.header.stamp = ros::Time::now();
+
+    PTZ_Yaw_t.pitch = Decision_pitch;                   // pitch轴
+    PTZ_Yaw_t.yaw = Decision_yaw;                       // yaw轴
+    PTZ_Yaw_t.track_id = PTZ->track_id;                 // 跟踪装甲板ID
+    PTZ_Yaw_t.target_lock = PTZ->target_lock;           // 跟踪模式
+    PTZ_Yaw_t.score = Decision_score;                   // 装甲板分数
+    PTZ_Yaw_t.fire_command = Decision_fire_command;     // 开火指令
+    PTZ_Yaw_t.fire_mode = Decision_fire_mode;           // 开火模式
+
+    // 发送数据
+    Decision_pub.publish(PTZ_Yaw_t);
+}
+
+void callback(const robot_msgs::barrelConstPtr &omni, const robot_msgs::PTZ_perceptionConstPtr &PTZ){
 
     float Decision_pitch;           // 决策pitch
     float Decision_yaw;             // 决策yaw
@@ -77,7 +115,7 @@ void callback(const robot_msg::barrelConstPtr &omni, const robot_msg::PTZ_percep
     }
 
     // 创建发送数据
-    robot_msg::PTZ_perception PTZ_Yaw_t;
+    robot_msgs::PTZ_perception PTZ_Yaw_t;
     
     //! 还需要判断跟踪状态
     // 填充数据
@@ -98,7 +136,7 @@ void callback(const robot_msg::barrelConstPtr &omni, const robot_msg::PTZ_percep
 
     // 丢失阈值判断
     if(lose_num == 5){
-        robot_msg::Track_reset Track_reset_t;
+        robot_msgs::Track_reset Track_reset_t;
         
         // 填充数据
         Track_reset_t.header.frame_id = "Track_reset_L";
@@ -117,6 +155,7 @@ void callback(const robot_msg::barrelConstPtr &omni, const robot_msg::PTZ_percep
 
 }
 
+// #define omni_mode       // 全向感知开关
 int main(int argc, char *argv[]){
 
     // 设置语言运行环境
@@ -128,15 +167,15 @@ int main(int argc, char *argv[]){
     // 创建句柄
     ros::NodeHandle nh;
 
-    Decision_pub = nh.advertise<robot_msg::PTZ_perception>("/PTZ_L/PTZ_perception",1);
-    Track_reset_pub = nh.advertise<robot_msg::Track_reset>("/PTZ_L/Track_Reset",1);
-
+    Decision_pub = nh.advertise<robot_msgs::PTZ_perception>("/PTZ_L/PTZ_perception",1);
+    Track_reset_pub = nh.advertise<robot_msgs::Track_reset>("/PTZ_L/Track_Reset",1);    
+#ifdef omni_mode
     // 同步左云台|全向感知锁定信息,进行分数比较决策(可能还得添加一个模式的同步)
-    message_filters::Subscriber<robot_msg::barrel> omni_L_sub(nh, "/Robot_left_imu", 1);  
-    message_filters::Subscriber<robot_msg::PTZ_perception> PTZ_L_sub(nh, "/PTZ_perception_L", 1);  
+    message_filters::Subscriber<robot_msgs::barrel> omni_L_sub(nh, "/Robot_left_imu", 1);  
+    message_filters::Subscriber<robot_msgs::PTZ_perception> PTZ_L_sub(nh, "/PTZ_perception_L", 1);  
 
     // 同步ROS消息
-    typedef message_filters::sync_policies::ApproximateTime<robot_msg::barrel, robot_msg::PTZ_perception> MySyncPolicy;
+    typedef message_filters::sync_policies::ApproximateTime<robot_msgs::barrel, robot_msgs::PTZ_perception> MySyncPolicy;
 
     // 创建同步器对象
     message_filters::Synchronizer<MySyncPolicy> sync(MySyncPolicy(10), omni_L_sub, PTZ_L_sub);
@@ -144,6 +183,12 @@ int main(int argc, char *argv[]){
     ROS_INFO("--PTZ_perception_L Start--");
     // 注册同步回调函数
     sync.registerCallback(boost::bind(&callback, _1, _2));
+#else
+    // 创建订阅对象
+    ros::Subscriber auto_pub = nh.subscribe<robot_msgs::PTZ_perception>("/PTZ_perception_L",1,Auto);   
+
+#endif //omni_mode
+
 
     ros::spin();
 

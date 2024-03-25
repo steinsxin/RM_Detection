@@ -1,8 +1,7 @@
 %YAML:1.0
 ---
 # 相机参数
-# ExposureTime: 6000.00  #曝光时间
-ExposureTime: 4000.00  #曝光时间
+ExposureTime: 6000.00  #曝光时间
 Gain: 15.0              #增益
 # 白平衡参数
 BalanceRatio_R: 1314   # R通道

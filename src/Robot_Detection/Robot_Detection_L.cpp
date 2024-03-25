@@ -20,10 +20,10 @@
 #include <message_filters/sync_policies/approximate_time.h>
 
 // msg
-#include "robot_msg/Robot_ctrl.h"
-#include "robot_msg/Vision.h"
-#include "robot_msg/PTZ_perception.h"
-#include "robot_msg/Track_reset.h"
+#include "robot_msgs/robot_ctrl.h"
+#include "robot_msgs/vision.h"
+#include "robot_msgs/PTZ_perception.h"
+#include "robot_msgs/Track_reset.h"
 #include "std_msgs/UInt8.h"
 
 // Opencv 4.5.5
@@ -69,7 +69,7 @@ typedef enum
 
 int Mode;                       // 击打模式
 
-void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::VisionConstPtr &Vision_msg){
+void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msgs::vision::ConstPtr &Vision_msg){
   
     // Armor容器
     std::vector<Armor> Targets;
@@ -234,7 +234,7 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
 
 
     // 创建发送数据
-    robot_msg::PTZ_perception PTZ_perception_t;
+    robot_msgs::PTZ_perception PTZ_perception_t;
 
     // 开火判断(需要在限定框内进行开火,开火模式的选择: 陀螺模式下(三连发) 正常模式下(连发))[暂定]
     //！一般情况下,需要卡尔曼进行移动预测,陀螺暂时不需要
@@ -244,8 +244,8 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
     PTZ_perception_t.header.seq++;
     PTZ_perception_t.header.stamp = ros::Time::now();
 
-    PTZ_perception_t.pitch = 10;                            // pitch轴
-    PTZ_perception_t.yaw = 15;                              // yaw轴
+    PTZ_perception_t.pitch = Tracker.Solve_pitch;           // pitch轴
+    PTZ_perception_t.yaw = Tracker.Solve_yaw;               // yaw轴
     PTZ_perception_t.score = Tracker.enemy_armor.grade;     // 装甲板分数
     PTZ_perception_t.track_id = Tracker.tracking_id;        // 跟踪装甲板ID
     PTZ_perception_t.spin_state = Tracker.Spin_State();     // 陀螺状态
@@ -269,7 +269,7 @@ void callback(const sensor_msgs::ImageConstPtr &src_msg, const robot_msg::Vision
 }
 
 // 重置跟踪状态命令
-void Track_Reset_CMD(const robot_msg::Track_resetConstPtr &Track_reset_t){
+void Track_Reset_CMD(const robot_msgs::Track_reset::ConstPtr &Track_reset_t){
     // 初始化
     Tracker.Track_reset();
     // 重新设置跟踪ID(不进行跟踪状态的重置)
@@ -291,19 +291,19 @@ int main(int argc, char *argv[]){
     // 创建句柄
     ros::NodeHandle nh;
 
-    PTZ_perception_pub = nh.advertise<robot_msg::Robot_ctrl>("/PTZ_perception_L",1);
+    PTZ_perception_pub = nh.advertise<robot_msgs::robot_ctrl>("/PTZ_perception_L",1);
 
-    ros::Subscriber Track_reset_sub = nh.subscribe<robot_msg::Track_reset>("/PTZ_L/Track_Reset",1,Track_Reset_CMD);   
+    ros::Subscriber Track_reset_sub = nh.subscribe<robot_msgs::Track_reset>("/PTZ_L/Track_Reset",1,Track_Reset_CMD);   
     ros::Subscriber mode_sub = nh.subscribe<std_msgs::UInt8>("/attack_mode",1,Vision_mode);   
 
     // 建立需要订阅的消息对应的订阅器
     message_filters::Subscriber<sensor_msgs::Image> HIK_Camera_sub(nh, "/HIK_Camera_L/image", 1);  
-    // message_filters::Subscriber<robot_msg::Vision> Imu_sub(nh, "/Serial_Device/Vision_L_data", 1);  
-    message_filters::Subscriber<robot_msg::Vision> Imu_sub(nh, "/left_gimbal_vision_data", 1);  
+    // message_filters::Subscriber<robot_msgs::Vision> Imu_sub(nh, "/Serial_Device/Vision_L_data", 1);  
+    message_filters::Subscriber<robot_msgs::vision> Imu_sub(nh, "/left_gimbal_vision_data", 1);  
 
 
     // 同步ROS消息
-    typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, robot_msg::Vision> MySyncPolicy;
+    typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, robot_msgs::vision> MySyncPolicy;
 
     // 创建同步器对象
     message_filters::Synchronizer<MySyncPolicy> sync(MySyncPolicy(10), HIK_Camera_sub, Imu_sub);

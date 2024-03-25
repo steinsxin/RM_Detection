@@ -1,8 +1,0 @@
-prefix=/home/steins_xin/RM_Detection_Sentinel_ROS/devel
-
-Name: Serial_Device
-Description: Description of Serial_Device
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp rospy std_msgs

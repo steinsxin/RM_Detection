@@ -37,7 +37,7 @@ CATKIN_SKIP_TESTING:BOOL=OFF
 CATKIN_SYMLINK_INSTALL:BOOL=OFF
 
 //List of ';' separated packages to build
-CATKIN_WHITELIST_PACKAGES:STRING=
+CATKIN_WHITELIST_PACKAGES:STRING=robot_msgs
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
@@ -400,12 +400,6 @@ SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 //Name of the computer/site where compile is being run
 SITE:STRING=steinsxin
 
-//Value Computed by CMake
-Serial_Device_BINARY_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/build/Serial_Device
-
-//Value Computed by CMake
-Serial_Device_SOURCE_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/src/Serial_Device
-
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
 
@@ -429,6 +423,12 @@ catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
 
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/noetic/share/class_loader/cmake
+
+//Value Computed by CMake
+communication_BINARY_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/build/communication
+
+//Value Computed by CMake
+communication_SOURCE_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/src/communication
 
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
@@ -500,11 +500,17 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 
+//Value Computed by CMake
+hik_camera_BINARY_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/build/hik_camera
+
+//Value Computed by CMake
+hik_camera_SOURCE_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/src/hik_camera
+
 //The directory containing a CMake configuration file for image_transport.
 image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/noetic/lib/librospack.so
+lib:FILEPATH=/opt/ros/noetic/lib/libxmlrpcpp.so
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/noetic/share/message_filters/cmake
@@ -519,10 +525,16 @@ message_runtime_DIR:PATH=/opt/ros/noetic/share/message_runtime/cmake
 pluginlib_DIR:PATH=/opt/ros/noetic/share/pluginlib/cmake
 
 //Value Computed by CMake
-robot_msg_BINARY_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msg
+robot_detection_BINARY_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_detection
 
 //Value Computed by CMake
-robot_msg_SOURCE_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msg
+robot_detection_SOURCE_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_detection
+
+//Value Computed by CMake
+robot_msgs_BINARY_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msgs
+
+//Value Computed by CMake
+robot_msgs_SOURCE_DIR:STATIC=/home/steins_xin/RM_Detection_Sentinel_ROS/src/robot_msgs
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/noetic/share/rosconsole/cmake
@@ -708,7 +720,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

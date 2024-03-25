@@ -2,9 +2,9 @@
 #include <ros/time.h>
 
 // msg
-#include "robot_msg/Robot_ctrl.h"
-#include "robot_msg/PTZ_Yaw.h"
-#include "robot_msg/PTZ_perception.h"
+#include "robot_msgs/robot_ctrl.h"
+#include "robot_msgs/PTZ_Yaw.h"
+#include "robot_msgs/PTZ_perception.h"
 #include "std_msgs/Float32.h"
 #include "std_msgs/UInt8.h"
 
@@ -31,7 +31,7 @@ typedef enum
 int Mode = Same_target;       // 等待接口接入
 float main_yaw;
 // 计算yaw轴数据,进行控制处理
-void callback(const robot_msg::PTZ_perceptionConstPtr &PTZ_L, const robot_msg::PTZ_perceptionConstPtr &PTZ_R){
+void callback(const robot_msgs::PTZ_perceptionConstPtr &PTZ_L, const robot_msgs::PTZ_perceptionConstPtr &PTZ_R){
 
     // 0x31表示跟踪,0x32表示丢失
     int target_lock_L = PTZ_L->target_lock;
@@ -86,8 +86,8 @@ void callback(const robot_msg::PTZ_perceptionConstPtr &PTZ_L, const robot_msg::P
     
 
     // 创建发送数据
-    robot_msg::Robot_ctrl Robot_L_ctrl_t;
-    robot_msg::Robot_ctrl Robot_R_ctrl_t;
+    robot_msgs::robot_ctrl Robot_L_ctrl_t;
+    robot_msgs::robot_ctrl Robot_R_ctrl_t;
     std_msgs::Float32 Robot_main_yaw_t;
 
 
@@ -103,9 +103,12 @@ void callback(const robot_msg::PTZ_perceptionConstPtr &PTZ_L, const robot_msg::P
     // 左右yaw轴数据
     Robot_L_ctrl_t.yaw = PTZ_L->yaw;
     Robot_R_ctrl_t.yaw = PTZ_R->yaw;
-    // // 左右pitch轴数据
+    // 左右pitch轴数据
     Robot_L_ctrl_t.pitch = PTZ_L->pitch;
     Robot_R_ctrl_t.pitch = PTZ_R->pitch;
+    // 左右跟踪情况
+    Robot_L_ctrl_t.is_follow = PTZ_L->target_lock;
+    Robot_R_ctrl_t.is_follow = PTZ_R->target_lock;
 
     // 发送数据
     Robot_L_ctrl_pub.publish(Robot_L_ctrl_t);
@@ -142,17 +145,17 @@ int main(int argc, char *argv[]){
 
 
     // 发送数据
-    Robot_L_ctrl_pub = nh.advertise<robot_msg::Robot_ctrl>("/robot_left_gimble_ctrl",1);
-    Robot_R_ctrl_pub = nh.advertise<robot_msg::Robot_ctrl>("/robot_right_gimble_ctrl",1);
-    Robot_main_yaw_pub = nh.advertise<robot_msg::Robot_ctrl>("/robot_main_ctrl",1);
+    Robot_L_ctrl_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_left_gimble_ctrl",1);
+    Robot_R_ctrl_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_right_gimble_ctrl",1);
+    Robot_main_yaw_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_main_ctrl",1);
 
     // 建立需要订阅的消息对应的订阅器 (可能还得添加一个模式的同步)
-    message_filters::Subscriber<robot_msg::PTZ_perception> PTZ_L_sub(nh, "/PTZ_L/PTZ_perception", 1);  
-    message_filters::Subscriber<robot_msg::PTZ_perception> PTZ_R_sub(nh, "/PTZ_R/PTZ_perception", 1);  
-    // message_filters::Subscriber<robot_msg::PTZ_Yaw> PTZ_YAW_sub(nh, "/PTZ_Yaw_data", 1);  
+    message_filters::Subscriber<robot_msgs::PTZ_perception> PTZ_L_sub(nh, "/PTZ_L/PTZ_perception", 1);  
+    message_filters::Subscriber<robot_msgs::PTZ_perception> PTZ_R_sub(nh, "/PTZ_R/PTZ_perception", 1);  
+    // message_filters::Subscriber<robot_msgs::PTZ_Yaw> PTZ_YAW_sub(nh, "/PTZ_Yaw_data", 1);  
 
     // 同步ROS消息
-    typedef message_filters::sync_policies::ApproximateTime<robot_msg::PTZ_perception, robot_msg::PTZ_perception> MySyncPolicy;
+    typedef message_filters::sync_policies::ApproximateTime<robot_msgs::PTZ_perception, robot_msgs::PTZ_perception> MySyncPolicy;
 
     // 创建同步器对象
     message_filters::Synchronizer<MySyncPolicy> sync(MySyncPolicy(10), PTZ_L_sub, PTZ_R_sub);

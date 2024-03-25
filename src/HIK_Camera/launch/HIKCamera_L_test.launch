@@ -1,16 +1,16 @@
 <launch>
     <node
         name="HIK_Camera_L"
-        pkg="HIK_Camera"
-        type="HIK_Camera_L_node"
+        pkg="hik_camera"
+        type="hik_camera_L_node"
         respawn="true"  
         >
     </node>
 
     <node
         name="Receive_L_test"
-        pkg="HIK_Camera"
-        type="HIK_Camera_L_Receive_test_node"
+        pkg="hik_camera"
+        type="hik_camera_L_Receive_test_node"
         output="screen"
         respawn="true"   
         >

@@ -1,7 +1,7 @@
 prefix=/home/steins_xin/RM_Detection_Sentinel_ROS/devel
 
-Name: Robot_Detection
-Description: Description of Robot_Detection
+Name: robot_detection
+Description: Description of robot_detection
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 

@@ -13,9 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   roslib
 )
-# 链接Opencv和Eigen3
-find_package(OpenCV 4.5 REQUIRED)
-find_package(Eigen3 REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -143,10 +140,10 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 set(SRC_DIR src/crc.cpp src/serial_device.cpp src/serial_main.cpp)
 
-# 左C板
-add_executable(${PROJECT_NAME}_Send_L_node Serial_Device_Send_L_node.cpp ${SRC_DIR})
-# 右C板
-add_executable(${PROJECT_NAME}_Send_R_node Serial_Device_Send_R_node.cpp ${SRC_DIR})
+# # 左C板
+# add_executable(${PROJECT_NAME}_Send_L_node Serial_Device_Send_L_node.cpp ${SRC_DIR})
+# # 右C板
+# add_executable(${PROJECT_NAME}_Send_R_node Serial_Device_Send_R_node.cpp ${SRC_DIR})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -160,16 +157,16 @@ add_executable(${PROJECT_NAME}_Send_R_node Serial_Device_Send_R_node.cpp ${SRC_D
 
 ## Specify libraries to link a library or executable target against
 
-# 左板
-target_link_libraries(${PROJECT_NAME}_Send_L_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
-# 右板
-target_link_libraries(${PROJECT_NAME}_Send_R_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBS}
-)
+# # 左板
+# target_link_libraries(${PROJECT_NAME}_Send_L_node
+#   ${catkin_LIBRARIES}
+#   ${OpenCV_LIBS}
+# )
+# # 右板
+# target_link_libraries(${PROJECT_NAME}_Send_R_node
+#   ${catkin_LIBRARIES}
+#   ${OpenCV_LIBS}
+# )
 
 #############
 ## Install ##
