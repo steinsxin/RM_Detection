@@ -179,7 +179,7 @@ int main(int argc, char *argv[]){
     // 发送数据
     Robot_L_ctrl_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_left_gimble_ctrl",1);
     Robot_R_ctrl_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_right_gimble_ctrl",1);
-    Robot_main_yaw_pub = nh.advertise<robot_msgs::robot_ctrl>("/robot_main_ctrl",1);
+    Robot_main_yaw_pub = nh.advertise<std_msgs::Float32>("/robot_main_ctrl",1);
 
     // 建立需要订阅的消息对应的订阅器 (可能还得添加一个模式的同步)
     message_filters::Subscriber<robot_msgs::PTZ_perception> PTZ_L_sub(nh, "/PTZ_L/PTZ_perception", 1);  
