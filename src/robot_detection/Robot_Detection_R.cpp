@@ -290,7 +290,7 @@ int main(int argc, char *argv[]){
     // 创建句柄
     ros::NodeHandle nh;
 
-    PTZ_perception_pub = nh.advertise<robot_msgs::robot_ctrl>("PTZ_perception_R",1);
+    PTZ_perception_pub = nh.advertise<robot_msgs::PTZ_perception>("PTZ_perception_R",1);
     ros::Subscriber Track_reset_sub = nh.subscribe<robot_msgs::Track_reset>("/PTZ_R/Track_Reset",1,Track_Reset_CMD);   
     ros::Subscriber mode_sub = nh.subscribe<std_msgs::UInt8>("/attack_mode",1,Vision_mode);   
 
