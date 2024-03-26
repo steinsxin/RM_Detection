@@ -11,7 +11,7 @@
 using namespace Robot;
 AngleSolve::AngleSolve() {
 
-    std::string package_path = ros::package::getPath("Robot_Detection");
+    std::string package_path = ros::package::getPath("robot_detection");
     cv::FileStorage fs(package_path + "/SetParam_File/Solve_data.yaml", cv::FileStorage::READ);
 
     /** 装甲板实际大小参数读取 */

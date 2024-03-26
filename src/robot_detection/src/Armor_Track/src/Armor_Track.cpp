@@ -9,7 +9,7 @@
 using namespace Robot;
 ArmorTrack::ArmorTrack() {
 
-    std::string package_path = ros::package::getPath("Robot_Detection");
+    std::string package_path = ros::package::getPath("robot_detection");
     cv::FileStorage fs(package_path + "/SetParam_File/Track_data.yaml", cv::FileStorage::READ);
 
     //=========================初始化=========================

@@ -131,7 +131,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/steins_xin/RM_Detection_Sentinel_ROS/build/gtest/cmake_install.cmake")
+  include("/home/steins_xin/RM_Detection_Sentinel_ROS/build/Serial_Device/cmake_install.cmake")
   include("/home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_msgs/cmake_install.cmake")
+  include("/home/steins_xin/RM_Detection_Sentinel_ROS/build/communication/cmake_install.cmake")
+  include("/home/steins_xin/RM_Detection_Sentinel_ROS/build/hik_camera/cmake_install.cmake")
+  include("/home/steins_xin/RM_Detection_Sentinel_ROS/build/robot_detection/cmake_install.cmake")
 
 endif()
 

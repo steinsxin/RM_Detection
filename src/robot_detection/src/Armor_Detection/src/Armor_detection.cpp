@@ -15,7 +15,7 @@ using namespace std;
 ArmorDetector::ArmorDetector()
 {
     //============================= 参数文件路径 =============================
-    std::string package_path = ros::package::getPath("Robot_Detection");
+    std::string package_path = ros::package::getPath("robot_detection");
     FileStorage fs(package_path + "/SetParam_File/Detect_data.yaml", FileStorage::READ);
 
     /** 二值化阈值*/

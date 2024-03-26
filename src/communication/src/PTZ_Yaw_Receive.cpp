@@ -14,6 +14,8 @@
 #include <message_filters/sync_policies/exact_time.h>
 #include <message_filters/sync_policies/approximate_time.h>
 
+// Kalman
+#include "Kalman.h"
 
 ros::Publisher Robot_L_ctrl_pub;
 ros::Publisher Robot_R_ctrl_pub;
@@ -30,6 +32,24 @@ typedef enum
 
 int Mode = Same_target;       // 等待接口接入
 float main_yaw;
+float Decision_pitch_L;
+float Decision_pitch_R;
+float Decision_Yaw_L;
+float Decision_Yaw_R;
+float Decision_Yaw_count;
+int Decision_fire_command_L;
+int Decision_fire_command_R;
+int Decision_fire_mode_L;
+int Decision_fire_mode_R;
+int Decision_target_lock_L;
+int Decision_target_lock_R;
+
+Kalman kalman_yaw_L;
+Kalman kalman_pitch_L;
+Kalman kalman_yaw_R;
+Kalman kalman_pitch_R;
+Kalman kalman_yaw_main;
+
 // 计算yaw轴数据,进行控制处理
 void callback(const robot_msgs::PTZ_perceptionConstPtr &PTZ_L, const robot_msgs::PTZ_perceptionConstPtr &PTZ_R){
 
@@ -85,35 +105,47 @@ void callback(const robot_msgs::PTZ_perceptionConstPtr &PTZ_L, const robot_msgs:
     }
     
 
-    // 创建发送数据
-    robot_msgs::robot_ctrl Robot_L_ctrl_t;
-    robot_msgs::robot_ctrl Robot_R_ctrl_t;
-    std_msgs::Float32 Robot_main_yaw_t;
+    // // 创建发送数据
+    // robot_msgs::robot_ctrl Robot_L_ctrl_t;
+    // robot_msgs::robot_ctrl Robot_R_ctrl_t;
+    // std_msgs::Float32 Robot_main_yaw_t;
 
 
     // 大Yaw轴数据
-    Robot_main_yaw_t.data = Yaw_count;
+    // Robot_main_yaw_t.data = Yaw_count;
 
-    //左右开火命令
-    Robot_L_ctrl_t.fire_command = PTZ_L->fire_command;
-    Robot_R_ctrl_t.fire_command = PTZ_R->fire_command;
-    // 左右开火模式
-    Robot_L_ctrl_t.fire_mode = PTZ_L->fire_mode;
-    Robot_R_ctrl_t.fire_mode = PTZ_R->fire_mode;
-    // 左右yaw轴数据
-    Robot_L_ctrl_t.yaw = Yaw_L;
-    Robot_R_ctrl_t.yaw = Yaw_R;
-    // 左右pitch轴数据
-    Robot_L_ctrl_t.pitch = PTZ_L->pitch;
-    Robot_R_ctrl_t.pitch = PTZ_R->pitch;
-    // 左右跟踪情况
-    Robot_L_ctrl_t.is_follow = PTZ_L->target_lock;
-    Robot_R_ctrl_t.is_follow = PTZ_R->target_lock;
+    // //左右开火命令
+    // Robot_L_ctrl_t.fire_command = PTZ_L->fire_command;
+    // Robot_R_ctrl_t.fire_command = PTZ_R->fire_command;
+    // // 左右开火模式
+    // Robot_L_ctrl_t.fire_mode = PTZ_L->fire_mode;
+    // Robot_R_ctrl_t.fire_mode = PTZ_R->fire_mode;
+    // // 左右yaw轴数据
+    // Robot_L_ctrl_t.yaw = -Yaw_L;
+    // Robot_R_ctrl_t.yaw = Yaw_R;
+    // // 左右pitch轴数据
+    // Robot_L_ctrl_t.pitch = PTZ_L->pitch;
+    // Robot_R_ctrl_t.pitch = PTZ_R->pitch;
+    // // 左右跟踪情况
+    // Robot_L_ctrl_t.is_follow = PTZ_L->target_lock;
+    // Robot_R_ctrl_t.is_follow = PTZ_R->target_lock;
 
-    // 发送数据
-    Robot_L_ctrl_pub.publish(Robot_L_ctrl_t);
-    Robot_R_ctrl_pub.publish(Robot_R_ctrl_t);
-    Robot_main_yaw_pub.publish(Robot_main_yaw_t);
+    Decision_pitch_L = PTZ_L->pitch;
+    Decision_pitch_R = PTZ_R->pitch;
+    Decision_Yaw_L = -(PTZ_L->yaw - main_yaw);
+    Decision_Yaw_R =  (PTZ_R->yaw - main_yaw);
+    Decision_Yaw_count = Yaw_count;
+    Decision_fire_command_L = PTZ_L->fire_command;
+    Decision_fire_command_R = PTZ_R->fire_command;
+    Decision_fire_mode_L = PTZ_L->fire_mode;
+    Decision_fire_mode_R = PTZ_R->fire_mode;
+    Decision_target_lock_L = PTZ_L->target_lock;
+    Decision_target_lock_R = PTZ_R->target_lock;
+
+    // // 发送数据
+    // Robot_L_ctrl_pub.publish(Robot_L_ctrl_t);
+    // Robot_R_ctrl_pub.publish(Robot_R_ctrl_t);
+    // Robot_main_yaw_pub.publish(Robot_main_yaw_t);
 }
 
 // 获取大yaw轴数据
@@ -195,6 +227,91 @@ int main(int argc, char *argv[]){
     ROS_INFO("[Yaw_Communication_sync]: Start");
     // 注册同步回调函数
     sync.registerCallback(boost::bind(&callback, _1, _2));
+
+    // 初始化卡尔曼 | yaw & pitch
+    kalman_yaw_L.Initial();
+    kalman_pitch_L.Initial();
+    kalman_yaw_R.Initial();
+    kalman_pitch_R.Initial();
+    kalman_yaw_main.Initial();
+
+    Eigen::Matrix<double,2,1> x_k1_yaw_L;  // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> p_x_k_yaw_L; // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> x_k1_pitch_L;  // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> p_x_k_pitch_L; // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> x_k1_yaw_R;  // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> p_x_k_yaw_R; // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> x_k1_pitch_R;  // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> p_x_k_pitch_R; // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> x_k1_yaw_main;  // k-1时刻的滤波值，即是k-1时刻的值
+    Eigen::Matrix<double,2,1> p_x_k_yaw_main; // k-1时刻的滤波值，即是k-1时刻的值
+
+    // 创建发送数据
+    robot_msgs::robot_ctrl Robot_L_ctrl_t;
+    robot_msgs::robot_ctrl Robot_R_ctrl_t;
+    std_msgs::Float32 Robot_main_yaw_t;
+    // 60Hz的频率 | 加入卡尔曼滤波 | 60HZ 0.016s
+    int HZ = 80;    // 赫兹HZ
+    ros::Rate loop_rate(HZ);
+    while (ros::ok())
+    {   
+        // 设置卡尔曼时间
+        float time = 1/HZ;
+        kalman_yaw_L.setF(time);
+        kalman_pitch_L.setF(time);
+        kalman_yaw_R.setF(time);
+        kalman_pitch_R.setF(time);
+        kalman_yaw_main.setF(time);
+
+        // 使用预测步还是跟新步? | 待测试,目前预测步
+        /** 预测步 */
+        p_x_k_yaw_L = kalman_yaw_L.predict();
+        p_x_k_pitch_L = kalman_pitch_L.predict();
+        p_x_k_yaw_R = kalman_yaw_R.predict();
+        p_x_k_pitch_R = kalman_pitch_R.predict();
+        p_x_k_yaw_main = kalman_yaw_main.predict();
+
+        /** 更新步 */
+        x_k1_yaw_L = kalman_yaw_L.update(Decision_Yaw_L);
+        x_k1_pitch_L = kalman_pitch_L.update(Decision_pitch_L);
+        x_k1_yaw_R = kalman_yaw_R.update(Decision_Yaw_R);
+        x_k1_pitch_R = kalman_pitch_R.update(Decision_pitch_R);
+        x_k1_yaw_main = kalman_yaw_main.update(Decision_Yaw_count);
+
+        //大Yaw轴数据
+        // Robot_main_yaw_t.data = Decision_Yaw_count;
+        Robot_main_yaw_t.data = p_x_k_yaw_main[0];
+
+        //左右开火命令
+        Robot_L_ctrl_t.fire_command = Decision_fire_command_L;
+        Robot_R_ctrl_t.fire_command = Decision_fire_command_R;
+        // 左右开火模式
+        Robot_L_ctrl_t.fire_mode = Decision_fire_mode_L;
+        Robot_R_ctrl_t.fire_mode = Decision_fire_mode_R;
+        // // 左右yaw轴数据
+        // Robot_L_ctrl_t.yaw = Decision_Yaw_L;
+        // Robot_R_ctrl_t.yaw = Decision_Yaw_R;
+        // // 左右pitch轴数据
+        // Robot_L_ctrl_t.pitch = Decision_pitch_L;
+        // Robot_R_ctrl_t.pitch = Decision_pitch_R;
+
+        Robot_L_ctrl_t.yaw = p_x_k_yaw_L[0];
+        Robot_R_ctrl_t.yaw = p_x_k_yaw_R[0];
+        // 左右pitch轴数据
+        Robot_L_ctrl_t.pitch = p_x_k_pitch_L[0];
+        Robot_R_ctrl_t.pitch = p_x_k_pitch_R[0];
+        // 左右跟踪情况
+        Robot_L_ctrl_t.is_follow = Decision_target_lock_L;
+        Robot_R_ctrl_t.is_follow = Decision_target_lock_R;
+        
+        Robot_L_ctrl_pub.publish(Robot_L_ctrl_t);
+        Robot_R_ctrl_pub.publish(Robot_R_ctrl_t);
+        Robot_main_yaw_pub.publish(Robot_main_yaw_t);
+
+        loop_rate.sleep();
+        ros::spinOnce();
+    }
+    
 
     ros::spin();
 

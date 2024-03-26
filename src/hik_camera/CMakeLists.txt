@@ -23,6 +23,8 @@ find_package(catkin REQUIRED COMPONENTS
 # 链接Opencv和Eigen3
 find_package(OpenCV 4.5 REQUIRED)
 find_package(Eigen3 REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS}
+        ${EIGEN3_INCLUDE_DIRS})
 set(CAMERA_LIB  
     ${PROJECT_SOURCE_DIR}/MVS_Drive/libMVSDK.so
     ${PROJECT_SOURCE_DIR}/MVS_Drive/libMvCameraControl.so

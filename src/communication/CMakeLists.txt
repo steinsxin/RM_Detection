@@ -18,6 +18,8 @@ find_package(catkin REQUIRED COMPONENTS
 # 链接Opencv和Eigen3
 find_package(OpenCV 4.5 REQUIRED)
 find_package(Eigen3 REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS}
+        ${EIGEN3_INCLUDE_DIRS})
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -125,6 +127,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${PROJECT_SOURCE_DIR}/../../devel/include
   ${PROJECT_SOURCE_DIR}/../public_include
+  ${PROJECT_SOURCE_DIR}/Kalman/
 )
 
 ## Declare a C++ library
@@ -142,7 +145,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 
 # 三云台同步计算
-add_executable(${PROJECT_NAME}_PTZ_Yaw_node src/PTZ_Yaw_Receive.cpp)
+add_executable(${PROJECT_NAME}_PTZ_Yaw_node src/PTZ_Yaw_Receive.cpp Kalman/Kalman.cpp)
 # 左云台全向感知处理
 add_executable(${PROJECT_NAME}_PTZ_perception_L_node src/PTZ_perception_L.cpp)
 # 右云台全向感知处理
