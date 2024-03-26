@@ -8,7 +8,8 @@
 
 ArmorObserve::ArmorObserve() {
     //============================= 参数文件路径 =============================
-    cv::FileStorage fs(PATH "Observe_data.yaml", cv::FileStorage::READ);
+    std::string package_path = ros::package::getPath("robot_detection");
+    cv::FileStorage fs(package_path + "/SetParam_File/Observe_data.yaml", cv::FileStorage::READ);
 
     /** 装甲板实际大小参数读取 */
     big_w = (double)fs["big_w"];

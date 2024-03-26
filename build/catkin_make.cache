@@ -1,2 +1,2 @@
-HIK_Camera:Robot_Detection:Serial_Device:robot_msg
+hik_camera:robot_detection:robot_msgs:serial_device
 -DCATKIN_DEVEL_PREFIX=/home/steins_xin/RM_Detection_ROS/devel -DCMAKE_INSTALL_PREFIX=/home/steins_xin/RM_Detection_ROS/install -G Unix Makefiles

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/Reveice_test.cpp" "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/CMakeFiles/Serial_Device_Receive_test_node.dir/Reveice_test.cpp.o"
+  "/home/steins_xin/RM_Detection_ROS/src/serial_device/Reveice_test.cpp" "/home/steins_xin/RM_Detection_ROS/build/serial_device/CMakeFiles/serial_device_Receive_test_node.dir/Reveice_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -12,7 +12,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "ROSCONSOLE_BACKEND_LOG4CXX"
   "ROS_BUILD_SHARED_LIBS=1"
-  "ROS_PACKAGE_NAME=\"Serial_Device\""
+  "ROS_PACKAGE_NAME=\"serial_device\""
   )
 
 # The include file search paths:
@@ -20,9 +20,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
-  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/include"
-  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/../public_include"
-  "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/../../devel/include"
+  "/home/steins_xin/RM_Detection_ROS/src/serial_device/include"
+  "/home/steins_xin/RM_Detection_ROS/src/serial_device/../public_include"
+  "/home/steins_xin/RM_Detection_ROS/src/serial_device/../../devel/include"
   "/usr/local/include/opencv4"
   )
 

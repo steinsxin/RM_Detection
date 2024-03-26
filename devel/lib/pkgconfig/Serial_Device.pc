@@ -1,7 +1,7 @@
 prefix=/home/steins_xin/RM_Detection_ROS/devel
 
-Name: Serial_Device
-Description: Description of Serial_Device
+Name: serial_device
+Description: Description of serial_device
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 

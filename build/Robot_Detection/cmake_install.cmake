@@ -1,4 +1,4 @@
-# Install script for directory: /home/steins_xin/RM_Detection_ROS/src/Robot_Detection
+# Install script for directory: /home/steins_xin/RM_Detection_ROS/src/robot_detection
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/build/Robot_Detection/catkin_generated/installspace/Robot_Detection.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/build/robot_detection/catkin_generated/installspace/robot_detection.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/Robot_Detection/cmake" TYPE FILE FILES
-    "/home/steins_xin/RM_Detection_ROS/build/Robot_Detection/catkin_generated/installspace/Robot_DetectionConfig.cmake"
-    "/home/steins_xin/RM_Detection_ROS/build/Robot_Detection/catkin_generated/installspace/Robot_DetectionConfig-version.cmake"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_detection/cmake" TYPE FILE FILES
+    "/home/steins_xin/RM_Detection_ROS/build/robot_detection/catkin_generated/installspace/robot_detectionConfig.cmake"
+    "/home/steins_xin/RM_Detection_ROS/build/robot_detection/catkin_generated/installspace/robot_detectionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/Robot_Detection" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_detection" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/src/robot_detection/package.xml")
 endif()
 

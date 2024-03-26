@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/Receive_test.cpp
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/Receive_test.cpp
 ros/ros.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/ros/ros.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/ros/ros.h
 opencv2/opencv.hpp
 -
 image_transport/image_transport.h

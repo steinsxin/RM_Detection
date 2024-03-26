@@ -63,6 +63,7 @@ typedef struct form
 {
     int mode;                           // 模式
     int dat_is_get;                     // 数据是否获取
+    int enemy_color;                    // 电控发己方颜色 1:Blue 2:Red  Armor_detection选择颜色 1:Red 2:Blue
     float data[3];                      // pitch yaw shoot
     float quat[4];                      // 四元数
     std::vector<Armor> armors;          // 装甲板

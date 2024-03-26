@@ -3,6 +3,9 @@
 #二值化阈值 70
 binThresh: 70
 
+#选择击打颜色
+enemy_color: 2
+
 #灯条识别参数
 light_max_angle: 45.0
 light_min_hw_ratio: 1

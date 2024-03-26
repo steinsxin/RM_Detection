@@ -70,7 +70,6 @@ public:
     std::deque<double> Angle_Speed_FPS;                          // 角速度帧率平滑
 
     cv::Point2f temp_cir;                           // 圆心像素坐标
-    double angle_speed;
     /** 整车观测 */
     std::map<int,Observe> OB;                       // 整车观测结构体
     std::map<int,SpinTracker> OB_Track;             // 长短轴跟踪器

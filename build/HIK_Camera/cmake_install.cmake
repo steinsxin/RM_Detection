@@ -1,4 +1,4 @@
-# Install script for directory: /home/steins_xin/RM_Detection_ROS/src/HIK_Camera
+# Install script for directory: /home/steins_xin/RM_Detection_ROS/src/hik_camera
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/build/HIK_Camera/catkin_generated/installspace/HIK_Camera.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/build/hik_camera/catkin_generated/installspace/hik_camera.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/HIK_Camera/cmake" TYPE FILE FILES
-    "/home/steins_xin/RM_Detection_ROS/build/HIK_Camera/catkin_generated/installspace/HIK_CameraConfig.cmake"
-    "/home/steins_xin/RM_Detection_ROS/build/HIK_Camera/catkin_generated/installspace/HIK_CameraConfig-version.cmake"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hik_camera/cmake" TYPE FILE FILES
+    "/home/steins_xin/RM_Detection_ROS/build/hik_camera/catkin_generated/installspace/hik_cameraConfig.cmake"
+    "/home/steins_xin/RM_Detection_ROS/build/hik_camera/catkin_generated/installspace/hik_cameraConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/HIK_Camera" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hik_camera" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/src/hik_camera/package.xml")
 endif()
 

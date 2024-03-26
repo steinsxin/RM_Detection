@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/HIK_Camera_node.cpp
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/HIK_Camera_node.cpp
 ros/ros.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/ros/ros.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/ros/ros.h
 HIK_Camera.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/HIK_Camera.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/HIK_Camera.h
 robot_status.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/robot_status.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/robot_status.h
 cv_bridge/cv_bridge.h
 -
 image_transport/image_transport.h
@@ -24,35 +24,35 @@ sensor_msgs/image_encodings.h
 sensor_msgs/CompressedImage.h
 -
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera.h
 opencv2/opencv.hpp
 -
 HIK_Camera_H/MvCameraControl.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/MvCameraControl.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/MvCameraControl.h
 robot_status.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/robot_status.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/robot_status.h
 ros/package.h
 -
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/CameraParams.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/CameraParams.h
 PixelType.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/PixelType.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/PixelType.h
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/MvCameraControl.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/MvCameraControl.h
 MvErrorDefine.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/MvErrorDefine.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/MvErrorDefine.h
 CameraParams.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/CameraParams.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/CameraParams.h
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/MvErrorDefine.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/MvErrorDefine.h
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/include/HIK_Camera_H/PixelType.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/include/HIK_Camera_H/PixelType.h
 stdint.h
 -
 
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/src/HIK_Camera.cpp
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/src/HIK_Camera.cpp
 HIK_Camera.h
-/home/steins_xin/RM_Detection_ROS/src/HIK_Camera/src/HIK_Camera.h
+/home/steins_xin/RM_Detection_ROS/src/hik_camera/src/HIK_Camera.h
 
 /home/steins_xin/RM_Detection_ROS/src/public_include/robot_status.h
 opencv2/opencv.hpp

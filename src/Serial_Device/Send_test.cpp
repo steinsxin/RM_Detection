@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 // msg头文件
-#include "robot_msg/Robot_ctrl.h"
+#include "robot_msgs/Robot_ctrl.h"
 
 int main(int argc, char *argv[]){
 
@@ -13,10 +13,10 @@ int main(int argc, char *argv[]){
     ros::NodeHandle nh;
 
     // 创建发布者对象
-    ros::Publisher pub = nh.advertise<robot_msg::Robot_ctrl>("Robot_ctrl_data",10);
+    ros::Publisher pub = nh.advertise<robot_msgs::Robot_ctrl>("Robot_ctrl_data",10);
 
     // 创建发送数据
-    robot_msg::Robot_ctrl Robot_ctrl_t;
+    robot_msgs::Robot_ctrl Robot_ctrl_t;
 
     Robot_ctrl_t.pitch = 10;
     Robot_ctrl_t.yaw = 10;

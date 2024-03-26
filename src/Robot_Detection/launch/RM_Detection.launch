@@ -1,16 +1,16 @@
 <launch>
     <node
         name="HIK_Camera"
-        pkg="HIK_Camera"
-        type="HIK_Camera_node"
+        pkg="hik_camera"
+        type="hik_camera_node"
         respawn="true"  
         >
     </node>
 
     <node
         name="Serial_Device_Send"
-        pkg="Serial_Device"
-        type="Serial_Device_Send_node"
+        pkg="serial_device"
+        type="serial_device_send_node"
         output="screen"
         respawn="true"   
         >
@@ -18,17 +18,17 @@
 
     <node
         name="Serial_Device_Receive"
-        pkg="Serial_Device"
-        type="Serial_Device_Receive_node"
+        pkg="serial_device"
+        type="serial_device_receive_node"
         output="screen"
         respawn="true"  
         >
     </node>
 
     <node
-        name="Robot_Detection"
-        pkg="Robot_Detection"
-        type="Robot_Detection_node"
+        name="robot_detection"
+        pkg="robot_detection"
+        type="robot_detection_node"
         output="screen"
         respawn="true"  
         >

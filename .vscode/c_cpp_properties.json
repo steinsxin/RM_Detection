@@ -16,9 +16,12 @@
         "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Detection/include/**",
         "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Observe/include/**",
         "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Armor_Track/include/**",
+        "/home/steins_xin/RM_Detection_ROS/src/Robot_Detection/src/Neural_Armor_Detection/include/**",
         "/home/steins_xin/catkin_ws/src/cv_bridge/include/**",
-        "/usr/include/**"
-
+        "/usr/include/**",
+        "/opt/intel/openvino/runtime/include",
+        "/opt/intel/openvino/runtime/include/ie",
+        "/opt/intel/openvino/runtime/include/ngraph"
       ],
       "name": "ROS",
       "intelliSenseMode": "gcc-x64",

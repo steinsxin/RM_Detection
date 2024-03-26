@@ -4,13 +4,13 @@
 #include "robot_status.h"
 #include "robot_struct.h"
 // msg
-#include "robot_msg/Robot_ctrl.h"
+#include "robot_msgs/Robot_ctrl.h"
 
 SerialMain serial; 
 std::vector<double> vdata(4);
 
 // 发送数据函数
-void Robot_ctrl_Send(const robot_msg::Robot_ctrl::ConstPtr& Robot_ctrl_t){
+void Robot_ctrl_Send(const robot_msgs::Robot_ctrl::ConstPtr& Robot_ctrl_t){
     // 向下位机发送数据
     double fire = (float)Robot_ctrl_t->fire_command;
     double mode = (float)Robot_ctrl_t->target_lock;
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
     ros::NodeHandle nh;
 
     // 创建订阅对象
-    ros::Subscriber sub = nh.subscribe<robot_msg::Robot_ctrl>("Robot_ctrl_data",1,Robot_ctrl_Send);   
+    ros::Subscriber sub = nh.subscribe<robot_msgs::Robot_ctrl>("Robot_ctrl_data",1,Robot_ctrl_Send);   
 
     ROS_INFO("-- Robot_ctrl_sub Start--");
 

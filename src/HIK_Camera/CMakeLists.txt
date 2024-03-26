@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(HIK_Camera)
+project(hik_camera)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -120,7 +120,7 @@ set(CAMERA_LIB
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES HIK_Camera
+#  LIBRARIES hik_camera
  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )

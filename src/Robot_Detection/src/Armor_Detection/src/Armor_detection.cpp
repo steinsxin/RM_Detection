@@ -15,11 +15,14 @@ using namespace std;
 ArmorDetector::ArmorDetector()
 {
     //============================= 参数文件路径 =============================
-    std::string package_path = ros::package::getPath("Robot_Detection");
+    std::string package_path = ros::package::getPath("robot_detection");
     FileStorage fs(package_path + "/SetParam_File/Detect_data.yaml", FileStorage::READ);
 
     /** 二值化阈值*/
     binThresh = (int)fs["binThresh"];
+
+    /** 击打颜色*/
+    enemy_color = (int)fs["enemy_color"];
 
     /** 灯条识别参数读取 */
     light_max_angle = (double)fs["light_max_angle"];
@@ -169,7 +172,7 @@ void ArmorDetector::findLights()
                 light.lightColor = sum[2] > sum[0] ? RED : BLUE;
 
                 // 颜色不符合电控发的就不放入 1:RED 2:BLUE
-                if(light.lightColor == 2)
+                if(light.lightColor == enemy_color)
                 {
                     candidateLights.emplace_back(light);
 #ifdef DRAW_LIGHTS_RRT
@@ -527,7 +530,7 @@ bool ArmorDetector::get_max(const float *data, float &confidence, int &id)
             return false;
     }
     
-    // 置信度小于阈值
+    // 置信度小于阈值 | 0一定要筛掉
     if(confidence < thresh_confidence || id == 0)
         return false;
     else

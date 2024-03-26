@@ -1,4 +1,4 @@
-# Install script for directory: /home/steins_xin/RM_Detection_ROS/src/Serial_Device
+# Install script for directory: /home/steins_xin/RM_Detection_ROS/src/serial_device
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/catkin_generated/installspace/Serial_Device.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/build/serial_device/catkin_generated/installspace/serial_device.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/Serial_Device/cmake" TYPE FILE FILES
-    "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/catkin_generated/installspace/Serial_DeviceConfig.cmake"
-    "/home/steins_xin/RM_Detection_ROS/build/Serial_Device/catkin_generated/installspace/Serial_DeviceConfig-version.cmake"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/serial_device/cmake" TYPE FILE FILES
+    "/home/steins_xin/RM_Detection_ROS/build/serial_device/catkin_generated/installspace/serial_deviceConfig.cmake"
+    "/home/steins_xin/RM_Detection_ROS/build/serial_device/catkin_generated/installspace/serial_deviceConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/Serial_Device" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/src/Serial_Device/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/serial_device" TYPE FILE FILES "/home/steins_xin/RM_Detection_ROS/src/serial_device/package.xml")
 endif()
 

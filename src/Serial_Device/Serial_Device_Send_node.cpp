@@ -10,8 +10,11 @@
 #include "robot_status.h"
 #include "robot_struct.h"
 // msg
-#include "robot_msg/Vision.h"
+#include "robot_msgs/Vision.h"
 
+
+bool Get_data;
+SerialMain serial;  // usb
 int main(int argc, char *argv[]){
 
     setlocale(LC_ALL,"");
@@ -23,13 +26,12 @@ int main(int argc, char *argv[]){
     ros::NodeHandle nh;
 
     // 创建发布者对象
-    ros::Publisher pub = nh.advertise<robot_msg::Vision>("Vision_data",10);
+    ros::Publisher pub = nh.advertise<robot_msgs::Vision>("Vision_data",10);
 
     // 创建发送数据
-    robot_msg::Vision vision_t;
+    robot_msgs::Vision vision_t;
 
-    bool Get_data;
-    SerialMain serial;  // usb
+
     ROS_INFO("---Vision_pub Start---");
     while (ros::ok()){
         Get_data = serial.ReceiverMain();                                          // usb

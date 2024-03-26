@@ -21,7 +21,7 @@ class AngleSolve : public robot_state {
 public:
     AngleSolve();
     cv::Mat _src;
-    robot_state Robot_msg;                                      // 串口数据
+    robot_state Robot_msg;                                              // 串口数据
     //========================API接口========================
     /** 坐标系转换 */
     cv::Point2f imu2pixel(Eigen::Vector3d imu_pos);                     // 世界坐标转换为像素坐标

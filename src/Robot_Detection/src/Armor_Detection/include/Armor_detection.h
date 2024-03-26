@@ -66,8 +66,9 @@ class ArmorDetector : public robot_state {
         ArmorDetector(); //构造函数初始化
         // 1:英雄 2:工程 3|4:步兵 5:备用步兵 6:哨兵 7:前哨站 8:基地
         std::vector<int> Unattack_ID_list = {2,7};               // 不击打列表
-        int Priority_ID_list[8] = {1,3,4,5,6,7,8,2};            // 优先级列表
-        std::vector<Armor> Detection(const cv::Mat &src); //识别流程入口函数
+        int Priority_ID_list[8] = {1,3,4,5,6,7,8,2};             // 优先级列表
+        int enemy_color;                                         // 选择击打颜色 1:Red 2:Blue | 电控传参
+        std::vector<Armor> Detection(const cv::Mat &src);       //识别流程入口函数
     private:
 
         int binThresh;                      // 二值化阈值
